@@ -1,0 +1,1084 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+
+\input{preamble_arXiv.tex}
+
+
+% % Useful packages
+% \usepackage{amsmath}
+% \usepackage{graphicx}
+% \usepackage[colorlinks=true, allcolors=blue]{hyperref}
+% \newtheorem{Definition}{Definition}[section] 
+% \newtheorem{fig}{figure}[section] 
+% \newtheorem{Theorem}{Theorem}[section] 
+% \newtheorem{Proposition}{Proposition}[section] 
+% \newtheorem{Corollary}{Corollary}[section] 
+% \newtheorem{Example}{Example}[section] 
+% \newtheorem{lemma}{Lemma}[section] 
+% \newtheorem{Algorithm}{Algorithm}[section] 
+% \newtheorem{Remark}{Remark}[section] 
+% \newtheorem{Notation}{Notation}[section] 
+% \newtheorem{Proof}{Proof}[section]
+
+\title{On independence tests for polyspherical data and
+their applications}
+\author{Vinícius Litvinoff}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract.
+\end{abstract}
+
+\section{$I_{n1}$}
+
+$I_{n1} = \int_{\Sr} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 \mathrm{d} \mathbf{x}$.
+
+\begin{align}
+    I_{n1} &= \int_{\Sr} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\Sr} \Bigg[ \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\Sr} \Bigg[ \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \sum_{i=1}^{n} \mathsf{E} \Big( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\Sr} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\Sr} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \Bigg]^2 \mathrm{d} \mathbf{x},
+\end{align}
+where the last equality comes from the null hypothesis of independence between the elements of the polysphere. Therefore, $I_{n1} = I_{n1}^{(1)} + I_{n1}^{(2)}$, where
+\begin{align}
+    I_{n1}^{(1)} &:= \frac{1}{n^2} \int_{\Sr} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\}^2 \Bigg] \mathrm{d} \mathbf{x}; \\
+    I_{n1}^{(2)} &:= \frac{2}{n^2} \int_{\Sr} \Bigg[ \sum_{1 \le i<k \le n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \\
+    &\times \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(k)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(k)}) \Big) \Bigg\} \Bigg] \mathrm{d} \mathbf{x}.
+\end{align}
+The asymptotic distribution of $I_{n1} = I_{n1}^{(1)} + I_{n1}^{(2)}$ can be described through Lemma 1 in \cite{Garc_a_Portugu_es_2015}. In this case,
+\begin{align}
+    B_n^{-1/2} I_{n1} \xrightarrow{d} \mathcal{N}(0, 1),
+\end{align}
+where $B_n = n \mathsf{E} (\varphi_n^2(X_1)) + \frac{1}{2} n^2 \mathsf{E}(H_n^2(X_1,X_2))$ and $\varphi_n(X_1) = \frac{1}{n^2} \int_{\Sr} \Bigg[ \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(1)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(1)}) \Big) \Bigg\}^2 \Bigg] \mathrm{d} \mathbf{x}$.
+
+\subsection{Proof using lemma 1}
+
+Let $H_n(X_i,X_k) := \int_{\Sr} \Bigg[ \Bigg\{ \bar{L}_u (\bx,\bX_i) \Bigg\} \times \Bigg\{ \bar{L}_u (\bx,\bX_k) \Bigg\} \Bigg] \mathrm{d} \bx$.
+\begin{align*}
+    \mathsf{E} (H_n(X_1,X_2)) &= \mathsf{E} \Bigg( \int_{\Sr} \Bigg[ \Bigg\{ \bar{L}_u (\bx,\bX_1) \Bigg\} \times \Bigg\{ \bar{L}_u (\bx,\bX_2) \Bigg\} \Bigg] \mathrm{d} \bx \Bigg) \\
+    &= \int_{\Sr} \mathsf{E} \Bigg( \Bigg[ \Bigg\{ \bar{L}_u (\bx,\bX_1) \Bigg\} \times \Bigg\{ \bar{L}_u (\bx,\bX_2) \Bigg\} \Bigg] \Bigg) \mathrm{d} \bx \\
+    &= \int_{\Sr} \mathsf{E} \Bigg( \Bigg[ \Bigg\{ \bar{L}_u (\bx,\bX_1) \Bigg\} \Bigg) \mathsf{E} \Bigg( \Bigg\{ \bar{L}_u (\bx,\bX_2) \Bigg\} \Bigg] \Bigg) \mathrm{d} \bx.
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (H_n^2(X_1,X_2)) &= \mathsf{E} \Bigg( \Bigg[  \int_{\Sr} \bar{L}_u (\bx,\bX_1) \bar{L}_u (\bx,\bX_2) \mathrm{d} \bx \Bigg]^2 \Bigg) \\
+    &= \mathsf{E} \Bigg(  \int_{\Sr} \int_{\Sr} \Bigg\{ \bar{L}_u (\bx,\bX_1) \bar{L}_u (\bx,\bX_2) \Bigg\} \Bigg\{ \bar{L}_u (\by,\bX_1) \bar{L}_u (\by,\bX_2) \Bigg\}  \mathrm{d} \bx \mathrm{d} \by \Bigg) \\
+    &= \int_{\Sr} \int_{\Sr} \mathsf{E} \Bigg( \Bigg\{ \bar{L}_u (\bx,\bX_1) \bar{L}_u (\bx,\bX_2) \Bigg\} \Bigg\{ \bar{L}_u (\by,\bX_1) \bar{L}_u (\by,\bX_2) \Bigg\} \Bigg) \mathrm{d} \bx \mathrm{d} \by \\
+    &= \int_{\Sr} \int_{\Sr} \mathsf{E} \Bigg( \bar{L}_u (\bx,\bX_1) \bar{L}_u (\by,\bX_1) \Bigg) \mathsf{E} \Bigg( \bar{L}_u (\by,\bX_2) \bar{L}_u (\bx,\bX_2) \Bigg) \mathrm{d} \bx \mathrm{d} \by \\
+    &= \int_{\Sr} \int_{\Sr} \mathsf{E}^2 \Bigg( \bar{L}_u (\bx,\bX_1) \bar{L}_u (\by,\bX_1) \Bigg) \mathrm{d} \bx \mathrm{d} \by.
+\end{align*}
+
+By a similar argument,
+\begin{align*}
+    \mathsf{E} (H_n^4(X_1,X_2)) &= \int_{\Sr} \dots \int_{\Sr} \mathsf{E}^2 \Bigg( \prod_{i=1}^{4} \bar{L}_u (\bx_i,\bX_1)  \Bigg) \prod_{i=1}^{4} \mathrm{d} \bx_i.
+\end{align*}
+
+$G_n(x,y) := \mathsf{E} (H_n(x,X_1),H_n(y,X_1))$. Therefore,
+\begin{align*}
+    G_n(s,t) &= \mathsf{E} \Bigg( \Bigg\{ \int_{\Sr} \bar{L}_u (\bx,\mathbf{s}) \bar{L}_u (\bx,\bX_1) \mathrm{d} \bx \Bigg\} \Bigg\{ \int_{\Sr} \bar{L}_u (\bx,\mathbf{t}) \bar{L}_u (\bx,\bX_1) \mathrm{d} \bx \Bigg\} \Bigg). \\
+    \mathsf{E} (G_n^2(X_1,X_2)) &= \mathsf{E} \Bigg( \Bigg\{ \int_{\Sr} \bar{L}_u (\bx,X_1) \bar{L}_u (\bx,\bX_1) \mathrm{d} \bx \Bigg\}^2 \Bigg\{ \int_{\Sr} \bar{L}_u (\bx,X_2) \bar{L}_u (\bx,\bX_1) \mathrm{d} \bx \Bigg\}^2 \Bigg) \\
+    &= \mathsf{E} \Bigg( \Bigg\{ \int_{\Sr} \int_{\Sr} \bar{L}_u (\bx_1,X_1) \bar{L}_u (\bx_1,\bX_1) \bar{L}_u (\bx_2,X_1) \bar{L}_u (\bx_2,\bX_1) \mathrm{d} \bx_1 \mathrm{d} \bx_2 \Bigg\} \\
+    &\times \Bigg\{ \int_{\Sr} \int_{\Sr} \bar{L}_u (\bx_3,X_2) \bar{L}_u (\bx_3,\bX_1) \bar{L}_u (\bx_4,X_2) \bar{L}_u (\bx_4,\bX_1) \mathrm{d} \bx_3 \mathrm{d} \bx_4 \Bigg\} \Bigg) \\
+    &= \mathsf{E} \Bigg( \Bigg\{ \int_{\Sr} \int_{\Sr} \bar{L}_u^2 (\bx_1,X_1) \bar{L}_u^2 (\bx_2,X_1) \mathrm{d} \bx_1 \mathrm{d} \bx_2 \Bigg\} \\
+    &\times \Bigg\{ \int_{\Sr} \int_{\Sr} \bar{L}_u (\bx_3,X_2) \bar{L}_u (\bx_3,\bX_1) \bar{L}_u (\bx_4,X_2) \bar{L}_u (\bx_4,\bX_1) \mathrm{d} \bx_3 \mathrm{d} \bx_4 \Bigg\} \Bigg) \\
+    &= \mathsf{E} \Bigg( \int_{\Sr} \int_{\Sr} \int_{\Sr} \int_{\Sr} \bar{L}_u^2 (\bx_1,X_1) \bar{L}_u^2 (\bx_2,X_1)  \\
+    &\times  \bar{L}_u (\bx_3,X_2) \bar{L}_u (\bx_3,\bX_1) \bar{L}_u (\bx_4,X_2) \bar{L}_u (\bx_4,\bX_1) \mathrm{d} \bx_1 \mathrm{d} \bx_2 \mathrm{d} \bx_3 \mathrm{d} \bx_4 \Bigg) \\
+    &= \int_{\Sr} \int_{\Sr} \int_{\Sr} \int_{\Sr} \mathsf{E} \Bigg( \bar{L}_u^2 (\bx_1,X_1) \bar{L}_u^2 (\bx_2,X_1)  \\
+    &\times  \bar{L}_u (\bx_3,X_2) \bar{L}_u (\bx_3,\bX_1) \bar{L}_u (\bx_4,X_2) \bar{L}_u (\bx_4,\bX_1) \Bigg) \mathrm{d} \bx_1 \mathrm{d} \bx_2 \mathrm{d} \bx_3 \mathrm{d} \bx_4
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (Z_{n1}^2) =&\; \mathsf{E} \Bigg( \Bigg(\int_{\Sr}  \bar{L}_{\bh}^2 (\bx,\bX_1)  \,\rd \bx \Bigg)^2 \Bigg) \\
+    %&= \mathsf{E} \Bigg( \int_{\Sr} \int_{\Sr}  \bar{L}_{\bh}^2 (\bx,\bX_i) \bar{L}_{\bh}^2 (\by,\bX_i)  \,\rd \bx \,\rd \by \Bigg) \\
+    %&= \int_{\Sr} \int_{\Sr} \mathsf{E} \Bigg(  \bar{L}_{\bh}^2 (\bx,\bX_i) \bar{L}_{\bh}^2 (\by,\bX_i) \Bigg)  \,\rd \bx \,\rd \by\\
+    \leq &\; \mathsf{E} \Bigg( \Bigg(\int_{\Sr} 2\lrb{L^2_{\bh} (\bx,\bX_1) + \mathsf{E} [L_{\bh} (\bx,\bX_i)]^2 } \,\rd \bx \Bigg)^2 \Bigg) \\
+    = &\; 4\mathsf{E} \Bigg( \Bigg(\int_{\Sr} L^2_{\bh} (\bx,\bX_1)\,\rd \bx  + \int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \Bigg) \\
+    \leq &\; 8\mathsf{E} \Bigg( \Bigg(\int_{\Sr} L^2_{\bh} (\bx,\bX_1)\,\rd \bx\Bigg)^2  + \Bigg(\int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \Bigg) \\
+    = &\; 8\mathsf{E} \Bigg( \Bigg(\int_{\Sr} L^2_{\bh} (\bx,\bX_1)\,\rd \bx\Bigg)^2 \Bigg)  + 8\mathsf{E} \Bigg( \Bigg(\int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \Bigg) \\
+    = &\; 8\mathsf{E} \Bigg( \Bigg(\int_{\Sr} L^2_{\bh} (\bx,\bX_1)\,\rd \bx\Bigg)^2 \Bigg)  + 8 \Bigg(\int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \\
+    = &\; 8\mathsf{E} ( O ( \rho ( \bh ) \lambda_d(L) )^2 ))  + 8 \Bigg(\int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \\
+    = &\; 8 O (( \rho ( \bh ) \lambda_d(L) )^2 )  + 8 \Bigg(\int_{\Sr}\mathsf{E} [L_{\bh} (\bx,\bX_i)]^2  \,\rd \bx \Bigg)^2 \\
+    = &\; 8 O (( \rho ( \bh ) \lambda_d(L) )^2 )  + 8 \Bigg(\int_{\Sr} [f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})]+o\left(h_n^2\right)]^2 \,\rd \bx \Bigg)^2 \\
+    = &\; 8 O (( \rho ( \bh ) \lambda_d(L) )^2 )  + 8 \Bigg(\int_{\Sr} [(f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})])^2 +o\left(h_n^2\right)] \,\rd \bx \Bigg)^2 \\
+    = &\; 8 O (( \rho ( \bh ) \lambda_d(L) )^2 )  + 8 \Bigg( o\left(h_n^2\right) + \int_{\Sr} [f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})]]^2 \,\rd \bx \Bigg)^2 \\
+    = &\; 8 O (( \rho ( \bh ) \lambda_d(L) )^2 )  + 8 \Bigg\{ o\left(h_n^2\right) + \Bigg( \int_{\Sr} [f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})]]^2 \,\rd \bx \Bigg)^2 \Bigg\} \\
+    = &\; O (( \rho ( \bh ) \lambda_d(L) )^2 ) + o\left(h_n^2\right)  + 8 \Bigg( \int_{\Sr} [f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})]]^2 \,\rd \bx \Bigg)^2.
+    %= &\; 8\mathsf{E} \Bigg( \Bigg(\int_{\Sr} L^2_{\bh} (\bx,\bX_1)\,\rd \bx\Bigg)^2  + \Bigg(\int_{\Sr}[f(\boldsymbol{x})+h_n^2 b_d(L) \operatorname{tr}[\boldsymbol{\mathcal { T }} \bar{f}(\boldsymbol{x})]+o\left(h_n^2\right)]^2 \rd \bx \Bigg)
+\end{align*}
+
+Use that
+\begin{align}
+    \int_{\Sr} L_{\bh}^k(\bx,\by) g(\by)\,\rd\by\asymp \frac{c_{\bd,L}(\bh)^k}{c_{\bd,L^k}(\bh)} g(\bx) \asymp \frac{\lambda_{\bd}(L^k)\rho(\bh)}{[\lambda_{\bd}(L)\rho(\bh)]^k} g(\bx)=\frac{\lambda_{\bd}(L^k)}{\lambda_{\bd}(L)^k} \rho(\bh)^{-(k-1)}g(\bx). \label{eq:equivLh}
+\end{align}
+as $\bh\to\zero$, for $k\geq 1$ and an arbitrary function $g:\Sr\to\mathbb{R}$.
+
+\subsection{Some further developments}
+
+\begin{align*}
+    H_n(\bX_1, \bX_2) &= \frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\bx,\bX_2) \,\rd \bx.
+\end{align*}
+
+\begin{align*}
+    H_n^4(\bX_1, \bX_2) &= \frac{16}{n^{16}} \int_{(\Sr)^4} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_1) \Bigg) \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_2) \Bigg) \prod_{l=1}^{4} \,\rd 
+    \bx_l.
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (H_n^4(\bX_1, \bX_2)) &= \frac{16}{n^{16}} \int_{(\Sr)^4} \mathsf{E}^2 \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd 
+    \bx_l \\
+    & \le \frac{16}{n^{16}} \int_{(\Sr)^4} \mathsf{E} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh}^2 (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd \bx_l \\
+    &= \frac{16}{n^{16}} \mathsf{E} \Bigg[ \int_{(\Sr)^4} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh}^2 (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd \bx_l \Bigg] \\
+    &= \frac{16}{n^{16}} \mathsf{E} \Bigg[ \Bigg( \int_{\Sr} \bar{L}_{\bh}^2 (\bx,\bX_1) ,\rd \bx \Bigg)^4 \Bigg] \\
+    &= \frac{16}{n^{16}} \mathsf{E} (Z_{n1}^4).
+\end{align*}
+
+Applying cp inequality, we have that
+\begin{align*}
+    Z_{ni}^4 & \le \Bigg( \int_{\Sr} 2[L_{\bh}^2 (\bx,\bX_1) + \mathsf{E}^2 (L_{\bh} (\bx,\bX_1))] \rd \bx \Bigg)^4 \\
+    &= 16 \Bigg( \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx + \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_1)) \rd \bx \Bigg)^4 \\
+    & \le 128 \Bigg( \Bigg( \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx \Bigg)^4 + \Bigg( \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_1)) \rd \bx \Bigg)^4 \Bigg).
+\end{align*}
+
+Now applying Lemma XXX, 
+\begin{align*}
+    \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx \asymp \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1}.
+\end{align*}
+\begin{align*}
+    \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_i)) &= \int_{\Sr} \Bigg( \int_{\Sr} L_{\bh} (\bx,\bX_1)) f(\bx) \rd \bx \Bigg)^2 \rd \bx \\
+    & \asymp \int_{\Sr} \Bigg( \frac{\lambda_{\bd}(L)}{\lambda_{\bd}(L)} f(\bx) \Bigg)^2 \rd \bx \\
+    &= R(f).
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (H_n^4(\bX_1, \bX_k)) &= \frac{16}{n^{16}} O(\rho(\bh)^{-4} + R(f)^4) \\
+    &= O(n^{-16} \rho(\bh)^{-4} + n^{-16}).
+\end{align*}
+
+\subsubsection{Second term}
+
+\begin{align*}
+    H_n(x,X_1) &= \frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bX_1) \,\rd \bt.
+\end{align*}
+
+\begin{align*}
+    G_n(x,y) &= \int_{\Sr} \lrb{\frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bx_1) \,\rd \bt} \lrb{\frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bs,\by) \bar{L}_{\bh} (\bs,\bx_1) \,\rd \bs} f_{X_1}(x_1) \,\rd \bx_1 \\
+    &= \frac{4}{n^4} \int_{\Sr} \int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bs,\by) \bar{L}_{\bh} (\bs,\bx_1) f_{X_1}(x_1) \,\rd \bx_1 \,\rd \bt \,\rd \bs \\
+    &= \frac{4}{n^4} \int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bs,\by) \mathsf{E} (\bar{L}_{\bh} (\bt,\bX_1) \bar{L}_{\bh} (\bs,\bX_1)) \,\rd \bt \,\rd \bs.
+\end{align*}
+
+Note that, by Cuachy-Schwarz inequality,
+\begin{align*}
+    \mathsf{E} (\bar{L}_{\bh} (\bt,\bX_1) \bar{L}_{\bh} (\bs,\bX_1)) & \le \sqrt{\mathsf{E}^2 (\bar{L}_{\bh} (\bt,\bX_1)) \mathsf{E}^2 (\bar{L}_{\bh} (\bs,\bX_1)))} \\
+    &= \sqrt{\mathsf{Var} ({L}_{\bh} (\bt,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bs,\bX_1)))}.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    G_n(x,y) & \le \frac{4}{n^4} \int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bs,\by) \sqrt{\mathsf{Var} ({L}_{\bh} (\bt,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bs,\bX_1)))} \,\rd \bt \,\rd \bs. \\
+    G_n^2(x,y) & \le \frac{16}{n^{16}} \int_{(\Sr)^4} \bar{L}_{\bh} (\bt_1,\bx) \bar{L}_{\bh} (\bt_2,\by) \bar{L}_{\bh} (\bt_3,\bx) \bar{L}_{\bh} (\bt_4,\by) \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (G_n^2(X_1,X_2)) & \le \frac{16}{n^{16}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_2,\bX_2) \bar{L}_{\bh} (\bt_3,\bX_1) \bar{L}_{\bh} (\bt_4,\bX_2)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    &= \frac{16}{n^{16}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_3,\bX_1) } \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_2,\bX_2) \bar{L}_{\bh} (\bt_4,\bX_2)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    &= \frac{16}{n^{16}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_3,\bX_1) } \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_2,\bX_1) \bar{L}_{\bh} (\bt_4,\bX_1)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i. \\
+\end{align*}
+
+Applying Cauchy-Schwartz inequality again, we obtain
+\begin{align*}
+    \mathsf{E} (G_n^2(X_1,X_2)) \le &\; \frac{16}{n^{16}} \int_{(\Sr)^4}  \sqrt{\mathsf{Var} ({L}_{\bh} (\bt_1,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bt_3,\bX_1)))} \sqrt{\mathsf{Var} ({L}_{\bh} (\bt_2,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bt_4,\bX_1)))} \\
+    & \times \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \int_{(\Sr)^4} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \int_{(\Sr)^4} \prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \int_{(\Sr)^4} \prod_{i=1}^{4} n \mathsf{Var} (\hat{f}(\bt_i;\bh)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \int_{(\Sr)^4} \prod_{i=1}^{4} n \lrb{\frac{v_{\bd}(L)}{n \rho(\bh)} f(\bt_i)(1 + o(1))} \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \int_{(\Sr)^4} \prod_{i=1}^{4} \frac{v_{\bd}(L)}{ \rho(\bh)} f(\bt_i)(1 + o(1)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \prod_{i=1}^{4} \int_{(\Sr)^4} \frac{v_{\bd}(L)}{ \rho(\bh)} f(\bt_i)(1 + o(1)) \,\rd \bt_i \\
+    =&\; \frac{16}{n^{16}} \prod_{i=1}^{4} \frac{v_{\bd}(L)}{ \rho(\bh)} (1 + o(1)) \\
+    =&\; \frac{16}{n^{16}} \frac{v_{\bd}^4(L)}{ \rho^4(\bh)} (1 + o(1)).
+\end{align*}
+
+As a consequence,
+\begin{align*}
+    \mathsf{E} (G_n^2(X_1,X_2)) &= O(n^{-16} \rho^{-4}(\bh) + n^{-16}).
+\end{align*}
+
+Defining $A_n \defin n^3 H_n^4(\bX_1, \bX_2) + n^4 \mathsf{E} (G_n^2(X_1,X_2))$, then, from the previous results,
+\begin{align*}
+    A_n &= O(n^{-12} \rho^{-4}(\bh) + n^{-12}) \\
+    &= O(n^{-12} \rho^{-4}(\bh)).
+\end{align*}
+
+\subsubsection{Final ratio}
+
+\begin{align*}
+    B_n &= \frac{2}{n^2} \int_{\Sr} \int_{\Sr} \mathsf{E}^2 ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) \,\rd \bx \,\rd \by.
+\end{align*}
+
+Note that
+\begin{align*}
+    \mathsf{E} ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) &= \mathsf{E} ( L_{\bh} (\bx,\bX_1) L_{\bh} (\by,\bX_1) ) - \mathsf{E} (L_{\bh} (\bx,\bX_1)) \mathsf{E} (L_{\bh} (\by,\bX_1)).
+\end{align*}
+
+Furthermore,
+\begin{align*}
+    \mathsf{E} ( L_{\bh} (\bx,\bX_1) L_{\bh} (\by,\bX_1) ) &= \int_{\Sr} L_{\bh} (\bx,\bt) L_{\bh} (\by,\bt) f(\bt) \,\rd \bt \\
+    & \asymp L_{\bh} (\bx,\by) f(\by).\\
+    \mathsf{E} (L_{\bh} (\bx,\bX_1)) &= \int_{\Sr} L_{\bh} (\bx,\bt) f(\bt) \,\rd \bt \\
+    & \asymp f(\bx).\\
+    \mathsf{E} (L_{\bh} (\by,\bX_1)) &= \int_{\Sr} L_{\bh} (\by,\bt) f(\bt) \,\rd \bt \\
+    & \asymp f(\by).\\
+\end{align*}
+
+As a consequence,
+\begin{align*}
+    \mathsf{E}^2 ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) & \asymp \lrb{L_{\bh} (\bx,\by) f(\by) - f(\bx)f(\by)}^2 \\
+    &= L_{\bh}^2 (\bx,\by) f^2(\by) + f^2(\bx)f^2(\by) -2L_{\bh} (\bx,\by) f(\bx) f^2(\by).
+\end{align*}
+
+Let's integrate each term.
+\begin{align*}
+    \int_{\Sr} \int_{\Sr} L_{\bh}^2 (\bx,\by) f^2(\by) \,\rd \by \,\rd \bx & \asymp \int_{\Sr} \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} f^2(\bx) \,\rd \bx \\
+    &= \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} R(f). \\
+    \int_{\Sr} \int_{\Sr} f^2(\bx)f^2(\by) \,\rd \by \,\rd \bx &= R^2(f). \\
+    \int_{\Sr} \int_{\Sr}-2L_{\bh} (\bx,\by) f(\bx) f^2(\by) \,\rd \by \,\rd \bx & \asymp -2 \int_{\Sr} f(\bx) f^2(\bx) \,\rd \bx\\
+    &= -2 \int_{\Sr}f^3(\bx) \,\rd \bx.
+\end{align*}
+
+Finally,
+\begin{align*}
+    B_n \asymp \frac{2}{n^2} \lrb{\frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} R(f) + R^2(f) -2 \int_{\Sr}f^3(\bx) \,\rd \bx}.
+\end{align*}
+
+Notice that, therefore, $A_n = O(n^{-12} \rho^{-4}(\bh))$ and $B_n^2 \asymp n^{-4}(\rho(\bh)^{-1}+1)$, which entails that $A_n / B_n^2 \to 0$ as $n$ goes to infinity.
+
+\section{$I_{n2}$}
+
+\begin{align}
+    \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 &= \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \Bigg)^2 + \Bigg( \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg)^2 - 2 \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \\
+    &= \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}^2(\mathbf{x_i}) \Bigg) + \Bigg( \prod_{i = 1}^{r} \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg) - 2 \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i}(\mathbf{x_i}).
+\end{align}
+
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &= \mathsf{E} \Bigg( \int  \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}^2(\mathbf{x_i}) \Bigg) \mathrm{d} \mathbf{x} \Bigg)  + \mathsf{E} \Bigg( \int \Bigg( \prod_{i = 1}^{r} \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg) \mathrm{d} \mathbf{x} \Bigg) \\
+    &- 2 \mathsf{E} \Bigg( \int \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x} \Bigg) \\
+    &= \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int  \hat{f}_{h_i}^2(\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg)  + \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \Bigg) \\
+    &- 2 \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg) \\
+    &= \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int  \hat{f}_{h_i}^2(\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg)  + \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \Bigg) \\
+     &- 2 \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg) \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  + \prod_{i = 1}^{r} \int \mathsf{E} ( \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) ) \mathrm{d} \mathbf{x}_i \\
+     &- 2 \prod_{i = 1}^{r} \int \mathsf{E} ( \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  + \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \\
+     &- 2 \prod_{i = 1}^{r} \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  - \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i.
+\end{align}
+Note that $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = \mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) + \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i}))$. From results in \cite{Garc_a_Portugu_s_2013}, $\mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1})$ and $ \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i} (\mathbf{x_i}) + O(h^2)$; as a consequence, $\mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$, and, therefore, $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1}) + f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$.
+
+Therefore,
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &= \prod_{i = 1}^{r} \int [O((nh^{q_i})^{-1}) + f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i  - \prod_{i = 1}^{r} \int [f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i.
+\end{align}
+Now notice that
+\begin{align}
+    \prod_{i = 1}^{r} \int [O((nh^{q_i})^{-1}) + f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i &= \prod_{i = 1}^{r} \Bigg\{ \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i + O((nh^{q_i})^{-1}) + O(h^2) \Bigg\} \\
+    &= \prod_{i = 1}^{r} \Bigg\{ \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg[1 + O((nh^{q_i})^{-1}) + O(h^2) \Bigg] \Bigg\} \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} \Bigg\{ \prod_{i = 1}^{r} [1 + O((nh^{q_i})^{-1}) + O(h^2)] \Bigg\} \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O((nh^{q_i})^{-1}) + O(h^2)]^r \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)].
+\end{align}
+By a similar argument,
+\begin{align}
+    \prod_{i = 1}^{r} \int [f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(h^2)].
+\end{align}
+Therefore,
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &=\Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)] \\
+    &- \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(h^2)] \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)].
+\end{align}
+
+\subsection{Proof using variance of $f_0$}
+
+$I_{n2} := \int_{\Sr} \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\bx_i) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\bx_i)) \Big]^2 \mathrm{d} \bx$.
+
+\begin{align*}
+    \mathsf{E} (I_{n2}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{\bh,0}(\bx) - \mathsf{E} (\hat{f}_{\bh,0}(\bx)) \Big]^2 \mathrm{d} \bx \Bigg) \\
+    &= \int_{\Sr} \mathsf{E} \Bigg( \Big[ \hat{f}_{\bh,0}(\bx) - \mathsf{E} (\hat{f}_{\bh,0}(\bx)) \Big]^2 \Bigg) \mathrm{d} \bx \\
+    &= \int_{\Sr} \mathsf{Var} (\hat{f}_{\bh,0}(\bx)) \mathrm{d} \bx \\
+    &= \int_{\Sr} O((n \rho(\bh))^{-1}) \mathrm{d} \bx \\
+    &= O((n \rho(\bh))^{-1}).
+\end{align*}
+
+\subsection{New proof}
+
+Note that $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = \mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) + \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i}))$. From results in \cite{Garc_a_Portugu_s_2013}, $\mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1})$ and $ \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i} (\mathbf{x_i}) + O(h^2)$; as a consequence, $\mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$, and, therefore, $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1}) + f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$.
+
+\begin{align*}
+        \mathsf{E} (I_{n2}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \,\rd \bx \Bigg) \\
+        &= \int_{\Sr} \mathsf{E} \Bigg( \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \Bigg) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{Var} (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{E} (\hat{f}_{0}^2(\bx;\bh)) - \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{E} (\prod_{j=1}^r \hat{f}_{j}^2(x^{(j)};h_j)) - \mathsf{E}^2 (\prod_{j=1}^r \hat{f}_{j}(x^{(j)};h_j)) \,\rd \bx \\
+        &= \int_{\Sr} \Bigg\{ \prod_{j=1}^{r} [\mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) + \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j))] - \prod_{j=1}^{r} \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j)) \Bigg\} \,\rd \bx \\
+         &= \int_{\Sr} \Bigg\{ \prod_{j=1}^{r} [O((nh_j^{d_j})^{-1}) + f_{j}^2 (\bx; h_j) + O(h_j^2)] - \prod_{j=1}^{r} (f_{j}^2 (x^{(j)}; h_j) + O(h_j^2)) \Bigg\} \,\rd \bx \\
+          &= \int_{\Sr} \Bigg\{ \Bigg[\prod_{j=1}^{r} f_{j}^2 (x^{(j)}; h_j) + O\Big(\sum_{j=1}^r [(nh_j^{d_j})^{-1} + h_j^2]\Big)\Bigg] - \Bigg[\prod_{j=1}^{r} f_{j}^2 (x^{(j)}; h_j) + O\Big(\sum_{j=1}^{r} h_j^2\Big)\Bigg] \Bigg\} \,\rd \bx \\
+          &= O\Big(\sum_{j=1}^r [(nh_j^{d_j})^{-1} + h_j^2]\Big).
+    \end{align*}
+
+    $$\prod_{i=1}^n (a_i + b_i) = \sum_{\boldsymbol{k} \in \{0,1\}^n} \prod_{i=1}^n a_i^{1 -k_i} b_i^{k_i}$$
+
+$$
+\mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j)=f_j(x^{(j)})+O(h_j^2)=O(1)
+$$
+
+
+\begin{align*}
+    \prod_{j=1}^{r} [\mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) + \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j))]=&\;\sum_{\boldsymbol{k} \in \{0,1\}^n} \prod_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j))^{1 -k_i} \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j))^{k_i}\\
+    =&\;\prod_{j=1}^{r} \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j))\\
+    &+\sum_{j=1}^r \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \prod_{k=1,k\neq j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k))\\
+    &+\cdots
+\end{align*}
+
+\begin{align*}
+    \mathsf{E}[T_{n,2}]=\sum_{j=1}^r \frac{v_{d_j}(L)R(f_{0,-j})}{nh^{d_j}}+o\lrp{n^{-1}\sum_{j=1}^r h^{-d_j}},
+\end{align*}
+where $f_{0,-j}(\bx)=\frac{f_0(\bx)}{f_j(x^{(j)})}$.
+
+$R(f_{0,-j})=\frac{R(f_0)}{R(f_j)}$ and $R(f)=\int f^2 $
+
+\subsection{New proof (2)}
+
+Let $R(f) \defin \int_{\Sr} f^2(\bx) \,\rd \bx$ and $f_{0,-j}(\bx) \defin \frac{f_0(\bx)}{f_j(\bx^{(j)})}$.
+
+\begin{align*}
+        \mathsf{E} (I_{n2}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \,\rd \bx \Bigg) \\
+        &= \int_{\Sr} \mathsf{E} \Bigg( \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \Bigg) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{Var} (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{E} (\hat{f}_{0}^2(\bx;\bh)) - \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
+        &= \int_{\Sr} \mathsf{E} \Bigg(\prod_{j=1}^r \hat{f}_{j}^2(x^{(j)};h_j)\Bigg) - \mathsf{E}^2 \Bigg(\prod_{j=1}^r \hat{f}_{j}(x^{(j)};h_j)\Bigg) \,\rd \bx \\
+        &= \int_{\Sr} \Bigg\{ \prod_{j=1}^{r} [\mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) + \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j))] - \prod_{j=1}^{r} \mathsf{E}^2 (\hat{f}_j(x^{(j)};h_j)) \Bigg\} \,\rd \bx.
+    \end{align*}
+
+Note that, if any $b_j \to 0$ and $a_j = O(1)$, then
+\begin{align*}
+    \prod_{j=1}^r (a_j + b_j) &= \Bigg( \prod_{j=1}^{r} a_j\Bigg) + \sum_{j=1}^{r} b_j \Bigg( \prod_{k=1,k \ne j}^{r} a_k \Bigg) + o \Bigg( \sum_{j=1}^{r} b_j \Bigg\{ \prod_{k=1,k \ne j}^{r} a_k\Bigg\}\Bigg).
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \prod_{j=1}^r (a_j + b_j) -  \prod_{j=1}^r a_j &= \sum_{j=1}^{r} b_j \Bigg( \prod_{k=1,k \ne j}^{r} a_k \Bigg) + o \Bigg( \sum_{j=1}^{r} b_j \Bigg\{ \prod_{k=1,k \ne j}^{r} a_k \Bigg\}\Bigg).
+\end{align*}
+
+Therefore, using the fact that $\mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) = O((n h_j^{d_j})^{-1})$, and taking $a_j \defin \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k))$ and $b_j \defin \mathsf{Var} (\hat{f}_j(x^{(j)};h_j))$,
+\begin{align*}
+     \mathsf{E} (I_{n2}) =&\; \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] \\
+     & + o \Bigg( \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg\{ \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg\} \Bigg) \Bigg\} \,\rd \bx \\
+     =&\; \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] \\
+     &+ o \Bigg( \sum_{j=1}^{r} (n h_j^{d_j})^{-1} f_j(x^{(j)}) v_{d_j}(L_j) \Bigg\{ \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg\}  \Bigg) \Bigg\} \,\rd \bx \\
+     %&= \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg) \Bigg\} \,\rd \bx \\
+     =&\; \int_{\Sr} \Bigg\{ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg\} \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg) \\
+     =&\; \sum_{j=1}^{r} \int_{\Sr} \Bigg\{ \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg\} \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
+\end{align*}
+
+Now notice that $\mathsf{E} (\hat{f}_k(x^{(k)};h_k)) = f_k(x^{(k)}) + O(h_j^2)$, therefore $\mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) = f_k^2(x^{(k)}) + O(h_j^2)$. As a consequence,
+\begin{align*}
+    \prod_{k=1,k \ne j}^{r} \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) = \prod_{k=1,k \ne j}^{r} f_k^2(x^{(k)}) + O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg)= f_{0,-j}(\bx)^2+ O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg).
+\end{align*}
+
+Furthermore,
+\begin{align*}
+    \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) &= \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)}) (1 + o(1)).
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (I_{n2}) &= \sum_{j=1}^{r} \int_{\Sr} \Bigg\{ \Bigg[ \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)})(1 + o(1)) \Bigg] \Bigg[ f_{0,-j}(\bx)^2+ O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg) \Bigg] \Bigg\} \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
+    &=: \sum_{j=1}^{r} \int_{\Sr} \theta_j \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
+\end{align*}
+Then,
+\begin{align*}
+    \theta_j =&\; \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)}) f_{0,-j}(\bx)^2\\
+    &+ \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)}) O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg) \\
+    &+ o((n h_j^{d_j})^{-1}) f_{0,-j}(\bx)^2\\
+    &+ o((n h_j^{d_j})^{-1}) O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg).
+\end{align*}
+Note that the last term of $\theta_j$ is negligible. Further,
+\begin{align*}
+    \int_{\Sr} \theta_j \,\rd \bx =&\; \int_{\Sr} \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)}) f_{0,-j}(\bx)^2 \,\rd \bx \\
+    &+ \frac{v_{d_j}(L)}{n h_j^{d_j}} O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg) \\
+    &+ o((n h_j^{d_j})^{-1})\\
+    =&\; \frac{v_{d_j}(L)}{n h_j^{d_j}} \int_{\mathbb{S}^{d_j}} f_j(x^{(j)})\,\rd \bx^{(j)}  \int_{\mathbb{S}^{-d_j}} f_{0,-j}(\bx)^2 \,\rd \bx^{(-j)} \\
+    &+ o((n h_j^{d_j})^{-1})\\
+    =&\; \frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o((n h_j^{d_j})^{-1}).
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (I_{n2}) &= \sum_{j=1}^{r} \left\{\frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o((n h_j^{d_j})^{-1})\right\}+ o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
+    &=\sum_{j=1}^{r} \frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
+\end{align*}
+
+\section{Variance of $T_{n,2}$}
+
+Recall that
+\begin{align*}
+    T_{n,2} &= \int_{\Sr} [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 \,\rd \bx.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (T_{n,2}^2) &= \mathsf{E} \lrb{ \lrb{ \int_{\Sr} [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 \,\rd \bx }^2 } \\
+    &= \mathsf{E} \lrb{ \lrb{ \int_{\Sr} [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 \,\rd \bx } \lrb{ \int_{\Sr} [ \hat{f}_{0}(\by;\bh) - \mathsf{E} (\hat{f}_{0}(\by;\bh)) ]^2 \,\rd \by } } \\
+    &= \mathsf{E} \lrb{ \int_{\Sr} \int_{\Sr} [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 [ \hat{f}_{0}(\by;\bh) - \mathsf{E} (\hat{f}_{0}(\by;\bh)) ]^2 \,\rd \bx \,\rd \by } \\
+    &= \int_{\Sr} \int_{\Sr} \mathsf{E} \lrb{ [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 [ \hat{f}_{0}(\by;\bh) - \mathsf{E} (\hat{f}_{0}(\by;\bh)) ]^2 } \,\rd \bx \,\rd \by.
+\end{align*}
+
+Applying cp inequality,
+\begin{align*}
+    \mathsf{E} (T_{n,2}^2) & \le \int_{\Sr} \int_{\Sr} \mathsf{E} \lrb{ 4[ \hat{f}_{0}^2(\bx;\bh) + \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh)) ] [ \hat{f}_{0}^2(\by;\bh) + \mathsf{E}^2 (\hat{f}_{0}(\by;\bh)) ] } \,\rd \bx \,\rd \by \\
+    &= 4 \int_{\Sr} \int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{0}^2(\bx;\bh)\hat{f}_{0}^2(\by;\bh) + \hat{f}_{0}^2(\bx;\bh)\mathsf{E}^2 (\hat{f}_{0}(\by;\bh)) + \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh))\hat{f}_{0}^2(\by;\bh) + \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh))\mathsf{E}^2 (\hat{f}_{0}(\by;\bh)) } \,\rd \bx \,\rd \by. \\
+\end{align*}
+
+We need to compute $\mathsf{E} (\hat{f}_{0}^2(\bx;\bh)\hat{f}_{0}^2(\by;\bh))$. Note that
+\begin{align*}
+    \hat{f}_{0}(\bx;\bh)\hat{f}_{0}(\by;\bh) &= \lrb{\frac{1}{n^r} \prod_{j=1}^{r} \sum_{i=1}^{n} L_{h_j} (\bx^{(j)}, \bX_i^{(j)})} \lrb{\frac{1}{n^r} \prod_{l=1}^{r} \sum_{k=1}^{n} L_{h_l} (\by^{(l)}, \bX_k^{(l)})} \\
+    &= \frac{1}{n^{2r}} \prod_{j=1}^{r} \lrb{ \lrb{ \sum_{i=1}^{n} L_{h_j} (\bx^{(j)}, \bX_i^{(j)})} \lrb{ \sum_{k=1}^{n} L_{h_l} (\by^{(j)}, \bX_k^{(j)})} }.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \hat{f}_{0}^2(\bx;\bh)\hat{f}_{0}^2(\by;\bh) &= \frac{1}{n^{4r}} \prod_{j=1}^{r} \sum_{i_1,\dots,i_4 = 1}^{n} L_{h_j} (\bx^{(j)}, \bX_{i_1}^{(j)}) L_{h_j} (\bx^{(j)}, \bX_{i_1}^{(j)})
+    L_{h_j} (\by^{(j)}, \bX_{i_3}^{(j)}) L_{h_j} (\by^{(j)}, \bX_{i_4}^{(j)}).
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (\hat{f}_{0}^2(\bx;\bh)\hat{f}_{0}^2(\by;\bh)) &= \frac{1}{n^{4r}} \prod_{j=1}^{r} \sum_{i_1,\dots,i_4 = 1}^{n} \mathsf{E} \lrb{ L_{h_j} (\bx^{(j)}, \bX_{i_1}^{(j)}) L_{h_j} (\bx^{(j)}, \bX_{i_2}^{(j)})
+    L_{h_j} (\by^{(j)}, \bX_{i_3}^{(j)}) L_{h_j} (\by^{(j)}, \bX_{i_4}^{(j)}) } \\
+    &= \frac{1}{n^{3r}} \prod_{j=1}^{r} \sum_{i_2,\dots,i_4 = 1}^{n} \mathsf{E} \lrb{ L_{h_j} (\bx^{(j)}, \bX_{1}^{(j)}) L_{h_j} (\bx^{(j)}, \bX_{i_2}^{(j)})
+    L_{h_j} (\by^{(j)}, \bX_{i_3}^{(j)}) L_{h_j} (\by^{(j)}, \bX_{i_4}^{(j)}) }
+\end{align*}
+
+Note that, when $i_2 = i_3 = i_4 = 1$,
+\begin{align*}
+     \mathsf{E} \lrb{ L_{h_j} (\bx^{(j)}, \bX_{1}^{(j)}) L_{h_j} (\bx^{(j)}, \bX_{i_2}^{(j)})
+    L_{h_j} (\by^{(j)}, \bX_{i_3}^{(j)}) L_{h_j} (\by^{(j)}, \bX_{i_4}^{(j)}) } &= \mathsf{E} \lrb{ L_{h_j}^2 (\bx^{(j)}, \bX_{1}^{(j)})
+    L_{h_j}^2 (\by^{(j)}, \bX_{1}^{(j)}) }
+\end{align*}
+
+Using Lemma B4, we can deduce that
+\begin{align*}
+    \mathsf{E} \lrb{ L_{h_j}^2 (\bx^{(j)}, \bX_{1}^{(j)})
+    L_{h_j}^2 (\by^{(j)}, \bX_{1}^{(j)}) } &= \int_{\Sr}  L_{h_j}^2 (\bx^{(j)}, \bt)
+    L_{h_j}^2 (\by^{(j)}, \bt) f_j(\bt) \,\rd \bt \\
+    & \asymp \frac{\lambda_{\bd}(L_{h_j}^2)}{\lambda_{\bd}(L_{h_j})^2} h_j^{-d_j} L_{h_j}^2 (\bx^{(j)}, \by^{(j)}) f_j(\by^{(j)}).
+\end{align*}
+
+Note that
+\begin{align*}
+    \prod_{j=1}^{r} \mathsf{E} \lrb{ L_{h_j}^2 (\bx^{(j)}, \bX_{1}^{(j)})
+    L_{h_j}^2 (\by^{(j)}, \bX_{1}^{(j)}) } & \asymp \lrb{ \frac{\lambda_{\bd}(L_{h_j}^2)}{\lambda_{\bd}(L_{h_j})^2} }^r \rho(\bh)^{-1} L_{\bh}^2 (\bx, \by) f_0(\by).
+\end{align*}
+
+\section{New proof - convergence}
+
+\begin{align*}
+    H_n(\bX_1, \bX_2) &= \int_{\Sr} \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\bx,\bX_2) \,\rd \bx.
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} ( H_n^4(\bX_1, \bX_2)) &= \mathsf{E}\lrb{ \lrb{\int_{\Sr} \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\bx,\bX_2) \,\rd \bx}^4 } \\
+    &= \mathsf{E}\lrb{ \prod_{k=1}^{4} \lrb{\int_{\Sr} \bar{L}_{\bh} (\bx_k,\bX_1) \bar{L}_{\bh} (\bx_k,\bX_2) \,\rd \bx_k} } \\ 
+    &= \mathsf{E} \lrb{\int_{(\Sr)^4} \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1) \bar{L}_{\bh} (\bx_k,\bX_2) \prod_{k=1}^{4} \,\rd \bx_k}  \\
+    &= \int_{(\Sr)^4} \mathsf{E} \lrb{ \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1) \bar{L}_{\bh} (\bx_k,\bX_2) }\prod_{k=1}^{4} \,\rd \bx_k  \\
+    &= \int_{(\Sr)^4} \mathsf{E} \lrb{ \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1)} \mathsf{E} \lrb{ \prod_{k=1}^{4} \bar{L}_{\bh} (\bx_k,\bX_2) }\prod_{k=1}^{4} \,\rd \bx_k  \\
+    &= \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1)} \prod_{k=1}^{4} \,\rd \bx_k.
+\end{align*}
+
+Now note that
+\begin{align*}
+    \mathsf{E} \lrb{ \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1)} =&\; \mathsf{E} \lrb{ \prod_{k=1}^{4} \lrb{ L_{\bh} (\bx_k,\bX_1) - \mathsf{E} (L_{\bh} (\bx_k,\bX_1)) } } \\
+    =&\; \mathsf{E} \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) L_{\bh} (\bx_4,\bX_1)}  \\
+    &- \mathsf{E} \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) \mathsf{E} (L_{\bh} (\bx_4,\bX_1))} \\
+    &+ \dots
+\end{align*}
+From $C_p$ inequality, it follows that the dominant terms of $\mathsf{E}^2 \lrb{ \prod_{k=1}^{4}\bar{L}_{\bh} (\bx_k,\bX_1)}$ will be the squares of the expectations of the terms in the decomposition above.
+
+If we consider the first term, we have
+\begin{align*}
+    t_1 &\defin \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) L_{\bh} (\bx_4,\bX_1)} \prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \int_{(\Sr)^4} \lrb{ \int_{\Sr}L_{\bh} (\bx_1,\by) L_{\bh} (\bx_2,\by) L_{\bh} (\bx_3,\by) L_{\bh} (\bx_4,\by) f(\by) \,\rd \by }^2 \prod_{k=1}^{4} \,\rd \bx_k.
+\end{align*}
+
+Now consider the tangent-normal decomposition $\bx_k^{(j)} = s_k^{(j)} \by_k^{(j)} + \lrb{1 - \lrb{s_k^{(j)}}^2}^{1/2} \bB_{\by^{(j)}} \bxi_k^{(j)}$, for $k = 1,2,3,4$ and $j =1,\dots,r$, where $\bxi_k^{(j)} \in \Sjm$, $\bB_{\by^{(j)}}$  is a $(d_j+1) \times d_j$ matrix such that $\bB_{\by^{(j)}}^{\top} \bB_{\by^{(j)}} = \bI_{d_j}$ and $\bB_{\by^{(j)}} \bB_{\by^{(j)}}^{\top} = \bI_{d_j+1} - \by^{(j)} \by^{(j) \top}$, and $s_k^{(j)} \in [-1,1]$. In such case, $\,\rd \bx_k^{(j)} = \lrb{1 - \lrb{s_k^{(j)}}^2}^{d_j/2 -1} \,\rd s_k^{(j)} \,\rd \bxi_k^{(j)}$. Given an arbitrary function $g$, this transformation of variables entails that
+\begin{align*}
+    \int_{\Sj} g(\bx^{(j)}) \,\rd \bx^{(j)} &= \int_{-1}^{1} \int_{\Sjm} g(s^{(j)} \by^{(j)} + (1-(s^{(j)})^2)^{1/2} \bB_{\by^{(j)}} \bxi^{(j)}) (1-(s^{(j)})^2)^{d_j/2 -1} \,\rd \bxi^{(j)} \,\rd s^{(j)}\\
+    &= \int_{-1}^{1} \int_{\Sjm} g(s^{(j)} \by^{(j)} + \ab_{s^{(j)},\bxi^{(j)}}) J(s^{(j)}) \,\rd \bxi^{(j)} \,\rd s^{(j)},
+\end{align*}
+where $J(s^{(j)}) \defin \lrb{1 - (s^{(j)})^2}^{d_j/2 -1}$ and $\ab_{s^{(j)},\bxi^{(j)}}\defin (1-(s^{(j)})^2)^{1/2} \bB_{\by^{(j)}} \bxi^{(j)}$. Applying this tangent-normal $r$ times on $\Sr$, we have
+\begin{align}
+    \int_{\Sr} g(\bx) \,\rd \bx = \int_{[-1,1]^r} \int_{\Srm} g(s^{(1)} \by^{(1)} + \ab_{s^{(1)},\bxi^{(1)}},\ldots, s^{(r)} \by^{(r)} + \ab_{s^{(r)},\bxi^{(r)}}) \prod_{j=1}^r J(s^{(j)}) \,\rd \bs\,\rd \bxi.\label{eq:tnpoly}
+\end{align}
+
+
+\begin{align}
+    \int_{\Sr} g(\bx) \,\rd \bx = \int_{\times_{j=1}^r[0,2h_j^{-2}]} \int_{\Srm} g((1-h^2_1s^{(1)}) \by^{(1)} + \ba_{\bx^{(1)},\bxi^{(1)},h},\ldots, (1-h^2_r s^{(r)}) \by^{(r)} + \ba_{\bx^{(1)},\bxi^{(1)},h}) \prod_{j=1}^r J_{h_j}(s^{(j)}) \,\rd \bs\,\rd \bxi.\label{eq:tnpoly}
+\end{align}
+
+
+To simplify the notation, consider $J_k(\bs_k) \defin \prod_{j=1}^r \lrb{1 - (\bs_k^{(j)})^2}^{d_j/2 -1}$ for $\bs_k\in[-1,1]^r$. Applying the tangent-normal decomposition in the variables $\bx_2,\bx_3,\bx_4$ in $t_1$, we obtain
+\begin{align*}
+    t_1 =&\; \int_{\Sr} \int_{([-1,1]^r)^3} \int_{(\Srm)^3} \lrb{ \int_{\Sr}L_{\bh} (\bx_1,\by) \prod_{k=2}^{4} c_{h,d}(L) L \lrb{ \frac{1 - s_k}{\bh^2} } f(\by) \,\rd \by }^2 \prod_{k=2}^{4} J_k(\bs_k) \,\rd \bxi \,\rd s \,\rd \bx_1.
+\end{align*}
+We can apply again the tangent-normal decomposition, this time on $\by^{(j)}$: $\by_k^{(j)} = s_k^{(j)} \bx_1^{(j)} + \lrb{1 - \lrb{s_k^{(j)}}^2}^{1/2} B_{x_1^{(j)}} \bxi_1^{(j)}$, for $j \in \{ 1, \dots, r \}$. This leads us to
+\begin{align*}
+    t_1 =&\; [c_{h,d}(L)]^8 \int_{\Sr} \int_{([-1,1]^r)^3} \int_{(\Srm)^3} \lrb{ \int_{[-1,1]^r} \int_{\Sr} \prod_{k=1}^{4} L \lrb{ \frac{1 - s_k}{\bh^2} } f \lrb{ s_1^{(j)} \bx_1^{(j)} + \lrb{1 - \lrb{s_1}^2}^{1/2} B_{x_1} \bxi_1 } \,\rd \bxi_1 J_1(s_1) \,\rd s_1 }^2 \\
+    & \prod_{k=2}^{4} J_k(s_k) \,\rd \bxi \,\rd s \,\rd \bx_1.
+\end{align*}
+
+Now consider the transformation $t_k^{(j)} = \frac{1 - s_k^{(j)}}{h_j^2}$. Therefore, $\,\rd s_k^{(j)} = (-h_j^2) \,\rd t_k^{(j)}$ and
+\begin{align*}
+    t_1 =&\; [c_{h,d}(L)]^8 \int_{\Sr} \int_{I_h} \int_{(\Srm)^3} \lrb{ \int_{[-1,1]^r} \int_{\Sr} \prod_{k=1}^{4} L \lrb{ t_k} f \lrb{ x_1 + \alpha_{x_1,\bxi_1,h} } \rho (\bh) \prod_{j=1}^r (t_1^{(j)})^{d_j/2 -1} (2 -h_j^2 t_1^{(j)})^{d_j/2 -1} \,\rd \bxi_1 \,\rd t_1 }^2 \\
+    & \prod_{k=2}^{4} J_k(t_k) \rho (\bh)^3 \,\rd \bxi \,\rd s \,\rd \bx_1 \\
+    =&\; [c_{h,d}(L)]^8 \rho (\bh)^5 \omega_{\bd - 1}^3 \prod_{k=2}^4 \int_{I_h} L^4(t) J(t) \,\rd t \int_{\Sr} \lrb{ \int_{I_h} \int_{\Srm} L(t_1)  f \lrb{ x_1 + \alpha_{x_1,\bxi_1,h} } J_1(t_1) \,\rd \bxi_1 \,\rd t_1 }^2 \,\rd x_1.
+\end{align*}
+where $I_h \defin \times_{j=1}^r [0, 2h_j^{-2}]$.
+
+Therefore, $t_1 = O([c_{h,d}(L)]^8 \rho (\bh)^5)$. Now remember that $c_{\bd,L}(\bh)^{-1} = \rho(\bh) \lambda_{\bh,\bd}(L)$, and, as a consequence, $c_{\bd,L}(\bh) \asymp \rho(\bh)^{-1}$. Therefore,
+\begin{align*}
+    t_1 &= O(\rho (\bh)^{-8} \rho (\bh)^5) \\
+    &= O(\rho (\bh)^{-3}).
+\end{align*}
+
+Therefore, $\mathsf{E}[H_n^4(\bX_1,\bX_2)]=O(\rho(\bh)^{-3})$
+
+%Now remember that $L_{h_j} (\bx^{(j)},\by^{(j)}) \defin c_{h,d_j}(L) L \Big( \frac{1 - \bx^{(j)\top} \by^{(j)}}{h_j^2} \Big)$. Replacing it, we have $O(\rho (\bh)^{-3}\rho (\bh)^{8}) = O(\rho (\bh)^{5})$.
+
+\subsection{Second term}
+
+Without loss of generality, consider the second term
+\begin{align*}
+    t_2 &\defin \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) \mathsf{E} \lrb{ L_{\bh} (\bx_4,\bX_1)} }\prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_4,\bX_1)} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) }\prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \lrb{ \int_{\Sr} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_4,\bX_1)} \,\rd \bx_4} \lrb{ \int_{(\Sr)^3} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) L_{\bh} (\bx_3,\bX_1) }\prod_{k=1}^{3} \,\rd \bx_k } \\
+    &= \lrb{ \int_{\Sr} \lrb{ \int_{\Sr} L_{\bh} (\bx_4,\by) f(\by) \,\rd \by }^2 \,\rd \bx_4} \lrb{ \int_{(\Sr)^3} \lrb{ \int_{\Sr} L_{\bh} (\bx_1,\by) L_{\bh} (\bx_2,\by) L_{\bh} (\bx_3,\by) f(\by) \,\rd \by}^2 \prod_{k=1}^{3} \,\rd \bx_k } \\
+    & \defin \theta_{4} \times \theta_{123}.
+    %&= \int_{(\Sr)^4} \lrb{ \int_{\Sr}L_{\bh} (\bx_1,\by) L_{\bh} (\bx_2,\by) L_{\bh} (\bx_3,\by) L_{\bh} (\bx_4,\by) f(\by) \,\rd \by }^2 \prod_{k=1}^{4} \,\rd \bx_k.
+\end{align*}
+Now, note that we can apply on both $\theta_{4}$ and $\theta_{123}$ calculations analogous to the calculations done from $t_1$. Let's consider $\theta_{123}$ first; applying tangent-normal transformation of variables, we obtain
+\begin{align*}
+    \theta_{123} &= \int_{\Sr} \int_{([-1,1]^r)^2} \int_{(\Srm)^2} \lrb{ \int_{\Sr}L_{\bh} (\bx_1,\by) c_{h,d}(L)^2 L \lrb{ \frac{1 - s_2}{\bh^2} } L \lrb{ \frac{1 - s_3}{\bh^2} } f(\by) \,\rd \by }^2 J_2(s_2) J_3(s_3) \,\rd \bxi \,\rd s \,\rd \bx_1 \\
+    &= [c_{h,d}(L)]^6 \int_{\Sr} \int_{([-1,1]^r)^2} \int_{(\Srm)^2} \lrb{ \int_{[-1,1]^r} \int_{\Sr} \prod_{k=1}^{3} L \lrb{ \frac{1 - s_k}{\bh^2} } f \lrb{ s_1^{(j)} \bx_1^{(j)} + \lrb{1 - \lrb{s_1}^2}^{1/2} B_{x_1} \bxi_1 } \,\rd \bxi_1 J_1(s_1) \,\rd s_1 }^2 \\
+    & J_2(s_2) J_3(s_3) \,\rd \bxi \,\rd s \,\rd \bx_1.
+\end{align*}
+
+\subsection{Third term}
+
+Without loss of generality, consider the third term:
+\begin{align*}
+    t_3 &\defin \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) \mathsf{E} \lrb{ L_{\bh} (\bx_3,\bX_1)} \mathsf{E} \lrb{ L_{\bh} (\bx_4,\bX_1)} }\prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) } \mathsf{E}^2 \lrb{ L_{\bh} (\bx_3,\bX_1)} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_4,\bX_1)} \prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \lrb{\int_{(\Sr)^2} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) L_{\bh} (\bx_2,\bX_1) } \,\rd \bx_1 \,\rd \bx_2} \lrb{\int_{\Sr} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_3,\bX_1)} \,\rd \bx_3} \lrb{\int_{\Sr} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_4,\bX_1)} \,\rd \bx_4} \\
+    &\defin \theta_{12} \times \theta_3 \times \theta_4
+\end{align*}
+
+\subsection{Fourth term}
+
+Consider, finally, the last term:
+\begin{align*}
+    t_4 &\defin \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ \mathsf{E} \lrb{ L_{\bh} (\bx_1,\bX_1)} \mathsf{E} \lrb{ L_{\bh} (\bx_2,\bX_1)} \mathsf{E} \lrb{ L_{\bh} (\bx_3,\bX_1)} \mathsf{E} \lrb{ L_{\bh} (\bx_4,\bX_1)} }\prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \int_{(\Sr)^4} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_1,\bX_1) } \mathsf{E}^2 \lrb{L_{\bh} (\bx_2,\bX_1) } \mathsf{E}^2 \lrb{ L_{\bh} (\bx_3,\bX_1)} \mathsf{E}^2 \lrb{ L_{\bh} (\bx_4,\bX_1)} \prod_{k=1}^{4} \,\rd \bx_k \\
+    &= \prod_{k=1}^{4} \lrb{\int_{\Sr}  \mathsf{E}^2 \lrb{ L_{\bh} (\bx_k,\bX_1)} \,\rd \bx_k} \\
+    & \defin \theta_1 \theta_2 \theta_3 \theta_4.
+\end{align*}
+
+\section{Old calculations - convergence}
+
+\textit{Asymptotic behavior of $\mathsf{E} (H_n^4(\bX_1, \bX_k))$.} Consider the following calculations.
+
+\begin{align*}
+    H_n(\bX_1, \bX_2) &= \frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\bx,\bX_2) \,\rd \bx.
+\end{align*}
+
+\begin{align*}
+    H_n^4(\bX_1, \bX_2) &= \frac{16}{n^{8}} \lrp{\int_{\Sr} \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\bx,\bX_2) \,\rd \bx}^4\\
+    &=\frac{16}{n^{8}}\int_{(\Sr)^4} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_1) \Bigg) \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_2) \Bigg) \prod_{l=1}^{4} \,\rd 
+    \bx_l.
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (H_n^4(\bX_1, \bX_2)) &= \frac{16}{n^{8}} \int_{(\Sr)^4} \mathsf{E}^2 \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh} (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd 
+    \bx_l \\
+    & \le \frac{16}{n^{8}} \int_{(\Sr)^4} \mathsf{E} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh}^2 (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd \bx_l \\
+    &= \frac{16}{n^{8}} \mathsf{E} \Bigg[ \int_{(\Sr)^4} \Bigg( \prod_{l=1}^{4} \bar{L}_{\bh}^2 (\bx_l,\bX_1) \Bigg) \prod_{l=1}^{4} \,\rd \bx_l \Bigg] \\
+    &= \frac{16}{n^{8}} \mathsf{E} \Bigg[ \Bigg( \int_{\Sr} \bar{L}_{\bh}^2 (\bx,\bX_1) \,\rd \bx \Bigg)^4 \Bigg] \\
+    &= \frac{16}{n^{8}} \mathsf{E} (Z_{n1}^4).
+\end{align*}
+
+Applying the $c_p$ inequality two times, we have that
+\begin{align*}
+    Z_{n1}^4 & \le \Bigg( \int_{\Sr} 2[L_{\bh}^2 (\bx,\bX_1) + \mathsf{E}^2 (L_{\bh} (\bx,\bX_1))] \rd \bx \Bigg)^4 \\
+    &= 16 \Bigg( \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx + \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_1)) \rd \bx \Bigg)^4 \\
+    & \le 128 \Bigg( \Bigg( \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx \Bigg)^4 + \Bigg( \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_1)) \rd \bx \Bigg)^4 \Bigg).
+\end{align*}
+
+Now applying Lemma \ref{lemma-equivLh}, 
+\begin{align*}
+    \int_{\Sr} L_{\bh}^2 (\bx,\bX_1) \rd \bx \asymp \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1}.
+\end{align*}
+\begin{align*}
+    \int_{\Sr} \mathsf{E}^2 (L_{\bh} (\bx,\bX_i)) &= \int_{\Sr} \Bigg( \int_{\Sr} L_{\bh} (\bx,\bX_1) f(\bx) \rd \bx \Bigg)^2 \rd \bx \\
+    & \asymp \int_{\Sr} \Bigg( \frac{\lambda_{\bd}(L)}{\lambda_{\bd}(L)} f(\bx) \Bigg)^2 \rd \bx \\
+    &= R(f).
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (H_n^4(\bX_1, \bX_k)) &= \frac{16}{n^{8}} O(\rho(\bh)^{-4} + R(f)^4) \\
+    &= O(n^{-8} \rho(\bh)^{-4}).
+\end{align*}
+
+\textit{Asymptotic behavior of $\mathsf{E} (G_n^2(\bX_1,\bX_2))$.} Consider the following calculations.
+
+\begin{align*}
+    H_n(\bx,\bX_1) &= \frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bX_1) \,\rd \bt.
+\end{align*}
+
+\begin{align*}
+    G_n(\bx,\by) &= \mathsf{E} (H_n(\bX_1,\bx)H_n(\bX_1,\by))\\
+    &=\int_{\Sr} \lrb{\frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bx_1) \,\rd \bt} \lrb{\frac{2}{n^2} \int_{\Sr} \bar{L}_{\bh} (\bs,\by) \bar{L}_{\bh} (\bs,\bx_1) \,\rd \bs} f(\bx_1) \,\rd \bx_1 \\
+    &= \frac{4}{n^4} \int_{\Sr} \int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bs,\by) \bar{L}_{\bh} (\bs,\bx_1) f(\bx_1) \,\rd \bx_1 \,\rd \bt \,\rd \bs \\
+    &= \frac{4}{n^4} \int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bs,\by) \mathsf{E} (\bar{L}_{\bh} (\bt,\bX_1) \bar{L}_{\bh} (\bs,\bX_1)) \,\rd \bt \,\rd \bs.
+\end{align*}
+
+Note that, by Cauchy--Schwarz inequality,
+\begin{align*}
+    \mathsf{E} (\bar{L}_{\bh} (\bt,\bX_1) \bar{L}_{\bh} (\bs,\bX_1)) & \le \sqrt{\mathsf{E}^2 (\bar{L}_{\bh} (\bt,\bX_1)) \mathsf{E}^2 (\bar{L}_{\bh} (\bs,\bX_1))} \\
+    &= \sqrt{\mathsf{Var} ({L}_{\bh} (\bt,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bs,\bX_1))}.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    G_n(\bx,\by) & \le \frac{4}{n^4} \int_{(\Sr)^2}  \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bs,\by) \sqrt{\mathsf{Var} ({L}_{\bh} (\bt,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bs,\bX_1))} \,\rd \bt \,\rd \bs. \\
+    G_n^2(\bx,\by) & \le \frac{16}{n^{8}} \int_{(\Sr)^4} \bar{L}_{\bh} (\bt_1,\bx) \bar{L}_{\bh} (\bt_2,\by) \bar{L}_{\bh} (\bt_3,\bx) \bar{L}_{\bh} (\bt_4,\by) \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    \mathsf{E} (G_n^2(\bX_1,\bX_2)) & \le \frac{16}{n^{8}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_2,\bX_2) \bar{L}_{\bh} (\bt_3,\bX_1) \bar{L}_{\bh} (\bt_4,\bX_2)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    &= \frac{16}{n^{8}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_3,\bX_1) } \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_2,\bX_2) \bar{L}_{\bh} (\bt_4,\bX_2)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    &= \frac{16}{n^{8}} \int_{(\Sr)^4} \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_1,\bX_1) \bar{L}_{\bh} (\bt_3,\bX_1) } \mathsf{E} \lrb{ \bar{L}_{\bh} (\bt_2,\bX_1) \bar{L}_{\bh} (\bt_4,\bX_1)} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i. \\
+\end{align*}
+
+Applying Cauchy--Schwartz inequality again, we obtain
+\begin{align*}
+    \mathsf{E} (G_n^2(\bX_1,\bX_2)) \le &\; \frac{16}{n^{8}} \int_{(\Sr)^4}  \sqrt{\mathsf{Var} ({L}_{\bh} (\bt_1,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bt_3,\bX_1))} \sqrt{\mathsf{Var} ({L}_{\bh} (\bt_2,\bX_1)) \mathsf{Var} ({L}_{\bh} (\bt_4,\bX_1))} \\
+    & \times \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \int_{(\Sr)^4} \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \sqrt{\prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) } \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \int_{(\Sr)^4} \prod_{i=1}^{4} \mathsf{Var} ({L}_{\bh} (\bt_i,\bX_1)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \int_{(\Sr)^4} \prod_{i=1}^{4} n \mathsf{Var} (\hat{f}(\bt_i;\bh)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \int_{(\Sr)^4} \prod_{i=1}^{4} n \lrb{\frac{v_{\bd}(L)}{n \rho(\bh)} f(\bt_i)(1 + o(1))} \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \int_{(\Sr)^4} \prod_{i=1}^{4} \frac{v_{\bd}(L)}{ \rho(\bh)} f(\bt_i)(1 + o(1)) \prod_{i=1}^{4} \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \prod_{i=1}^{4} \int_{(\Sr)^4} \frac{v_{\bd}(L)}{ \rho(\bh)} f(\bt_i)(1 + o(1)) \,\rd \bt_i \\
+    =&\; \frac{16}{n^{8}} \prod_{i=1}^{4} \frac{v_{\bd}(L)}{ \rho(\bh)} (1 + o(1)) \\
+    =&\; \frac{16}{n^{8}} \frac{v_{\bd}^4(L)}{ \rho^4(\bh)} (1 + o(1)).
+\end{align*}
+
+As a consequence,
+\begin{align*}
+    \mathsf{E} (G_n^2(\bX_1,\bX_2)) &= O(n^{-8} \rho^{-4}(\bh)).
+\end{align*}
+
+\textit{Asymptotic behavior of the ratio $A_n / B_n^2$.} Defining $A_n \defin n^3 \mathsf{E} (H_n^4(\bX_1, \bX_2)) + n^4 \mathsf{E} (G_n^2(\bX_1,\bX_2))$, then, from the previous results,
+\begin{align*}
+    A_n &= O(n^3 n^{-8}\rho(\bh)^{-4} + n^4 n^{-8}\rho(\bh)^{-4}) \\
+    &= O(n^{-5} \rho^{-4}(\bh)+n^{-4} \rho^{-4}(\bh))\\
+    &= O(n^{-4} \rho^{-4}(\bh)).
+\end{align*}
+
+\begin{align*}
+    B_n &= \mathsf{E}[H_n^2(\bX_1,\bX_2)]=\frac{2}{n^2} \int_{\Sr} \int_{\Sr} \mathsf{E}^2 ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) \,\rd \bx \,\rd \by
+\end{align*}
+
+\begin{comment}
+Note that
+\begin{align*}
+    \mathsf{E} ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) &= \mathsf{E} ( L_{\bh} (\bx,\bX_1) L_{\bh} (\by,\bX_1) ) - \mathsf{E} (L_{\bh} (\bx,\bX_1)) \mathsf{E} (L_{\bh} (\by,\bX_1)).
+\end{align*}
+
+Furthermore,
+\begin{align*}
+    \mathsf{E} ( L_{\bh} (\bx,\bX_1) L_{\bh} (\by,\bX_1) ) &= \int_{\Sr} L_{\bh} (\bx,\bt) L_{\bh} (\by,\bt) f(\bt) \,\rd \bt \\
+    & \asymp L_{\bh} (\bx,\by) f(\by).\\
+    \mathsf{E} (L_{\bh} (\bx,\bX_1)) &= \int_{\Sr} L_{\bh} (\bx,\bt) f(\bt) \,\rd \bt \\
+    & \asymp f(\bx).\\
+    \mathsf{E} (L_{\bh} (\by,\bX_1)) &= \int_{\Sr} L_{\bh} (\by,\bt) f(\bt) \,\rd \bt \\
+    & \asymp f(\by).\\
+\end{align*}
+
+As a consequence,
+\begin{align*}
+    \mathsf{E}^2 ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) & \asymp \lrb{L_{\bh} (\bx,\by) f(\by) - f(\bx)f(\by)}^2 \\
+    &= L_{\bh}^2 (\bx,\by) f^2(\by) + f^2(\bx)f^2(\by) -2L_{\bh} (\bx,\by) f(\bx) f^2(\by).
+\end{align*}
+
+Let's integrate each term.
+\begin{align*}
+    \int_{\Sr} \int_{\Sr} L_{\bh}^2 (\bx,\by) f^2(\by) \,\rd \by \,\rd \bx & \asymp \int_{\Sr} \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} f^2(\bx) \,\rd \bx \\
+    &= \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} R(f). \\
+    \int_{\Sr} \int_{\Sr} f^2(\bx)f^2(\by) \,\rd \by \,\rd \bx &= R^2(f). \\
+    \int_{\Sr} \int_{\Sr}-2L_{\bh} (\bx,\by) f(\bx) f^2(\by) \,\rd \by \,\rd \bx & \asymp -2 \int_{\Sr} f(\bx) f^2(\bx) \,\rd \bx\\
+    &= -2 \int_{\Sr}f^3(\bx) \,\rd \bx.
+\end{align*}
+
+Finally,
+\begin{align*}
+    B_n \asymp \frac{2}{n^2} \lrb{\frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} R(f) + R^2(f) -2 \int_{\Sr}f^3(\bx) \,\rd \bx}.
+\end{align*}
+\end{comment}
+
+$B_n\asymp 4 n^{-4}\rho(\bh)^{-1} \sigma^2$
+
+
+\begin{align*}
+    \frac{\mathsf{E}[G_n^2(\bX_1,\bX_2)]+n^{-1}\mathsf{E}[H_n^4(\bX_1,\bX_2)]}{\lrb{\mathsf{E}[H_n^2(\bX_1,\bX_2)]}^2}&\asymp \frac{\mathsf{E}[G_n^2(\bX_1,\bX_2)]+n^{-1}\mathsf{E}[H_n^4(\bX_1,\bX_2)]}{\lrb{4 n^{-4}\rho(\bh)^{-1} \sigma^2}^2}\\
+    &=O\lrp{\frac{\mathsf{E}[G_n^2(\bX_1,\bX_2)]+n^{-1}\mathsf{E}[H_n^4(\bX_1,\bX_2)]}{n^{-8}\rho(\bh)^{-2}}}\\
+    &=O\lrp{\frac{n^{-8}\rho(\bh)^{-4}+n^{-1} n^{-8} \rho(\bh)^{-4}}{n^{-8}\rho(\bh)^{-2}}}\\
+    &=O\lrp{\rho(\bh)^{-2}+n^{-1}  \rho(\bh)^{-2}}\\
+\end{align*}
+
+Notice that, therefore, $A_n = O(n^{-12} \rho^{-4}(\bh))$ and $B_n^2 \asymp n^{-4}(\rho(\bh)^{-2}+1)$, which entails that $A_n / B_n^2 \to 0$ as $n$ goes to infinity.
+
+\section{Lemmas}
+
+\begin{lemma}\label{lemma-tnd-poly}
+    Let $\bx \in \Sr$ a random vector supported in the polysphere. Let $\bxi_k^{(j)} \in \Sjm$, $\bB_{\by^{(j)}}$  is a $(d_j+1) \times d_j$ matrix such that $\bB_{\by^{(j)}}^{\top} \bB_{\by^{(j)}} = \bI_{d_j}$ and $\bB_{\by^{(j)}} \bB_{\by^{(j)}}^{\top} = \bI_{d_j+1} - \by^{(j)} \by^{(j) \top}$, and $s_k^{(j)} \in [-1,1]$. Given an arbitrary function $g$, it is true that
+    \begin{align}
+    \int_{\Sr} g(\bx) \,\rd \bx = \int_{\Srm} \int_{[-1,1]^r} g(s^{(1)} \by^{(1)} + \ab_{s^{(1)},\bxi^{(1)}},\ldots, s^{(r)} \by^{(r)} + \ab_{s^{(r)},\bxi^{(r)}}) \prod_{j=1}^r J(s^{(j)}) \,\rd \bs\,\rd \bxi,\label{eq:tnpoly}
+\end{align}
+where $J(s^{(j)}) \defin \lrb{1 - (s^{(j)})^2}^{d_j/2 -1}$ and $\ab_{s^{(j)},\bxi^{(j)}}\defin (1-(s^{(j)})^2)^{1/2} \bB_{\by^{(j)}} \bxi^{(j)}$. 
+\end{lemma}
+
+\begin{lemma}\label{lemma-tnd2-poly}
+    Under the same definitions of the Lemma \ref{lemma-tnd-poly},
+    \begin{align}
+    \int_{\Sr} g(\bx) \,\rd \bx = \int_{\times_{j=1}^r[0,2h_j^{-2}]} \int_{\Srm} g((1-h^2_1s^{(1)}) \by^{(1)} + \ba_{\bx^{(1)},\bxi^{(1)},h},\ldots, (1-h^2_r s^{(r)}) \by^{(r)} + \ba_{\bx^{(1)},\bxi^{(1)},h}) \prod_{j=1}^r J_{h_j}(s^{(j)}) \,\rd \bs\,\rd \bxi.\label{eq:tnpoly}
+\end{align}
+\end{lemma}
+
+\section{Variance of $T_{n,2}$}
+
+\begin{align*}
+    T_{n,2} & \defin \int_{\Sr} [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ]^2 \,\rd \bx \\
+    &= \int_{\Sr} \lrb{ \prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j) - \mathsf{E} \lrb{\prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j)} }^2 \,\rd \bx \\
+    &= \int_{\Sr} \lrb{ \prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j) - \prod_{j=1}^{r} \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)} }^2 \,\rd \bx \\
+    &= \int_{\Sr} \lrb{ \lrb{\prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j)}^2 + \lrb{\prod_{j=1}^{r} \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}}^2 - 2\lrb{\prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j) \prod_{j=1}^{r} \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}} } \,\rd \bx \\
+    &= \int_{\Sr} \lrb{ \prod_{j=1}^{r} \hat{f}_{j}^2(\bx^{(j)};h_j) + \prod_{j=1}^{r} \mathsf{E}^2 \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)} - 2\lrb{\prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}} } \,\rd \bx \\
+    &= \int_{\Sr} \prod_{j=1}^{r} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx + \int_{\Sr} \prod_{j=1}^{r} \mathsf{E}^2 \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)} \,\rd \bx - 2 \int_{\Sr} \prod_{j=1}^{r} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}  \,\rd \bx \\
+    &= \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)} + \prod_{j=1}^{r} \int_{\Sr} \mathsf{E}^2 \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)} \,\rd \bx^{(j)} - 2 \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}  \,\rd \bx^{(j)}. \\
+\end{align*}
+Notice that $\prod_{j=1}^{r} \int_{\Sr} \mathsf{E}^2 \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)} \,\rd \bx^{(j)}$ is a constant, therefore,
+\begin{align*}
+    \mathsf{Var}(T_{n,2}) &= \mathsf{Var} \lrb{\prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)} - 2 \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}  \,\rd \bx^{(j)}} \\
+    &= O \lrb{ \mathsf{Var} \lrb{\prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}} + \mathsf{Var} \lrb{- 2 \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}  \,\rd \bx^{(j)}}},
+\end{align*}
+where last equality comes from Lemma XXX. To simplify the notation, we can define $t_1 \defin \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}$ and $t_2 \defin \prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}(\bx^{(j)};h_j) \mathsf{E} \lrb{ \hat{f}_{j}(\bx^{(j)};h_j)}  \,\rd \bx^{(j)}$, and, therefore,
+\begin{align*}
+    \mathsf{Var}(T_{n,2}) &= O(\mathsf{Var} (t_1)) + O(\mathsf{Var} (t_2)).
+\end{align*}
+
+Let's study first $O(\mathsf{Var} (t_1))$. We will compute the first two moments of $t_1$.
+\begin{align*}
+    \mathsf{E} (t_1) &= \mathsf{E} \lrb{\prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}} \\
+    &= \prod_{j=1}^{r} \mathsf{E} \lrb{ \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}} \\
+    &= \prod_{j=1}^{r} \int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\bx^{(j)};h_j)} \,\rd \bx^{(j)}. \\
+\end{align*}
+Therefore,
+\begin{align*}
+    (\mathsf{E} (t_1))^2 &= \lrb{\prod_{j=1}^{r} \int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\bx^{(j)};h_j)} \,\rd \bx^{(j)}} \lrb{\prod_{k=1}^{r} \int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{k}^2(\by^{(j)};h_k)} \,\rd \by^{(k)}} \\
+    &= \prod_{j=1}^{r} \lrb{\int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\bx^{(j)};h_j)} \,\rd \bx^{(j)}} \lrb{\int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\by^{(j)};h_j)} \,\rd \by^{(j)}} \\
+     &= \prod_{j=1}^{r} \lrb{\int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\bx^{(j)};h_j)} \,\rd \bx^{(j)}}^2.
+\end{align*}
+
+\begin{align*}
+    \mathsf{E} (t_1^2) &= \mathsf{E} \lrb{ \lrb{\prod_{j=1}^{r} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}}^2 }\\
+    &= \mathsf{E} \lrb{ \prod_{j=1}^{r} \lrb{ \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}}^2 }\\
+    &= \prod_{j=1}^{r} \mathsf{E} \lrb{ \lrb{ \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}}^2 }\\
+    &= \prod_{j=1}^{r} \mathsf{E} \lrb{ \lrb{ \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \,\rd \bx^{(j)}} \lrb{ \int_{\Sr} \hat{f}_{j}^2(\by^{(j)};h_j) \,\rd \by^{(j)}} }\\
+    &= \prod_{j=1}^{r} \mathsf{E} \lrb{  \int_{\Sr} \int_{\Sr} \hat{f}_{j}^2(\bx^{(j)};h_j) \hat{f}_{j}^2(\by^{(j)};h_j) \,\rd \bx^{(j)} \,\rd \by^{(j)} }\\
+    &= \prod_{j=1}^{r} \int_{\Sr} \int_{\Sr} \mathsf{E} \lrb{ \hat{f}_{j}^2(\bx^{(j)};h_j) \hat{f}_{j}^2(\by^{(j)};h_j) } \,\rd \bx^{(j)} \,\rd \by^{(j)}. \\
+\end{align*}
+
+%-------------------------------%
+\section{Simulation study}
+\label{sec:simulation}
+%-------------------------------%
+
+%Code to replicate plots in \cite{Garcia-Portugues2024}: \url{https://github.com/egarpor/polykde/tree/main/replication}
+
+To assess the power of the test in different kinds of distributions, the following scenarios were considered.
+
+\begin{enumerate}
+    \item \textbf{Mixture of iid von Mises--Fisher distributions:} we simulate a latent random vector $\bmu \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(1)}, \dots, \bX^{(r)} | \bmu \stackrel {iid}\sim  \mathrm{vMF}_d (\bmu, \kappa)$. This produces the density
+    \begin{align*}
+        f(\bx) &= \int_{\Sr} c^\mathrm{vMF}_{d}(\kappa_1) e^{\kappa_1\bmu^{\top}\bmu_1} \prod_{j=1}^{r} c^\mathrm{vMF}_{d}(\kappa) e^{\kappa\bx^{(j) \top}\bmu} \,\rd \bmu \\
+        &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^r \int_{\Sr} e^{\kappa_1\bmu^{\top}\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j) \top}\bmu} \,\rd \bmu\\
+        &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^r \int_{\Sr} e^{\|\kappa_1\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j)}\|\bmu^{\top}(\kappa_1\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j)})/\|\kappa_1\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j)}\|} \,\rd \bmu\\
+        &= \frac{c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^r}{ c^\mathrm{vMF}_{d}(\|\kappa_1\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j)}\|)^r}.
+\end{align*}
+%{\color{red} Relation with \cite{Johnson1978,Wehrly1980}'s copula model for $d_1=d_2=1$ and $r=2$?}
+It is worth noting that, for the case with $r=2, d_1 = d_2 = 1, \kappa_1 = 0$ (two random vectors supported in the circle), the joint distribution of the angles belongs to the  Johnson-Wehrly family of distribution - see \cite{Johnson1978,Wehrly1980}. This result is available in Proposition \ref{prop-js-family}.
+    For convenience, we will reparametrize the model as $\delta \defin 1/\kappa_1$, because, in this way, for fixed parameters $\bmu_1$ and $\kappa$, the parameter $\delta$ will quantify the amount of deviation from independence. By convention, we will define that, when $\delta = 0$, then $\bmu = \bmu_1$ almost surely (degenerate random vector); therefore,
+    \begin{align*}
+        f(\bx) &= c^\mathrm{vMF}_{d}(1/\delta) c^\mathrm{vMF}_{d}(\kappa)^r \int_{\Sr} e^{(1/\delta)\bmu^{\top}\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j) \top}\bmu} \,\rd \bmu,
+    \end{align*}
+    and, for $\delta = 0$,
+    \begin{align*}
+        f(\bx) &= \prod_{j=1}^{r} c^\mathrm{vMF}_{d}(\kappa) e^{\kappa\bx^{(j) \top}\bmu_1} \\
+        &= c^\mathrm{vMF}_{d}(\kappa)^r e^{\sum_{j=1}^{r} \kappa\bx^{(j) \top}\bmu_1},
+    \end{align*}
+    which is the independence case.
+
+    The following scenarios in the sphere are considered.
+    \begin{enumerate}
+        \item $r=3, d=2, \bmu_1 = (\sqrt{1/3})_{1 \times 9}, \kappa = 10, \delta = 0$ (independence case);
+        \item $r=3, d=2, \bmu_1 = (\sqrt{1/3})_{1 \times 9}, \kappa = 10, \delta = 0.1$;
+        \item $r=3, d=2, \bmu_1 = (\sqrt{1/3})_{1 \times 9}, \kappa = 10, \delta = 0.5$;
+        \item $r=3, d=2, \bmu_1 = (\sqrt{1/3})_{1 \times 9}, \kappa = 10, \delta = 1$;
+        \item $r=3, d=2, \bmu_1 = (\sqrt{1/3})_{1 \times 9}, \kappa = 10, \delta = 10$.
+    \end{enumerate}
+     The following scenarios in the circle are considered
+    \begin{enumerate}
+        \item $r=2, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 4}, \kappa_1 = 0, \kappa = 0$ (independence case);
+        \item $r=2, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 4}, \kappa_1 = 0, \kappa = 1$;
+        \item $r=2, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 4}, \kappa_1 = 0, \kappa = 2$;
+        \item $r=2, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 4}, \kappa_1 = 0, \kappa = 5$;
+        \item $r=2, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 4}, \kappa_1 = 0, \kappa = 10$.
+    \end{enumerate}
+    \item \textbf{Markovian process:} we simulate $\bX^{(1)} \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(j)} | (\bX^{(1)} = \bx^{(1)} , \dots, \bX^{(j-1)} = \bx^{(j-1)}) \sim \mathrm{vMF}_d (\bx^{(j-1)}, \delta)$ for $j = 2, \dots, r$. This produces the density
+    \begin{align*}
+        f(\bx) &= c^\mathrm{vMF}_{d}(\kappa_1) e^{\kappa_1\bx^{(1) \top}\bmu_1} \prod_{j=2}^{r} c^\mathrm{vMF}_{d}(\delta) e^{\delta\bx^{(j) \top}\bx^{(j-1)}} \\
+        &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^{r-1} e^{\kappa_1\bx^{(1) \top}\bmu_1 + \sum_{j=2}^{r} \delta\bx^{(j) \top}\bx^{(j-1)}}.
+\end{align*}
+
+    The following scenarios will be considered.
+    \begin{enumerate}
+        \item $r=10, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 20}, \kappa_1 = 1, \delta = 0$ (independence case);
+        \item $r=10, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 20}, \kappa_1 = 1, \delta = 0.1$;
+        \item $r=10, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 20}, \kappa_1 = 1, \delta = 0.5$;
+        \item $r=10, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 20}, \kappa_1 = 1, \delta = 1$;
+        \item $r=10, d=1, \bmu_1 = (\sqrt{1/2})_{1 \times 20}, \kappa_1 = 1, \delta = 10$.
+    \end{enumerate}
+\end{enumerate}
+
+Scenario i is constructed based on the fact that conditional independence is a simple way to induce dependence between random vectors. Note that, as a particular case, when the distribution of the latent random vector $\bmu$ is degenerate (which could be interpreted as $\kappa_1 \to \infty$ or $\delta = 0$), the random vectors $\bX^{(1)}, \dots, \bX^{(r)}$ would be unconditionally iid.
+
+Scenario ii produces a sequence of random vectors, which of them supported in a hypersphere, where the location parameter of one component $\bX^{(j)}$ given the previous ones is given by the last component $\bX^{(j-1)}$. As in the first scenario, the parameter $\delta$ represents the amount of deviation from independence.
+
+Each scenario is simulated $100$ times for $n = 10, 50, 100$, using $B=100$ replicas in each p-value computation. Notice that scenario (a) represents the null hypothesis because, under $\delta = 0$, the components $\bX^{(1)}, \dots, \bX^{(r)}$ are independent. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha = 0.05$. The bandwidths used in the simulation were chosen by likelihood cross-validation (see \cite{Hall1987}).
+
+The results of the simulation are summarized in Table \ref{tab1}. As expected, the power increased as a function of $n$ - except for $\delta = 0$, which is the independence case. In such a case, the empirical power is close to 0.05. Furthermore, the rejection rate has increased as a function of $\delta$, which is reasonable, since greater values of $\delta$ represent a stronger deviation from independence.
+
+\begin{table}[h!]
+\centering
+\caption{Empirical power for each simulated case (scenario i), adopting $\alpha = 0.05$.}
+\label{tab:results}
+\begin{tabular}{lccc}
+\toprule
+    & $n=10$ & $n=50$ & $n=100$ \\
+\midrule
+(a) & 0.06 & 0.03 & 0.05 \\
+(b) & 0.25 & 0.85 & 0.99 \\
+(c) & 0.82 & 1.00 & 1.00 \\
+(d) & 0.95 & 1.00 & 1.00 \\
+(e) & 0.98 & 1.00 & 1.00 \\
+\bottomrule
+\end{tabular}
+\label{tab1}
+\end{table}
+
+\begin{table}[ht]
+\centering
+\caption{Empirical power for each simulated case (scenario i, $r=2, d = 1$), adopting $\alpha = 0.05$.}
+\label{tab:results}
+\begin{tabular}{lccc}
+\toprule
+      & $n=10$ & $n=50$ & $n=100$ \\
+\midrule
+(a)   & 0.04 & 0.07 & 0.09 \\
+(b)   & 0.07 & 0.08 & 0.04 \\
+(c)   & 0.04 & 0.12 & 0.06 \\
+(d)   & 0.08 & 0.21 & 0.52 \\
+(e)   & 0.84 & 1.00 & 1.00 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}[H]
+\centering
+\caption{Empirical power for each simulated case (scenario i, $r=2, d = 1$), adopting $\alpha = 0.05$ ($\kappa = 0,1,2,5,10$).}
+\label{tab:results}
+\begin{tabular}{lccc}
+\toprule
+      & $n=10$ & $n=50$ & $n=100$ \\
+\midrule
+(a) & 0.04 & 0.07 & 0.09  \\
+(b) & 0.08 & 0.21 & 0.52  \\
+(c) & 0.3  & 0.94 & 1     \\
+(d) & 0.75 & 1    & 1     \\
+(e) & 0.84 & 1    & 1    \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{figure}[H]
+\centering
+        \includegraphics[totalheight=8cm]{Rplot.png}
+    \caption{$\kappa = 0$ (independence case).}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+        \includegraphics[totalheight=8cm]{Rplot01.png}
+    \caption{$\kappa = 1$.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+        \includegraphics[totalheight=8cm]{Rplot02.png}
+    \caption{$\kappa = 2$.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+        \includegraphics[totalheight=8cm]{Rplot03.png}
+    \caption{$\kappa = 5$.}
+\end{figure}
+
+\begin{figure}[H]
+\centering
+        \includegraphics[totalheight=8cm]{Rplot04.png}
+    \caption{$\kappa = 10$.}
+\end{figure}
+
+\begin{table}[ht]
+\centering
+\caption{Empirical power for $d=\cdots$, $r=\cdots$ (nominal level $0.05$).}
+\begin{tabular}{ccccccc}
+\toprule
+ &  & \multicolumn{5}{c}{$\kappa$} \\
+\cmidrule(lr){3-7}
+$n$ & $h$ 
+& $\kappa_1$ & $\kappa_2$ & $\kappa_3$ & $\kappa_4$ & $\kappa_5$ \\
+\midrule
+
+% n = n1
+$n_1$ & $h_1$ &  &  &  &  &  \\
+      & $h_2$ &  &  &  &  &  \\
+      & $h_3$ &  &  &  &  &  \\
+      & $h_4$ &  &  &  &  &  \\
+      & $h_5$ &  &  &  &  &  \\
+\midrule
+
+% n = n2
+$n_2$ & $h_1$ &  &  &  &  &  \\
+      & $h_2$ &  &  &  &  &  \\
+      & $h_3$ &  &  &  &  &  \\
+      & $h_4$ &  &  &  &  &  \\
+      & $h_5$ &  &  &  &  &  \\
+\midrule
+
+% n = n3
+$n_3$ & $h_1$ &  &  &  &  &  \\
+      & $h_2$ &  &  &  &  &  \\
+      & $h_3$ &  &  &  &  &  \\
+      & $h_4$ &  &  &  &  &  \\
+      & $h_5$ &  &  &  &  &  \\
+\midrule
+
+% n = n4
+$n_4$ & $h_1$ &  &  &  &  &  \\
+      & $h_2$ &  &  &  &  &  \\
+      & $h_3$ &  &  &  &  &  \\
+      & $h_4$ &  &  &  &  &  \\
+      & $h_5$ &  &  &  &  &  \\
+\midrule
+
+% n = n5
+$n_5$ & $h_1$ &  &  &  &  &  \\
+      & $h_2$ &  &  &  &  &  \\
+      & $h_3$ &  &  &  &  &  \\
+      & $h_4$ &  &  &  &  &  \\
+      & $h_5$ &  &  &  &  &  \\
+
+\bottomrule
+\end{tabular}
+\end{table}
+
+% latex table generated in R 4.5.2 by xtable 1.8-8 package
+% Mon Feb 23 16:35:39 2026
+\begin{table}[ht]
+\centering
+\begin{tabular}{lrrrr}
+  \hline
+scenario & kappa\_0 & kappa\_0.333333333333333 & kappa\_1 & kappa\_3 \\ 
+  \hline
+n=10, c=0,& 0.03 & 0.05 & 0.09 & 0.66 \\ 
+  n=50, c=0,& 0.05 & 0.06 & 0.34 & 1.00 \\ 
+  n=100, c=0,& 0.05 & 0.06 & 0.62 & 1.00 \\ 
+  n=10, c=1,& 0.04 & 0.05 & 0.09 & 0.67 \\ 
+  n=50, c=1,& 0.05 & 0.06 & 0.29 & 1.00 \\ 
+  n=100, c=1,& 0.04 & 0.06 & 0.60 & 1.00 \\ 
+  n=10, c=2,& 0.04 & 0.04 & 0.07 & 0.69 \\ 
+  n=50, c=2,& 0.05 & 0.05 & 0.28 & 1.00 \\ 
+  n=100, c=2,& 0.04 & 0.06 & 0.59 & 1.00 \\ 
+  n=10, c=3,& 0.06 & 0.05 & 0.09 & 0.70 \\ 
+  n=50, c=3,& 0.05 & 0.06 & 0.30 & 1.00 \\ 
+  n=100, c=3,& 0.04 & 0.05 & 0.59 & 1.00 \\ 
+   \hline
+\end{tabular}
+\caption{Empirical power for alpha=0.05 across different scenarios and kappa values.} 
+\end{table}
+
+\begin{table}[ht]
+\centering
+\begin{tabular}{cc S S S S}
+\toprule
+$n$ & $c$ & {$\kappa=0$} & {$\kappa=\tfrac{1}{3}$} & {$\kappa=1$} & {$\kappa=3$} \\
+\midrule
+10  & 0 & 0.03 & 0.05 & 0.09 & 0.66 \\
+50  & 0 & 0.05 & 0.06 & 0.34 & 1.00 \\
+100 & 0 & 0.05 & 0.06 & 0.62 & 1.00 \\
+\addlinespace
+10  & 1 & 0.04 & 0.05 & 0.09 & 0.67 \\
+50  & 1 & 0.05 & 0.06 & 0.29 & 1.00 \\
+100 & 1 & 0.04 & 0.06 & 0.60 & 1.00 \\
+\addlinespace
+10  & 2 & 0.04 & 0.04 & 0.07 & 0.69 \\
+50  & 2 & 0.05 & 0.05 & 0.28 & 1.00 \\
+100 & 2 & 0.04 & 0.06 & 0.59 & 1.00 \\
+\addlinespace
+10  & 3 & 0.06 & 0.05 & 0.09 & 0.70 \\
+50  & 3 & 0.05 & 0.06 & 0.30 & 1.00 \\
+100 & 3 & 0.04 & 0.05 & 0.59 & 1.00 \\
+\bottomrule
+\end{tabular}
+\caption{Empirical power ($\alpha=0.05$) across sample sizes, tuning parameter $c$, and signal strength $\kappa$.}
+\end{table}
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
+
+O()

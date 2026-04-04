@@ -1,0 +1,93 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\title{On independence tests for polyspherical data and
+their applications}
+\author{Vinícius Litvinoff}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract.
+\end{abstract}
+
+\section{Introduction}
+
+Let $\mathbf{X} = (\mathbf{X}_1, \dots, \mathbf{X}_r)$ be a random element in $\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}$, that is, in the polysphere. Our goal is to assess, based on a random sample of $\mathbf{X}$, whether the random vectors $\mathbf{X}_1, \dots, \mathbf{X}_r$ are mutually independent or not. To do it, we are considering the following statistic:
+\begin{align}
+    T_n = \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Big( \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \Big)^2 \mathrm{d} \mathbf{x},
+\end{align}
+where $\hat{f}_{h_1, \dots, h_r}$ and $\hat{f}_{h_i}$, $i \in \{ 1, \dots, r \}$, represent, respectively, the kernel density estimator for the distributions of $\mathbf{X}$ and for $\mathbf{X_i}$, with bandwidths $h_1, \dots, h_r$.
+
+In this text, we will study how to represent such statistic under certain assumptions about kernel functions, and it is aimed to use these representations to further study the asymptotic behavior of $T_n$.
+
+Consider the kernel density estimators:
+\begin{align}
+    \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) = \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}). \\
+    \hat{f}_{h_j}(\mathbf{x}_j) = \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(i)}).
+\end{align}
+Let $I_n := \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i})$. Then,
+\begin{align}
+    I_n &= \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}) - \prod_{j=1}^{r} \frac{1}{n} \sum_{k=1}^{n} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k)}) \\
+    &= \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}) - \frac{1}{n^r} \prod_{j=1}^{r} \sum_{k=1}^{n} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k)}).
+\end{align}
+Note that
+\begin{align}
+    \prod_{j=1}^{r} \sum_{k=1}^{n} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k)}) &= \Big( \sum_{k=1}^{n} L_{\mathbf{h}_1}(\mathbf{x}_1,\mathbf{X}_1^{(k)}) \Big) \Big( \sum_{k=1}^{n} L_{\mathbf{h}_2}(\mathbf{x}_2,\mathbf{X}_2^{(k)}) \Big) \dots \Big( \sum_{k=1}^{n} L_{\mathbf{h}_r}(\mathbf{x}_r,\mathbf{X}_r^{(k)}) \Big) \\
+    &= \Big( \sum_{k_1=1}^{n} L_{\mathbf{h}_1}(\mathbf{x}_1,\mathbf{X}_1^{(k_1)}) \Big) \Big( \sum_{k_2=1}^{n} L_{\mathbf{h}_2}(\mathbf{x}_2,\mathbf{X}_2^{(k_2)}) \Big) \dots \Big( \sum_{k_r=1}^{n} L_{\mathbf{h}_r}(\mathbf{x}_r,\mathbf{X}_r^{(k_r)}) \Big) \\
+    &= \Big( \sum_{k_1=1}^{n} \sum_{k_2=1}^{n} L_{\mathbf{h}_1}(\mathbf{x}_1,\mathbf{X}_1^{(k_1)}) L_{\mathbf{h}_2}(\mathbf{x}_2,\mathbf{X}_2^{(k_2)}) \Big) \dots \Big( \sum_{k_r=1}^{n} L_{\mathbf{h}_r}(\mathbf{x}_r,\mathbf{X}_r^{(k_r)}) \Big) \\
+    &= \sum_{k_1=1}^{n} \sum_{k_2=1}^{n} \dots \sum_{k_r=1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \\
+    &= \sum_{k_1, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big].
+\end{align}
+
+Therefore,
+\begin{align}
+    I_n &= \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}) - \frac{1}{n^r} \sum_{k_1, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \\
+    &= \frac{1}{n} \sum_{k_1=1}^{n} L_{\mathbf{h}}(\mathbf{x},\mathbf{X}^{(k_1)}) - \frac{1}{n^r} \sum_{k_1=1}^{n} \sum_{k_2, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \\
+    &= \frac{1}{n} \sum_{k_1=1}^{n} \Big[ L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(k_1)}}) - \frac{1}{n^{r-1}} \sum_{k_2, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \Big]. \label{eq:avg-dif}
+\end{align}
+
+\textbf{Interpretation:} Equation \ref{eq:avg-dif} may be viewed as the average difference between the estimator of $f_{h_1, \dots, h_r}$ using only the $k_1$-th observation and a mixture of product kernel estimators. 
+
+\section{Using the product kernel}
+
+Now, consider the assumption $L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}) = \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(i)})$. In this case,
+\begin{align}
+    I_n &= \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(i)}) - \frac{1}{n^r} \sum_{k_1, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \\
+    &= \frac{1}{n} \sum_{k_1=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_1)}) - \frac{1}{n^r} \sum_{k_1, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \\
+    &= \frac{1}{n} \sum_{k_1=1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_1)}) - \frac{1}{n^{r-1}} \sum_{k_2, \dots, k_r =1}^{n} \Big[ \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(k_j)}) \Big] \Big].
+\end{align}
+
+\subsection{Decomposition of squares}
+
+Note that under the assumption that the random vectors $\mathbf{X}_1, \dots, \mathbf{X}_r$ are mutually independent (the null hypothesis of our test), it holds that $\mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) = \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i}))$. Therefore,
+\begin{align}
+    I_n^2 &= [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i})]^2 \\
+    &= [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) + \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i})) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i})]^2 \\
+    &= [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 + \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \\
+    &- 2[\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))] \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big].
+\end{align}
+As a consequence,
+\begin{align}
+    T_n &= \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \Bigg\{ \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 \mathrm{d} \mathbf{x} \\
+    &+ \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \\
+    &-2 \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))] \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big] \mathrm{d} \mathbf{x} \Bigg\}.
+\end{align}
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}

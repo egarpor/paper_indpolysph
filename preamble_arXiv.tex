@@ -1,0 +1,313 @@
+% Encoding
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+% AMS
+\usepackage{amsthm}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+
+% Graphics and tables
+\usepackage{graphicx} 
+\usepackage{graphbox}
+\usepackage{float}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{rotating}
+\usepackage{array}
+\usepackage{xcolor}
+\usepackage{subcaption}
+\usepackage[ruled]{algorithm2e}
+
+\usepackage{booktabs}
+\usepackage{multirow}
+
+% Comments
+\usepackage{comment}
+
+% New column types
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+
+% Break citations
+\usepackage{breakcites}
+
+% No widows or orphans (use \nowidow[3] or \noclub[3] at the end of paragraph, respectively)
+\usepackage{nowidow}
+
+% For reference enumerations lists
+\usepackage{enumitem}
+
+% Margins setup
+\usepackage[top=1.5cm,bottom=2cm,right=2.5cm,left=2.5cm]{geometry}
+\usepackage{titling}
+
+% References
+\usepackage{natbib}
+
+% Check the OS
+\usepackage{ifplatform}
+
+% Symbols
+\usepackage{textcomp}
+\usepackage{bbm}
+
+% pdf version 1.7
+\ifwindows
+	\pdfoptionpdfminorversion 7
+\fi
+
+% No indentation in the beginning of the paragraph
+% \setlength\parindent{0cm} 
+
+% Allow math display page break
+\allowdisplaybreaks
+
+% Macros
+\newcommand{\lp}{\left(}
+\newcommand{\rp}{\right)}
+\newcommand{\lc}{\left[}
+\newcommand{\rc}{\right]}
+\newcommand{\lb}{\left\{}
+\newcommand{\rb}{\right\}}
+\newcommand{\lf}{\left.}
+\newcommand{\ri}{\right.}
+%
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\T}{\mathbb{T}}
+\newcommand{\Sp}{\mathbb{S}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\N}{\mathbb{N}}
+%
+\newcommand{\rd}{\mathrm{d}}
+\newcommand{\cL}{\mathcal{L}}
+\newcommand{\cA}{\mathcal{A}}
+\newcommand{\bpsi}{\boldsymbol{\Psi}}
+\newcommand{\buno}{\boldsymbol{1}}
+\newcommand{\bl}{\boldsymbol{l}}
+\newcommand{\bx}{\boldsymbol{x}}
+\newcommand{\bz}{\boldsymbol{z}}
+\newcommand{\bt}{\boldsymbol{t}}
+\newcommand{\bs}{\boldsymbol{s}}
+\newcommand{\be}{\boldsymbol{e}}
+\newcommand{\bm}{\boldsymbol{m}}
+\newcommand{\bn}{\boldsymbol{n}}
+\newcommand{\by}{\boldsymbol{y}}
+\newcommand{\bX}{\boldsymbol{X}}
+\newcommand{\bY}{\boldsymbol{Y}}
+\newcommand{\bZ}{\boldsymbol{Z}}
+\newcommand{\bJ}{\boldsymbol{J}}
+\newcommand{\bU}{\boldsymbol{U}}
+\newcommand{\bR}{\boldsymbol{R}}
+\newcommand{\bF}{\boldsymbol{F}}
+\newcommand{\bmu}{\boldsymbol\mu}
+\newcommand{\bu}{\boldsymbol{u}}
+\newcommand{\bv}{\boldsymbol{v}}
+\newcommand{\bb}{\boldsymbol{b}}
+\newcommand{\bba}{\boldsymbol{a}}
+\newcommand{\br}{\boldsymbol{r}}
+\newcommand{\bh}{{\boldsymbol{h}}}
+\newcommand{\bd}{\boldsymbol{d}}
+\newcommand{\bk}{\boldsymbol{k}}
+\newcommand{\bp}{\boldsymbol{p}}
+\newcommand{\one}{\mathbf{1}}
+\newcommand{\zero}{\mathbf{0}}
+\newcommand{\two}{\mathbf{2}}
+\newcommand{\bxi}{\boldsymbol\xi}
+\newcommand{\bphi}{\boldsymbol\varphi}
+\newcommand{\ba}{\boldsymbol\alpha}
+\newcommand{\bbe}{\boldsymbol\beta}
+\newcommand{\bbeta}{\boldsymbol\eta}
+\newcommand{\bzeta}{\boldsymbol\zeta}
+\newcommand{\bga}{\boldsymbol\gamma}
+\newcommand{\bthe}{\boldsymbol\theta}
+\newcommand{\btheta}{\boldsymbol\theta}
+\newcommand{\bkappa}{\boldsymbol\kappa}
+\newcommand{\bTheta}{\boldsymbol\Theta}
+\newcommand{\Ical}{\mathcal{I}}
+\newcommand{\bsigma}{\boldsymbol\sigma}
+\newcommand{\bSigma}{\boldsymbol\Sigma}
+\newcommand{\bLambda}{\boldsymbol\Lambda}
+\newcommand{\bGamma}{\boldsymbol\Gamma}
+\newcommand{\bDelta}{\boldsymbol\Delta}
+\newcommand{\bO}{\mathbf{0}_q}
+\newcommand{\bOd}{\mathbf{0}_{q-1}}
+\newcommand{\Hcal}{\mathcal{H}}
+\newcommand{\bHcal}{\boldsymbol{\mathcal{H}}}
+\newcommand{\X}{\boldsymbol{\mathcal{X}}_{\bx,p}}
+\newcommand{\W}{\boldsymbol{\mathcal{W}}_{\bx}}
+\newcommand{\bnabla}{\boldsymbol\nabla}
+\newcommand{\blambda}{\boldsymbol\lambda}
+\newcommand{\bB}{\boldsymbol{B}}
+\newcommand{\bK}{\boldsymbol{K}}
+\newcommand{\bH}{\boldsymbol{H}}
+\newcommand{\bA}{\boldsymbol{A}}
+\newcommand{\bV}{\boldsymbol{V}}
+\newcommand{\bI}{\boldsymbol{I}}
+\newcommand{\bS}{\boldsymbol{S}}
+\newcommand{\bP}{\boldsymbol{P}}
+\newcommand{\bQ}{\boldsymbol{Q}}
+\newcommand{\bT}{\boldsymbol{\mathcal{T}}}
+\newcommand{\bM}{\boldsymbol{M}}
+\newcommand{\bW}{\boldsymbol{W}}
+\newcommand{\pr}{^{\prime}}
+\newcommand{\cqfd}{\hfill $\square$}
+%
+\newcommand{\equald}{\stackrel{d}{=}}
+\newcommand{\inlaw}{\stackrel{d}{\rightsquigarrow}}
+\DeclareMathAlphabet\mathbfcal{OMS}{cmsy}{b}{n}
+\DeclareMathOperator{\sech}{sech}
+\DeclareMathOperator{\csch}{csch}
+\DeclareMathOperator{\arcsec}{arcsec}
+\DeclareMathOperator{\arccot}{arcCot}
+\DeclareMathOperator{\arccsc}{arcCsc}
+\DeclareMathOperator{\arccosh}{arcCosh}
+\DeclareMathOperator{\arcsinh}{arcsinh}
+\DeclareMathOperator{\arctanh}{arctanh}
+\DeclareMathOperator{\arcsech}{arcsech}
+\DeclareMathOperator{\arccsch}{arcCsch}
+\DeclareMathOperator{\arccoth}{arcCoth} 
+% More macros
+\newcommand{\Xb}{\bX}
+\newcommand{\Sb}{\mathbf{S}}
+\newcommand{\thetab}{\boldsymbol\theta}
+\newcommand{\etab}{\boldsymbol\eta}
+\newcommand{\bnab}{\boldsymbol\nabla}
+\newcommand{\xib}{\boldsymbol\xi}
+\newcommand{\Vb}{\mathbf{V}}
+\newcommand{\Qb}{\mathbf{Q}}
+\newcommand{\Rb}{\mathbf{R}}
+\newcommand{\Zb}{\mathbf{Z}}
+\newcommand{\ab}{\mathbf{a}}
+\newcommand{\ub}{\mathbf{u}}
+\newcommand{\Tb}{\mathbf{T}}
+\newcommand{\vb}{\mathbf{v}}
+\newcommand{\xb}{\bx}
+\newcommand{\yb}{\by}
+\newcommand{\wb}{\mathbf{w}}
+\newcommand{\Ab}{\mathbf{A}}
+\newcommand{\Bb}{\bB}
+\newcommand{\Hb}{\mathbf{H}}
+\newcommand{\Ob}{\mathbf{O}}
+\newcommand{\Cb}{\mathbf{C}}
+\newcommand{\Db}{\mathbf{D}}
+\newcommand{\Ub}{\mathbf{U}}
+\newcommand{\Mb}{\mathbf{M}}
+\newcommand{\Wb}{\mathbf{W}}
+\newcommand{\Yb}{\mathbf{Y}}
+\newcommand{\Lb}{\mathbf{L}}
+\newcommand{\Gb}{\mathbf{G}}
+\newcommand{\sigmad}{\sigma_{d}}
+\newcommand{\sigmar}{\sigma_{\bd}}
+\newcommand{\sigmai}{\sigma_{d_i}}
+\newcommand{\sigmaim}{\sigma_{d_i-1}}
+\newcommand{\sigmaj}{\sigma_{d_j}}
+\newcommand{\sigmamj}{\sigma_{-d_j}}
+\newcommand{\sigmamjk}{\sigma_{-(d_j,d_k)}}
+\newcommand{\sigmak}{\sigma_{d_k}}
+\newcommand{\sigmaell}{\sigma_{d_\ell}}
+\newcommand{\sigmajm}{\sigma_{d_j-1}}
+\newcommand{\sigmarm}{\sigma_{\bd-1}}
+\newcommand{\sigmarmij}{\sigma_{d_1-1,\stackrel{i\neq j}{\ldots},d_r-1}}
+\newcommand{\Sdr}{(\mathbb{S}^{d})^r}
+\newcommand{\Sr}{\mathbb{S}^{\bd}}
+\newcommand{\Srm}{\mathbb{S}^{\bd-1}}
+\newcommand{\Sd}{\mathbb{S}^{d}}
+\newcommand{\Sj}{\mathbb{S}^{d_j}}
+\newcommand{\Suno}{\mathbb{S}^{d_1}}
+\newcommand{\Sdos}{\mathbb{S}^{d_2}}
+%\newcommand{\Smj}{\mathbb{S}^{-d_j}}
+\newcommand{\Sk}{\mathbb{S}^{d_k}}
+\newcommand{\Sell}{\mathbb{S}^{d_\ell}}
+\newcommand{\Sjk}{\mathbb{S}^{d_j,d_k}}
+\newcommand{\Smj}{\mathbb{S}^{\bd}_{-j}}
+\newcommand{\Smjk}{\mathbb{S}^{\bd}_{-(j,k)}}
+\newcommand{\Sjm}{\mathbb{S}^{d_j-1}}
+\newcommand{\Sim}{\mathbb{S}^{d_i-1}}
+\newcommand\independent{\protect\mathpalette{\protect\independenT}{\perp}}
+\def\independenT#1#2{\mathrel{\rlap{$#1#2$}\mkern2mu{#1#2}}}
+
+% Commands with arguments
+\newcommand{\lrp}[1]{\left(#1\right)}
+\newcommand{\lrc}[1]{\left[#1\right]}
+\newcommand{\lrb}[1]{\left\{#1\right\}}
+\newcommand{\lrpbig}[1]{\big(#1\big)}
+\newcommand{\lrcbig}[1]{\big[#1\big]}
+\newcommand{\lrbbig}[1]{\big\{#1\big\}}
+\newcommand{\blrp}[1]{\big(#1\big)}
+%
+\newcommand{\Prob}[1]{\mathbb{P}\lb #1\rb}
+%\newcommand{\E}[1]{\mathbb{E}\lp #1\rp}
+\newcommand{\V}[1]{\mathbb{V}\mathrm{ar}\lc #1\rc}
+\newcommand{\Es}[2]{\mathbb{E}_{#2}\lc #1\rc}
+\newcommand{\Vs}[2]{\mathbb{V}\mathrm{ar}_{#2}\lc #1\rc}
+\newcommand{\Cov}[2]{\mathbb{C}\mathrm{ov}\lc #1,#2\rc}
+\newcommand{\supp}[1]{\mathrm{supp}\lp #1\rp}
+\newcommand{\diag}[1]{\mathrm{diag}\lp #1\rp}
+\newcommand{\cmod}[1]{\mathrm{cmod}\left(#1\right)}
+%
+\newcommand{\mse}[1]{\mathrm{MSE}\lrc{#1}}
+\newcommand{\mise}[1]{\mathrm{MISE}\lrc{#1}}
+\newcommand{\amise}[1]{\mathrm{AMISE}\lrc{#1}}
+%
+\newcommand{\df}[2]{\frac{\rd #1}{\rd #2}}
+\newcommand{\dftwo}[2]{\frac{\rd^2 #1}{\rd #2^2}}
+\newcommand{\pf}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\pftwo}[2]{\frac{\partial^2 #1}{\partial #2^2}}
+\newcommand{\pfmix}[3]{\frac{\partial^2 #1}{\partial #2\partial #3}}
+\newcommand{\norm}[1]{\left|\left| #1\right|\right|}
+\newcommand{\abs}[1]{\left| #1\right|}
+\newcommand{\tr}[1]{\mathrm{tr}\left[#1\right]}
+\newcommand{\vect}[1]{\mathrm{vec}\left(#1\right)}
+\newcommand{\vech}[1]{\mathrm{vech}\left(#1\right)}
+\newcommand{\scalprod}[2]{\langle#1,#2\rangle}
+%
+\newcommand{\vlinel}[1]{\multicolumn{1}{|c}{#1}}
+\newcommand{\vliner}[1]{\multicolumn{1}{c|}{#1}}
+%
+\newcommand{\alert}[1]{\textcolor{red}{#1}}
+
+% Orders
+\newcommand{\Om}[1]{\Omega_{#1}}
+\newcommand{\om}[1]{\omega_{#1}}
+\newcommand{\Iq}[2]{\int_{\Omega_{q}} #1\,\omega_{q}(d #2)}
+\newcommand{\Iqr}[3]{\int_{\Omega_{q}\times\R} #1\,d #3\,\omega_{q}(d #2)}
+\newcommand{\Iqp}[3]{\int_{\Omega_{q}\times\R^p} #1\,d #3\,\omega_{q}(d #2)}
+\newcommand{\Iqm}[2]{\int_{\Omega_{q-1}} #1\,\omega_{q-1}(d #2)}
+\newcommand{\Ir}[2]{\int_{\R} #1\,d #2}
+\newcommand{\Iqq}[3]{\int_{\Omega_{q_1}\times\Omega_{q_2}} #1\,\omega_{q_2}(d #3)\,\omega_{q_1}(d #2)}
+\newcommand{\Irr}[3]{\int_{\R\times\R} #1\,d #3\,d #2}
+%
+\DeclareFontFamily{OT1}{pzc}{}
+\DeclareFontShape{OT1}{pzc}{m}{it}{<-> s * [1.10] pzcmi7t}{}
+\DeclareMathAlphabet{\mathpzc}{OT1}{pzc}{m}{it}
+\newcommand{\order}[1]{\mathpzc{o}\lp#1\rp}
+\newcommand{\Order}[1]{\mathcal{O}\lp#1\rp}
+\newcommand{\orderp}[1]{\mathpzc{o}_\mathbb{P}\lp#1\rp}
+\newcommand{\Orderp}[1]{\mathcal{O}_\mathbb{P}\lp#1\rp}
+
+% New counter
+%\newcommand{\co}{\addtocounter{align}{1}\arabic{align}}
+
+% New theorems
+\newtheorem{definition}{Definition}[section]
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{corollary}{Corollary}[section]
+\newtheorem{remark}{Remark}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{lemma}{Lemma}[section]
+\newtheorem{algo}{Algorithm}[section]
+\newtheorem{example}{Example}[section]
+%\renewenvironment{proof}[1]{\textit{Proof#1.}}{\qed\\} 
+
+% Roman enumerate
+\renewcommand{\theenumi}{\textit{\roman{enumi}}}
+
+% Percentage sign without typing \%
+\newcommand{\pct}{\%}
+
+% Definition
+\newcommand{\defin}{:=}
+\newcommand{\indef}{=:}

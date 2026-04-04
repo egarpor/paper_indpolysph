@@ -1,0 +1,271 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newtheorem{Definition}{Definition}[section] 
+\newtheorem{fig}{figure}[section] 
+\newtheorem{Theorem}{Theorem}[section] 
+\newtheorem{Proposition}{Proposition}[section] 
+\newtheorem{Corollary}{Corollary}[section] 
+\newtheorem{Example}{Example}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{Algorithm}{Algorithm}[section] 
+\newtheorem{Remark}{Remark}[section] 
+\newtheorem{Notation}{Notation}[section] 
+\newtheorem{Proof}{Proof}[section]
+
+\title{Independence between two random variables}
+\author{Vinícius Litvinoff}
+
+\begin{document}
+\maketitle
+
+Let $X^{(1)}, \dots, X^{(n)}$ be a sequence of independent and identically distributed random 2-vectors $X^{(i)} = (X_1^{(i)}, X_2^{(i)})$. In our notation, $X_1 = X_1^{(1)}, \dots, X_1^{(n)}$ and $X_2 = X_2^{(1)}, \dots, X_2^{(n)}$. In \cite{rosenblatt1992nonparametric}, the authors deduced a test for independence between $X_1$ and $X_2$.
+
+Given a random sample $(X_1^{(1)},X_2^{(1)}), \dots, (X_1^{(n)},X_2^{(n)})$, the following statistic is used to quantify the amount of deviation from independence:
+\begin{align}
+    I_n = \int [f_n(x) - g_n(x_1) h_n(x_2)]^2 \mathrm{d} x,
+\end{align}
+where $f_n$, $g_n$ and $h_n$ are kernel density estimators of the probability density functions of $(X_1,X_2)$, $X_1$ and $X_2$, respectively - see expressions below. 
+\begin{align}
+    f_n(x) := \frac{1}{nb^2} \sum_{i=1}^{n} W \Bigg( \frac{x - X^{(i)}}{b} \Bigg); \\
+     g_n(x) := \frac{1}{nb} \sum_{i=1}^{n} w_1 \Bigg( \frac{x_1 - X_1^{(i)}}{b} \Bigg); \\
+      h_n(x) := \frac{1}{nb} \sum_{i=1}^{n} w_2 \Bigg( \frac{x_2 - X_2^{(i)}}{b} \Bigg),
+\end{align}
+where $b(n) > 0$ is a bandwidth and $w_1$, $w_2$ are kernel density estimators. By assumption, $W(x) = w_1(x_i) w_2(x_2)$.
+Under some assumptions (see $A1-A3$ in \cite{rosenblatt1992nonparametric}), $I_n$ is proved to be asymptotically normal. To prove it, $I_n$ is decomposed as $I_n = I_{n1} + I_{n2} + I_{n3}$, whose terms are defined below.
+\begin{align}
+    I_{n1} = \int [f_n(x) - \mathsf{E} (f_n(x))]^2 \mathrm{d} x. \\
+    I_{n2} = \int [g_n(x_1) h_n(x_2) - \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2))]^2 \mathrm{d} x. \\
+    I_{n3} = -2 \int [f_n(x) - \mathsf{E} (f_n(x))] [g_n(x_1) h_n(x_2) - \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2))] \mathrm{d} x.
+\end{align}
+The following lemma is used to prove such decomposition.
+\begin{lemma}
+    If $X_1$ is independent of $X_2$, then $\mathsf{E} (f_n(x)) = \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2))$.
+\end{lemma}
+\begin{Proof}
+    By definition,
+    \begin{align}
+        \mathsf{E} (f_n(x)) &= \mathsf{E} \Bigg( \frac{1}{nb^2} \sum_{i=1}^{n} W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \\
+        &= \frac{1}{nb^2} \mathsf{E} \Bigg( \sum_{i=1}^{n} W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg).
+    \end{align}
+    By the assumption that $X^{(1)}, \dots, X^{(n)}$ are independent and identically distributed,
+    \begin{align}
+        \mathsf{E} (f_n(x)) &= \frac{1}{nb^2} \Bigg[ n \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg] \\
+        &= \frac{1}{b^2} \Bigg[\mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg],
+    \end{align}
+    for an arbitrary $i \in \{ 1, \dots, n \}$.
+
+    Using the assumption $W(x) = w_1(x_i) w_2(x_2)$,
+    \begin{align}
+        \mathsf{E} (f_n(x)) &= \mathsf{E} \Bigg( \frac{1}{b} w_1 \Bigg( \frac{x_1 - x_1^{(i)}}{b} \Bigg) \frac{1}{b} w_2 \Bigg( \frac{x_2 - x_2^{(i)}}{b} \Bigg) \Bigg).
+    \end{align}
+    If $X_1$ is independent of $X_2$, then
+    \begin{align}
+        \mathsf{E} (f_n(x)) &= \mathsf{E} \Bigg( \frac{1}{b} w_1 \Bigg( \frac{x_1 - x_1^{(i)}}{b} \Bigg) \Bigg) \mathsf{E} \Bigg( \frac{1}{b} w_2 \Bigg( \frac{x_2 - x_2^{(i)}}{b} \Bigg) \Bigg) \\
+        &= \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2)),
+    \end{align}
+    as we wished to prove.
+\end{Proof}
+
+From this result, it is possible to deduce a decomposition for $I_n$, stated below as a lemma.
+\begin{lemma}
+    Let $I_n, I_{n1}, I_{n2}$ and $I_{n3}$ be the terms defined above. Then, $I_n = I_{n1} + I_{n2} + I_{n3}$.
+\end{lemma}
+\begin{Proof}
+    Given that $\mathsf{E} (f_n(x)) = \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2))$, $I_n$ can be written as $\int [f_n(x) - \mathsf{E} (f_n(x)) + \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2)) - g_n(x_1) h_n(x_2)]^2 \mathrm{d} x$ $= \int [(f_n(x) - \mathsf{E} (f_n(x))) + (\mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2)) - g_n(x_1) h_n(x_2))]^2 \mathrm{d} x$. The final result comes from a straightforward development of the expression.
+\end{Proof}
+
+The main result is established through the following lemma, which states the asymptotic behavior of $I_{n1}, I_{n2}$ and $I_{n3}$.
+\begin{lemma}
+    \begin{align}
+        I_{n 1}=\left(n b^2\right)^{-1}\left\{\int w^2\left(x_1\right) \mathrm{d} x_1\right\}^2+\mathrm{o}_{\mathrm{p}}\left((n b)^{-1}\right)+2^{1 / 2} \nu(n b)^{-1} N_n,
+    \end{align}
+    where $N_n$ is an asymptotically standard normal random variable.
+    \begin{align}
+        E\left(I_{n 2}\right)=(n b)^{-1} \int w^2\left(x_1\right) \mathrm{d} x_1\left\{\int\left[g^2\left(y_1\right)+h^2\left(y_1\right)\right] \mathrm{d} y_1\right\}+\mathrm{o}\left((n b)^{-1}\right). \\
+        E\left(I_{n 3}\right)=-2 E\left(I_{n 2}\right). \\
+        \sigma^2\left(I_{n 2}\right)=O\left(\left(n^2 b\right)^{-1}\right). \\
+        \sigma^2\left(I_{n 3}\right)=\mathrm{O}\left(\left(n^2 b\right)^{-1}\right).
+    \end{align}
+\end{lemma}
+\begin{Proof}
+    Note that
+    \begin{align}
+        I_{n1} &= \int \Bigg[ \frac{1}{nb^2} \sum_{i=1}^{n} W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) - \frac{1}{nb^2} \sum_{i=1}^{n} \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg]^2 \mathrm{d} x \\
+        &= \int \Bigg[ \frac{1}{nb^2} \sum_{i=1}^{n} \Bigg\{ W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) - \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg\} \Bigg]^2 \mathrm{d} x \\
+        &= \frac{1}{n^2b^4} \int \Bigg[ \sum_{i=1}^{n} \Bigg\{ W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) - \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg\} \Bigg]^2 \mathrm{d} x
+    \end{align}
+    Note that, for any sequence $a_i$, $(\sum_{i=1}^{n} a_i)^2 = \sum_{i=1}^{n} \sum_{j=1}^{n} a_i a_j = \sum_{i=1}^{n} a_i^2 + \sum_{i \ne j} a_i a_j = \sum_{i=1}^{n} a_i^2 + 2 \sum_{i<j} a_i a_j$. Therefore, $I_{n1} = I_{n1}^{(1)} + I_{n1}^{(2)}$, where
+    \begin{align}
+        I_{n1}^{(1)} &= \frac{1}{(nb^2)^2} \sum_{i=1}^{n} \int \Bigg\{ W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) - \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg\}^2 \mathrm{d}x; \\
+        I_{n1}^{(2)} &= \frac{2}{(nb^2)^2} \sum_{1 \le i < j \le n} \int \Bigg\{ W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) - \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(i)}}{b} \Bigg) \Bigg) \Bigg\} \Bigg\{ W \Bigg( \frac{x - X^{(j)}}{b} \Bigg) - \mathsf{E} \Bigg( W \Bigg( \frac{x - X^{(j)}}{b} \Bigg) \Bigg) \Bigg\} \mathrm{d}x.
+    \end{align}
+    Now notice that $I_{n1}^{(1)}$ can be written as $I_{n1}^{(1)} = (nb^2)^{-2} \sum_{i=1}^{n} Z_{ni}$, where $\{ Z_{ni} \}$ is a sequence of independent and identically distributed random variables. Further, $I_{n1}^{(2)} = 2(nb^2)^{-2} U_n$, where $U_n$ is a centered degenerate $U$-statistic. From results in \cite{hall1984central}, it is possible to derive asymptotic results for both terms.
+
+    From Lemma 2 in \cite{hall1984central},
+    \begin{align}
+        \mathsf{E} (Z_{ni}) = b^2 \int W^2(x) \mathrm{d}x- b^4 \int \int W(u) W(u+v) \mathrm{d}u \mathrm{d}v \int f(x) f(x+bv) \mathrm{d}x,
+    \end{align}
+    which implies that $\mathsf{E} (Z_{ni}) =  O(b^2)$. It is also a direct consequence from Lemma 2 in \cite{hall1984central} that $\mathsf{E} (Z_{ni}^2) =  O(b^4)$. Therefore, $\mathsf{Var} (Z_{ni}) = \mathsf{E} (Z_{ni}^2) - (\mathsf{E} (Z_{ni}^2))^2 = O(b^4) - O(b^4) = O(b^4)$. Given that $I_{n1}^{(1)} = (nb^2)^{-2} \sum_{i=1}^{n} Z_{ni}$, and considering that $Z_{ni}$ are independent and identically distributed, it follows that
+    \begin{align}
+        \mathsf{E} (I_{n1}^{(1)}) &= (nb^2)^{-2} n \mathsf{E} (Z_{ni}) \\
+        &= (nb^2)^{-2} n O(b^2) \\
+        &= n^{-1} b^{-4} o(b^2) \\
+        &= o(n^{-1} b^{-2}) \\
+        &= o((nb^2)^{-1}).
+    \end{align}
+    Note that, by assumption, $nb^2 \to \infty$; therefore, $\mathsf{E} (I_{n1}^{(1)}) \to 0$. Further,
+    \begin{align}
+        \mathsf{Var} (I_{n1}^{(1)}) &= ((nb^2)^{-2})^2 n \mathsf{Var} (Z_{ni}) \\
+        &= (nb^2)^{-4} n \mathsf{Var} (Z_{ni}) \\
+        &= (nb^2)^{-4} n O(b^4) \\
+        &= n^{-3} b^{-8} O(b^4) \\
+        &= O(n^{-3} b^{-4}). \\
+    \end{align}
+    Note that $\mathsf{Var} (I_{n1}^{(1)}) = O((nb^2)^{-2} n^{-1})$; both $(nb^2)^{-2}$ and $n^{-1}$ converge to zero, and, as a consequence, $\mathsf{Var} (I_{n1}^{(1)}) \to 0$.
+
+    Applying the identity $I_{n1}^{(1)} = \mathsf{E} (I_{n1}^{(1)}) + O_p( \mathsf{Var} (I_{n1}^{(1)}) )$, it follows that
+    \begin{align}
+        I_{n1}^{(1)} = (nb^2)^{-1} \Bigg\{ \int w^2(x_1) \mathsf{d}x_1\Bigg\} + o_p((nb)^{-1}).
+    \end{align}
+
+    It is a direct consequence from Lemma 3 in \cite{hall1984central} that $U_n$ is asymptotically normal with mean zero and variance $\frac{1}{2} n^2 H_n^2(X_1,X_2)$, that is, $(\frac{1}{2} n^2 H_n^2(X_1,X_2))^{\frac{1}{2}} U_n \xrightarrow{d} \mathcal{N}(0, 1)$. Given that $I_{n1}^{(2)} = 2(nb^2)^{-2} U_n$, it follows that $(2v^2 (nb)^{-2})^{\frac{1}{2}} I_{n1}^{(2)} \xrightarrow{d} \mathcal{N}(0, 1)$. Therefore,
+    \begin{align}
+        I_{n1}^{(2)} = 2^{1/2} v (nb)^{-1} N_n,
+    \end{align}
+    where $N_n$ is a random variable converging in distribution to the standard normal distribution.
+\end{Proof}
+
+\begin{lemma}
+    \begin{align}
+        E\left(I_{n 2}\right)=(n b)^{-1} \int w^2\left(x_1\right) \mathrm{d} x_1\left\{\int\left[g^2\left(y_1\right)+h^2\left(y_1\right)\right] \mathrm{d} y_1\right\}+\mathrm{o}\left((n b)^{-1}\right).
+    \end{align}
+\end{lemma}
+\begin{Proof}
+    Note that $[g_n(x_1) h_n(x_2) - \mathsf{E} (g_n(x_1)) \mathsf{E} (h_n(x_2))] = S_1(x) + S_2(x) + S_3(x)$, where
+    \begin{align}
+        S_1(x) = [g_n(x_1) - \mathsf{E} (g_n(x_1))] [h_n(x_2) - \mathsf{E} (h_n(x_2))]; \\
+        S_2(x) = [g_n(x_1) - \mathsf{E} (g_n(x_1))] \mathsf{E} (h_n(x_2)); \\
+        S_3(x) = [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (g_n(x_1)).
+    \end{align}
+    Therefore,
+    \begin{align}\label{dec-in2}
+        I_{n2} = \int S_1^2(x) \mathrm{d}x + \int S_2^2(x) \mathrm{d}x + \int S_3^2(x) \mathrm{d}x + \int S_1(x) S_2(x) \mathrm{d}x + \int S_1(x) S_3(x) \mathrm{d}x + \int S_2(x) S_2(x) \mathrm{d}x.
+    \end{align}
+    The expectation of $I_{n2}$ can be found deducing the expectation of each term in Equation \ref{dec-in2}. Consider the following calculations:
+    \begin{align}
+        \int S_1^2(x) \mathrm{d}x &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 [h_n(x_2) - \mathsf{E} (h_n(x_2))]^2 \mathrm{d}x \\
+        &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \int [h_n(x_2) - \mathsf{E} (h_n(x_2))]^2 \mathrm{d}x_2.
+    \end{align}
+    Therefore, by the hypothesis of independence between $X_1$ and $X_2$,
+    \begin{align}
+        \mathsf{E} \Bigg( S_1^2(x) \mathrm{d}x \Bigg) &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \Bigg) \mathsf{E} \Bigg( \int [h_n(x_2) - \mathsf{E} (h_n(x_2))]^2 \mathrm{d}x_2 \Bigg) \\
+        &= \int \mathsf{E} ( [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 ) \mathrm{d}x_1 \int  \mathsf{E} ( [h_n(x_2) - \mathsf{E} (h_n(x_2))]^2 ) \mathrm{d}x_2.
+    \end{align}
+    Note that $ \mathsf{E} ( [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 )$ and $\mathsf{E} ( [h_n(x_2) - \mathsf{E} (h_n(x_2))]^2 )$ are the variances of $g_n(x_1)$ and $h_n(x_2)$, respectively, which are know to be equal to $O((nb)^{-1})$. Therefore, $\mathsf{Var} (g_n(x_1)) \mathsf{Var} (h_n(x_2)) = O((nb)^{-1})O((nb)^{-1}) = O((nb)^{-2}) = o((nb)^{-1})$. Then, supposing that $\int \mathsf{Var} (g_n(x_1)) dx_1 = \int O((nb)^{-1}) = O((nb)^{-1})$ (and the same for $\int \mathsf{Var} (h_n(x_2)) dx_2$), it follows that:
+    \begin{align}
+        \mathsf{E} \Bigg( S_1^2(x) \mathrm{d}x \Bigg) &= O(nb)^{-1})O((nb)^{-1}) \\
+        &= O((nb)^{-2}) \\
+        &= o((nb)^{-1}) .
+    \end{align}
+
+    In a similar way, we can proceed with $S^2_2(x)$.
+    \begin{align}
+        \int S_2^2(x) \mathrm{d}x &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 [\mathsf{E} (h_n(x_2))]^2 \mathrm{d}x \\
+        &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \int [\mathsf{E} (h_n(x_2))]^2 \mathrm{d}x_2.
+    \end{align}
+    Therefore, by the hypothesis of independence between $X_1$ and $X_2$,
+    \begin{align}
+        \mathsf{E} \Bigg( S_2^2(x) \mathrm{d}x \Bigg) &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \Bigg) \mathsf{E} \Bigg( \int [\mathsf{E} (h_n(x_2))]^2 \mathrm{d}x_2 \Bigg) \\
+        &= \int \mathsf{E} ( [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 ) \mathrm{d}x_1 \int  \mathsf{E} ( [\mathsf{E} (h_n(x_2))]^2 ) \mathrm{d}x_2 \\
+        &= \int \mathsf{E} ( [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 ) \mathrm{d}x_1 \int [\mathsf{E} (h_n(x_2))]^2  \mathrm{d}x_2.
+    \end{align}
+    Note that $\mathsf{E} (h_n(x_2)) = h(x_2) + O(b^2)$, therefore $[\mathsf{E} (h_n(x_2))]^2 = [h(x_2) + O(b^2)]^2 = h^2(x_2) + 2 h(x_2) O(h^2) + O(h^4) = h^2(x_2) + O(h^2)$. As a consequence,
+    \begin{align}
+        \mathsf{E} \Bigg( S_2^2(x) \mathrm{d}x \Bigg) &= O((nb)^{-1}) [h^2(x_2) + O(h^2)] \\
+        &= O((nb)^{-1}) + O((n^{-1}b) \\
+        &= O((nb)^{-1}) + o((nb)^{-1}).
+    \end{align}
+    A similar argument applied to $\mathsf{E} \Bigg( S_2^2(x) \mathrm{d}x \Bigg)$ can be used to $\mathsf{E} \Bigg( S_3^2(x) \mathrm{d}x \Bigg)$ (replacing $h_n(x_2)$ by $g_n(x_1)$).
+    
+    The expected value of the last three terms in Equation \ref{dec-in2} is zero. Without loss of generality, consider the term $\int S_1(x) S_2(x) \mathrm{d}x$:
+    \begin{align}
+        \int S_1(x) S_2(x) \mathrm{d}x &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))] [h_n(x_2) - \mathsf{E} (h_n(x_2))] [g_n(x_1) - \mathsf{E} (g_n(x_1))] \mathsf{E} (h_n(x_2)) \mathrm{d}x \\
+        &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (h_n(x_2)) \mathrm{d}x \\
+        &= \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \int [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (h_n(x_2)) \mathrm{d}x_2.
+    \end{align}
+    Therefore,
+    \begin{align}
+        \mathsf{E} \Bigg( \int S_1(x) S_2(x) \Bigg) &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \int [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (h_n(x_2)) \mathrm{d}x_2 \Bigg) \\
+        &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \Bigg) \mathsf{E} \Bigg( \int [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (h_n(x_2)) \mathrm{d}x_2 \Bigg) \\
+        &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \Bigg) \Bigg\{ \int \mathsf{E} ( [h_n(x_2) - \mathsf{E} (h_n(x_2))] \mathsf{E} (h_n(x_2)) ) \mathrm{d}x_2  \Bigg\} \\
+        &= \mathsf{E} \Bigg( \int [g_n(x_1) - \mathsf{E} (g_n(x_1))]^2 \mathrm{d}x_1 \Bigg) \Bigg\{ \int \mathsf{E} (h_n(x_2) \mathsf{E} ( [h_n(x_2) - \mathsf{E} (h_n(x_2))]) ) \mathrm{d}x_2  \Bigg\},
+    \end{align}
+    which is equal to zero because $\mathsf{E} ( [h_n(x_2) - \mathsf{E} (h_n(x_2))]) ) = 0$. A similar argument holds for the last two terms in Equation \ref{dec-in2}.
+\end{Proof}
+
+The main result is presented below as a theorem.
+\begin{Theorem}
+    Let $X^{(1)}, \dots, X^{(n)}$ be a sequence of independent and identically distributed random 2-vectors $X^{(i)} = (X_1^{(i)}, X_2^{(i)})$, with joint density $f$ and cumulative density functions $g$ and $h$, respectively. If $b(n) \downarrow 0$, $n b(n)^2 \to \infty$, assumptions $A1-A3$ in \cite{rosenblatt1992nonparametric} hold and $X_1$ is independent of $X_2$, then
+    \begin{align}
+        b^{-1} (nb^2 I_n - A(n)) \xrightarrow{d} \mathcal{N}(0, 2 \nu^2),
+    \end{align}
+    where
+    \begin{align}
+        A(n)=\left\{\int w^2\left(x_1\right) \mathrm{d} x_1\right\}^2-b(n) \int w^2\left(x_1\right) \mathrm{d} x_1\left\{\int\left[g^2\left(y_1\right)+h^2\left(y_1\right)\right] \mathrm{d} y_1\right\}
+    \end{align}
+    and
+    \begin{align}
+        \nu^2= & \int g^2\left(x_1\right) \mathrm{d} x_1 \int h^2\left(x_2\right) \mathrm{d} x_2 \\
+        & \times \iint\left\{\iint w\left(u_1\right) w\left(u_2\right) w\left(u_1+v_1\right) w\left(u_2+v_2\right) \mathrm{d} u_1 \mathrm{~d} u_2\right\}^2 \mathrm{~d} v_1 \mathrm{~d} v_2.
+    \end{align}
+\end{Theorem}
+\begin{Proof}
+    Note that $\mathsf{Var}(I_{n2}) = o(\mathsf{Var}(I_{n1}))$. Therefore,
+    \begin{align}
+        \mathsf{Var}(nb(n)I_{n2}) &= n^2b(n)^2 \mathsf{Var}(I_{n2}) = n^2b(n)^2 Var(I_{n1}) \frac{\mathsf{Var}(I_{n2})}{\mathsf{Var}(I_{n1})} \\
+        &= \underset{\to \nu^2}{\underbrace{\mathsf{Var}(nb(n)I_{n2})}} \underset{\to 0}{\underbrace{\frac{\mathsf{Var}(I_{n2})}{\mathsf{Var}(I_{n1})}}}, 
+    \end{align}
+    where the first convergence comes from the asymptotic distribution of $I_{n1}$ and the second convergence comes from the fact that $\mathsf{Var}(I_{n2}) = o(\mathsf{Var}(I_{n1}))$. As a consequence, $\mathsf{Var}(nb(n)I_{n2}) \to 0$. Therefore, $nb(n)I_{n2}$ converges in probability to its asymptotic mean, and, by Slutsky's theorem, it contributes only to the asymptotic mean of $I_n$. The same argument about $I_{n2}$ can be applied in $I_{n3}$.
+
+    From the asymptotic distribution of $I_{n1}$, it is straightforward that:
+    \begin{align}
+        \mathsf{E} (I_{n1}) = \frac{1}{nb^2} \Bigg\{ \int w^2(x_1) \mathrm{d} x_1 \Bigg\} + o_p((nb)^{-1}); 
+    \end{align}
+    \begin{align}
+        \mathsf{Var} (I_{n1}) = \frac{2 \nu^2}{(nb)^2}.
+    \end{align}
+    Therefore,
+    \begin{align}
+        \mathsf{E} (I_n) &= \frac{1}{nb^2} \Bigg\{ \int w^2(x_1) \mathrm{d} x_1 \Bigg\} + o_p((nb)^{-1}) -  \frac{1}{nb} \Bigg\{ \int w^2(x_1) \mathrm{d} x_1 \Bigg\} \times \Bigg\{ \int [g^2(y_1) + h^2(y_1)] \mathrm{d} y_1 \Bigg\} \\ &- o((nb)^{-1}).
+    \end{align}
+    \begin{align}
+        \mathsf{E} (nb^2 I_n) &= \Bigg\{ \int w^2(x_1) \mathrm{d} x_1 \Bigg\} + o_p((nb)^{-1}) -  b \Bigg\{ \int w^2(x_1) \mathrm{d} x_1 \Bigg\} \times \Bigg\{ \int [g^2(y_1) + h^2(y_1)] \mathrm{d} y_1 \Bigg\} \\ &- o((nb)^{-1}).
+    \end{align}
+    Then,
+    \begin{align}
+        lim_{n \to \infty} \mathsf{E} (nb^2 I_n - A(n)) = 0,
+    \end{align}
+    which proves that the asymptotic mean of $b^{-1} (nb^2 I_n - A(n))$ is zero.
+
+    The asymptotic variance of $b^{-1} (nb^2 I_n - A(n))$ comes from the previous argument about the asymptotic variances of both $I_{n2}$ and $I_{n3}$ being negligible. Then, $\mathsf{Var} (b^{-1} (nb^2 I_n - A(n)) = \mathsf{Var} (nb I_n) = \mathsf{Var} (nb I_{n1})  = 2 \nu^2$.
+
+    Finally, the asymptotic normality of $I_n$ comes from $I_{n 1}=\left(n b^2\right)^{-1}\left\{\int w^2\left(x_1\right) \mathrm{d} x_1\right\}^2+\mathrm{o}_{\mathrm{p}}\left((n b)^{-1}\right)+2^{1 / 2} \nu(n b)^{-1} N_n$, where $N_n$ is an asymptotically standard normal random variable, and by the fact that both $I_{n2}$ and $I_{n3}$ only contribute to the asymptotic mean.
+\end{Proof}
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}

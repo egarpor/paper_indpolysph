@@ -1,0 +1,183 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+\newtheorem{Definition}{Definition}[section] 
+\newtheorem{fig}{figure}[section] 
+\newtheorem{Theorem}{Theorem}[section] 
+\newtheorem{Proposition}{Proposition}[section] 
+\newtheorem{Corollary}{Corollary}[section] 
+\newtheorem{Example}{Example}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{Algorithm}{Algorithm}[section] 
+\newtheorem{Remark}{Remark}[section] 
+\newtheorem{Notation}{Notation}[section] 
+\newtheorem{Proof}{Proof}[section]
+
+\title{On independence tests for polyspherical data and
+their applications}
+\author{Vinícius Litvinoff}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract.
+\end{abstract}
+
+\section{Introduction}
+
+Let $\mathbf{X} = (\mathbf{X}_1, \dots, \mathbf{X}_r)$ be a random element in $\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}$, that is, in the polysphere. Our goal is to assess, based on a random sample of $\mathbf{X}$, whether the random vectors $\mathbf{X}_1, \dots, \mathbf{X}_r$ are mutually independent or not. To do it, we are considering the following statistic:
+\begin{align}
+    T_n = \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Big( \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x}_i) \Big)^2 \mathrm{d} \mathbf{x},
+\end{align}
+where $\hat{f}_{h_1, \dots, h_r}$ and $\hat{f}_{h_i}$, $i \in \{ 1, \dots, r \}$, represent, respectively, the kernel density estimator for the distributions of $\mathbf{X}$ and for $\mathbf{X_i}$, with bandwidths $h_1, \dots, h_r$.
+
+Consider the kernel density estimators:
+\begin{align}
+    \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) = \frac{c_{h,q}(L)}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L \Bigg( \frac{1 - x^{\top} \mathbf{X}_j^{(i)}}{h_j^2} \Bigg). \\
+    \hat{f}_{h_j}(\mathbf{x}_j) = \frac{c_{h,q}(L)}{n} \sum_{i=1}^{n} L \Bigg( \frac{1 - x^{\top} \mathbf{X}_j^{(i)}}{h_j^2} \Bigg).
+\end{align}
+Note that, under these definitions, the kernel used in $ \hat{f}_{h_1, \dots, h_r}(\mathbf{x})$ is the product kernel. to simplify the notation, we can adopt
+\begin{align}
+    \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) = \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,\mathbf{X}_j^{(i)}); \\
+    \hat{f}_{h_j}(\mathbf{x}_j) = \frac{1}{n} \sum_{i=1}^{n} L_{\mathbf{h}} (x,\mathbf{X}_j^{(i)}),
+\end{align}
+where $L_{\mathbf{h}} (x,X_j) = c_{h,q}(L) L \Big( \frac{1 - x^{\top} \mathbf{X}_j^{(i)}}{h_j^2} \Big)$.
+
+In this text, we will study how to represent the statistic $T_n$ under certain assumptions about kernel functions, and it is aimed to use these representations to further study the asymptotic behavior of $T_n$. First, consider the following lemmas, which establish a convenient way of representing $T_n$.
+\begin{lemma}\label{lemma-prod-expec-values}
+    If $\mathbf{X}_1, \dots, \mathbf{X}_r$ are mutually independent, then $\mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) = \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i}))$.
+\end{lemma}
+\begin{Proof}
+    \begin{align}
+        \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) &= \mathsf{E} \Bigg( \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Bigg) \\
+        &= \frac{1}{n} \sum_{i=1}^{n} \mathsf{E} \Bigg( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Bigg) \\
+        &= \mathsf{E} \Bigg( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Bigg),
+    \end{align}
+    where the last equality comes from the assumption that $\mathsf{X}^{(1)}, \dots, \mathsf{X}^{(n)}$ are identically distributed. Under the assumption of independence between $\mathbf{X}_1, \dots, \mathbf{X}_r$, it follows that
+    \begin{align}
+        \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) &= \prod_{j=1}^{r} \mathsf{E} (  L_{\mathbf{h}} (x,X_j^{(i)}) ).
+    \end{align}
+    Further, $\mathsf{E} (  L_{\mathbf{h}} (x,X_j^{(i)}) ) = \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i}))$, which finally proves the lemma.
+\end{Proof}
+
+The next lemma establishes a convenient way of representing $T_n$.
+\begin{lemma}
+    If $\mathbf{X}_1, \dots, \mathbf{X}_r$ are mutually independent and under the assumption the assumption $L_{\mathbf{h}}(\mathbf{x},\mathbf{X^{(i)}}) = \prod_{j=1}^{r} L_{\mathbf{h}_j}(\mathbf{x}_j,\mathbf{X}_j^{(i)})$, the following identity is true.
+    \begin{align}
+       T_n &= \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \Bigg\{ \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 \mathrm{d} \mathbf{x} \\
+    &+ \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \\
+    &-2 \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))] \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big] \mathrm{d} \mathbf{x} \Bigg\}.
+    \end{align}
+\end{lemma}
+\begin{Proof}
+    Let $I_n := [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i})]^2$. From Lemma \ref{lemma-prod-expec-values}, $\mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) = \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i}))$, therefore
+    \begin{align}
+        I_n &= \Bigg[\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) + \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i})) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \Bigg]^2 \\
+        &= \Bigg[ \Bigg( \hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x})) \Bigg) + \Bigg( \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i}(\mathbf{x_i})) - \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \Bigg) \Bigg]^2 \\
+        &= [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 + \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \\
+        &- 2[\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))] \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big].
+    \end{align}
+    The final result comes directly from noticing that $T_n = \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}}I_n(\mathbf{x}) \mathrm{d} \mathbf{x}$.
+\end{Proof}
+This result reduces the problem of finding the asymptotic distribution of $T_n$ to the problem of finding the asymptotic distribution of each term in the decomposition. The next lemmas establish the asymptotic behavior of such terms.
+
+\begin{lemma}
+    Let $I_{n1} := \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} [\hat{f}_{h_1, \dots, h_r}(\mathbf{x}) - \mathsf{E} (\hat{f}_{h_1, \dots, h_r}(\mathbf{x}))]^2 \mathrm{d} \mathbf{x}$. Then,
+    \begin{align}
+        B_n^{-1/2} I_{n1} \xrightarrow{d} \mathcal{N}(0, 1),
+    \end{align}
+    where $B_n = n \mathsf{E} (\varphi_n^2(X_1)) + \frac{1}{2} n^2 \mathsf{E}(H_n^2(X_1,X_2))$ and $\varphi_n(X_1) = \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(1)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(1)}) \Big) \Bigg\}^2 \Bigg] \mathrm{d} \mathbf{x}$.
+\end{lemma}
+\begin{Proof}
+    \begin{align}
+    I_{n1} &= \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \frac{1}{n} \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{i=1}^{n} \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \sum_{i=1}^{n} \mathsf{E} \Big( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \mathsf{E} \Big( \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \Bigg]^2 \mathrm{d} \mathbf{x} \\
+    &= \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \Bigg]^2 \mathrm{d} \mathbf{x},
+\end{align}
+where the last equality comes from the null hypothesis of independence between the elements of the polysphere. Therefore, $I_{n1} = I_{n1}^{(1)} + I_{n1}^{(2)}$, where
+\begin{align}
+    I_{n1}^{(1)} &:= \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{i=1}^{n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\}^2 \Bigg] \mathrm{d} \mathbf{x}; \\
+    I_{n1}^{(2)} &:= \frac{2}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \sum_{1 \le i<k \le n} \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(i)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(i)}) \Big) \Bigg\} \\
+    &\times \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(k)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(k)}) \Big) \Bigg\} \Bigg] \mathrm{d} \mathbf{x}.
+\end{align}
+The asymptotic distribution of $I_{n1} = I_{n1}^{(1)} + I_{n1}^{(2)}$ can be described through Lemma 1 in \cite{Garc_a_Portugu_es_2015}. In this case,
+\begin{align}
+    B_n^{-1/2} I_{n1} \xrightarrow{d} \mathcal{N}(0, 1),
+\end{align}
+where $B_n = n \mathsf{E} (\varphi_n^2(X_1)) + \frac{1}{2} n^2 \mathsf{E}(H_n^2(X_1,X_2))$ and $\varphi_n(X_1) = \frac{1}{n^2} \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Bigg[ \Bigg\{ \prod_{j=1}^{r} L_{\mathbf{h}} (x,X_j^{(1)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\mathbf{h}} (x,X_j^{(1)}) \Big) \Bigg\}^2 \Bigg] \mathrm{d} \mathbf{x}$.
+\end{Proof}
+
+\begin{lemma}
+    Let $I_{n2} := \int_{\mathcal{S}^{d_1} \times \dots \times \mathcal{S}^{d_r}} \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x}$. Then,
+    \begin{align}
+        \mathsf{E} (I_{n2}) &=O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2).
+\end{align}
+\end{lemma}
+\begin{Proof}
+    \begin{align}
+    \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 &= \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \Bigg)^2 + \Bigg( \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg)^2 - 2 \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) \\
+    &= \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}^2(\mathbf{x_i}) \Bigg) + \Bigg( \prod_{i = 1}^{r} \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg) - 2 \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i}(\mathbf{x_i}).
+\end{align}
+
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &= \mathsf{E} \Bigg( \int  \Bigg( \prod_{i = 1}^{r} \hat{f}_{h_i}^2(\mathbf{x_i}) \Bigg) \mathrm{d} \mathbf{x} \Bigg)  + \mathsf{E} \Bigg( \int \Bigg( \prod_{i = 1}^{r} \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \Bigg) \mathrm{d} \mathbf{x} \Bigg) \\
+    &- 2 \mathsf{E} \Bigg( \int \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x} \Bigg) \\
+    &= \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int  \hat{f}_{h_i}^2(\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg)  + \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \Bigg) \\
+    &- 2 \mathsf{E} \Bigg( \prod_{i = 1}^{r} \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg) \\
+    &= \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int  \hat{f}_{h_i}^2(\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg)  + \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \Bigg) \\
+     &- 2 \prod_{i = 1}^{r} \mathsf{E} \Bigg( \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) \mathrm{d} \mathbf{x}_i \Bigg) \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  + \prod_{i = 1}^{r} \int \mathsf{E} ( \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) ) \mathrm{d} \mathbf{x}_i \\
+     &- 2 \prod_{i = 1}^{r} \int \mathsf{E} ( \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \hat{f}_{h_i} (\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  + \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i \\
+     &- 2 \prod_{i = 1}^{r} \int \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i \\
+     &= \prod_{i = 1}^{r} \int \mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) \mathrm{d} \mathbf{x}_i  - \prod_{i = 1}^{r} \int \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) \mathrm{d} \mathbf{x}_i.
+\end{align}
+Note that $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = \mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) + \mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i}))$. From results in \cite{Garc_a_Portugu_s_2013}, $\mathsf{Var} (  \hat{f}_{h_i}(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1})$ and $ \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i} (\mathbf{x_i}) + O(h^2)$; as a consequence, $\mathsf{E}^2 (\hat{f}_{h_i} (\mathbf{x_i})) = f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$, and, therefore, $\mathsf{E} (  \hat{f}_{h_i}^2(\mathbf{x_i}) ) = O((nh_i^{q_i})^{-1}) + f_{h_i}^2 (\mathbf{x_i}) + O(h^2)$.
+
+Therefore,
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &= \prod_{i = 1}^{r} \int [O((nh^{q_i})^{-1}) + f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i  - \prod_{i = 1}^{r} \int [f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i.
+\end{align}
+Now notice that
+\begin{align}
+    \prod_{i = 1}^{r} \int [O((nh^{q_i})^{-1}) + f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i &= \prod_{i = 1}^{r} \Bigg\{ \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i + O((nh^{q_i})^{-1}) + O(h^2) \Bigg\} \\
+    &= \prod_{i = 1}^{r} \Bigg\{ \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg[1 + O((nh^{q_i})^{-1}) + O(h^2) \Bigg] \Bigg\} \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} \Bigg\{ \prod_{i = 1}^{r} [1 + O((nh^{q_i})^{-1}) + O(h^2)] \Bigg\} \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(\mathsf{Max}(nh^{q_i})^{-1}) + O(h^2)]^r \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)].
+\end{align}
+By a similar argument,
+\begin{align}
+    \prod_{i = 1}^{r} \int [f_i^2(x_i) + O(h^2)] \mathrm{d} \mathbf{x}_i &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(h^2)].
+\end{align}
+Therefore,
+\begin{align}
+    \mathsf{E} \Bigg( \int \Big[ \prod_{i = 1}^{r} \hat{f}_{h_i}(\mathbf{x_i}) - \prod_{i = 1}^{r} \mathsf{E} (\hat{f}_{h_i} (\mathbf{x_i})) \Big]^2 \mathrm{d} \mathbf{x} \Bigg) &=\Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)] \\
+    &- \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [1 + O(h^2)] \\
+    &= \Bigg\{ \prod_{i = 1}^{r} \int f_i^2(x_i) \mathrm{d} \mathbf{x}_i \Bigg\} [O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2)] \\
+    &= O(\mathsf{Max}((nh^{q_i})^{-1})+ h^2).
+\end{align}
+\end{Proof}
+Note that, by the assumptions that $nh^{q_i} \to \infty$ and $h \to 0$, it follows that $\mathsf{E} (I_{n2}) \to 0$ under the null hypothesis of independence between the components of the polysphere.
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}

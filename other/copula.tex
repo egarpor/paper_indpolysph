@@ -1,0 +1,72 @@
+\documentclass{article}
+
+% Language setting
+% Replace `english' with e.g. `spanish' to change the document language
+\usepackage[english]{babel}
+
+% Set page size and margins
+% Replace `letterpaper' with `a4paper' for UK/EU standard size
+\usepackage[letterpaper,top=2cm,bottom=2cm,left=3cm,right=3cm,marginparwidth=1.75cm]{geometry}
+
+% Useful packages
+\usepackage{amsmath}
+\usepackage{graphicx}
+\usepackage[colorlinks=true, allcolors=blue]{hyperref}
+
+\newtheorem{Definition}{Definition}[section] 
+\newtheorem{fig}{figure}[section] 
+\newtheorem{Theorem}{Theorem}[section] 
+\newtheorem{Proposition}{Proposition}[section] 
+\newtheorem{Corollary}{Corollary}[section] 
+\newtheorem{Example}{Example}[section] 
+\newtheorem{lemma}{Lemma}[section] 
+\newtheorem{Algorithm}{Algorithm}[section] 
+\newtheorem{Remark}{Remark}[section] 
+\newtheorem{Notation}{Notation}[section] 
+\newtheorem{Proof}{Proof}[section]
+
+\title{A copula for variables in the torus}
+\author{Vinícius Litvinoff}
+
+\begin{document}
+\maketitle
+
+\begin{abstract}
+Your abstract.
+\end{abstract}
+
+\section{Introduction}
+
+In this text, we study a sufficient condition to ensure that the family of copulas introduced in \cite{KOMELJ2010137} is circular.
+
+\begin{Definition}
+    Let $C$ be an absolutely continuous $n$-dimensional copula with associated density $c$. $C$ is circular if $c(u_1, \dots, u_k = 0, \dots, u_n) = c(u_1, \dots, u_k = 1, \dots, u_n)$ for all $k \in \{ 1, \dots, n \}$
+\end{Definition}
+
+\begin{Proposition}
+    Let $c(u_1, \dots, u_n) = 1 + \sum_{1 \le i < j \le n} \theta_{ij} g_i(u_i) g_j(u_j)$ be a density copula (see Theorem 4 in \cite{KOMELJ2010137}). If $g_k(0) = g_k(1)$ for all $k \in \{ 1, \dots, n \}$, then $c$ is a circular copula.
+\end{Proposition}
+\begin{Proof}
+    For convenience, the density copula will be written as
+    \begin{align}
+        c(u_1, \dots, u_n) = 1 + \sum_{i=1}^{n-1} \sum_{j=i+1}^{n} \theta_{ij} g_i(u_i) g_j(u_j).
+    \end{align}
+    Without loss of generality, consider $k \in \{ 2, \dots, n-1 \}$. $c(u_1, \dots, u_k = 0, \dots, u_n) = c(u_1, \dots, u_k = 1, \dots, u_n)$ if and only if $d_k := c(u_1, \dots, u_k = 1, \dots, u_n) - c(u_1, \dots, u_k = 0, \dots, u_n) = 0.$ Note that
+    \begin{align}
+        d_k &= \Bigg[ \sum_{i=1}^{k-1} \theta_{ik} g_i(u_i) g_k(1) + \sum_{j=k+1}^{n} \theta_{kj} g_k(1) g_j(u_j) \Bigg] 
+        - \Bigg[ \sum_{i=1}^{k-1} \theta_{ik} g_i(u_i) g_k(0) + \sum_{j=k+1}^{n} \theta_{kj} g_k(0) g_j(u_j) \Bigg] \\
+        &= g_k(1) \Bigg[ \sum_{i=1}^{k-1} \theta_{ik} g_i(u_i) + \sum_{j=k+1}^{n} \theta_{kj} g_j(u_j) \Bigg] 
+        - g_k(0) \Bigg[ \sum_{i=1}^{k-1} \theta_{ik} g_i(u_i) + \sum_{j=k+1}^{n} \theta_{kj} g_j(u_j) \Bigg] \\
+        &= (g_k(1)-g_k(0)) \Bigg[ \sum_{i=1}^{k-1} \theta_{ik} g_i(u_i) + \sum_{j=k+1}^{n} \theta_{kj} g_j(u_j) \Bigg],
+    \end{align}
+    which is equal to zero when $g_k(0) = g_k(1)$, as we wished to prove.
+\end{Proof}
+
+
+
+
+
+\bibliographystyle{alpha}
+\bibliography{sample}
+
+\end{document}
