@@ -1076,6 +1076,371 @@ $n$ & $c$ & {$\kappa=0$} & {$\kappa=\tfrac{1}{3}$} & {$\kappa=1$} & {$\kappa=3$}
 \caption{Empirical power ($\alpha=0.05$) across sample sizes, tuning parameter $c$, and signal strength $\kappa$.}
 \end{table}
 
+\section{New table}
+
+\begin{table}[!h]
+\centering
+\caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios.}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{cclcccc}
+\toprule
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
+\cmidrule(l{3pt}r{3pt}){4-7}
+\textbf{d} & \textbf{r} & \textbf{c} & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
+\midrule
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 0.375 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.665 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.030 & 0.715 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.695 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.045 & 0.315 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.080 & 1.000 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.065 & 0.100 & 0.840 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.135 & 0.935 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.115 & 0.930 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.025 & 0.195 & 0.990 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.040 & 0.225 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.230 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.055 & 0.060 & 0.075 & 0.080\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.710 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.070 & 0.800 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.030 & 0.055 & 0.045 & 0.050\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.020 & 0.055 & 0.060 & 0.135\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.035 & 0.045 & 0.070 & 0.180\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.050 & 0.055 & 0.040 & 0.065\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.065 & 0.040 & 0.025 & 0.155\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.050 & 0.050 & 0.065 & 0.310\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.075 & 0.090 & 0.055\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.045 & 0.065 & 0.050\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.025 & 0.075 & 0.085 & 0.390\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+\section{Expectation of G}
+
+\paragraph{Asymptotic behavior of $E(\widetilde G_n^2(X_1,X_2))$.}
+Recall that
+\[
+\widetilde H_n(x,X_1):=\int_{S^d}\bar L_h(t,x)\bar L_h(t,X_1)\,dt,
+\]
+and
+\[
+\widetilde G_n(x,y):=E\!\left[\widetilde H_n(x,X_1)\widetilde H_n(y,X_1)\right].
+\]
+Hence,
+\[
+E\!\left[\widetilde G_n^2(X_1,X_2)\right]
+=
+\int_{S^d}\int_{S^d}\widetilde G_n(x,y)^2 f(x)f(y)\,dx\,dy.
+\]
+
+Expanding the centered kernels, $\bar L_h=L_h-E(L_h)$, the quantity
+$E(\widetilde G_n^2(X_1,X_2))$ is split into $16$ summands. We show that the first one is of
+order $O(\rho(h)^{-1})$ and that the remaining terms are of smaller order. The first summand is
+\[
+C_1:=
+\int_{S^d}\int_{S^d}
+\left\{
+\int_{S^d}\int_{S^d}\int_{S^d}
+L_h(t,x)L_h(t,u)L_h(s,y)L_h(s,u)f(u)\,dt\,ds\,du
+\right\}^2
+f(x)f(y)\,dx\,dy.
+\]
+
+Define the overlap kernel
+\[
+H_h^*(x,u):=\int_{S^d}L_h(t,x)L_h(t,u)\,dt.
+\]
+Then
+\[
+C_1=
+\int_{S^d}\int_{S^d}
+\left\{
+\int_{S^d}H_h^*(x,u)H_h^*(y,u)f(u)\,du
+\right\}^2
+f(x)f(y)\,dx\,dy.
+\]
+
+Under the null hypothesis, $f(x)=\prod_{j=1}^r f_j(x^{(j)})$, and, because $L_h$ is a product kernel,
+\[
+H_h^*(x,u)=\prod_{j=1}^r \varphi_{j,h_j}(x^{(j)},u^{(j)}),
+\]
+where
+\[
+\varphi_{j,h_j}(a,b):=
+\int_{S^{d_j}}L_{h_j}(z,a)L_{h_j}(z,b)\,dz.
+\]
+Therefore,
+\[
+\int_{S^d}H_h^*(x,u)H_h^*(y,u)f(u)\,du
+=
+\prod_{j=1}^r
+\left\{
+\int_{S^{d_j}}
+\varphi_{j,h_j}(x^{(j)},u^{(j)})
+\varphi_{j,h_j}(y^{(j)},u^{(j)})
+f_j(u^{(j)})\,du^{(j)}
+\right\},
+\]
+and, consequently,
+\[
+C_1=\prod_{j=1}^r C_{1,j},
+\]
+with
+\[
+C_{1,j}:=
+\int_{S^{d_j}}\int_{S^{d_j}}
+\left\{
+\int_{S^{d_j}}
+\varphi_{j,h_j}(x,u)\varphi_{j,h_j}(y,u)f_j(u)\,du
+\right\}^2
+f_j(x)f_j(y)\,dx\,dy.
+\]
+
+Now we study $\varphi_{j,h_j}$. By definition,
+\[
+\varphi_{j,h_j}(a,b)
+=
+c_{d_j,L}(h_j)^2
+\int_{S^{d_j}}
+L\!\left(\frac{1-z^\top a}{h_j^2}\right)
+L\!\left(\frac{1-z^\top b}{h_j^2}\right)\,dz.
+\]
+Applying the tangent-normal change of variables in Lemma B.4, exactly as in the derivation of the
+dominant term $A_1$ in the proof of $E(\widetilde H_n^2(X_1,X_2))$, it follows that there exists a
+bounded kernel $\psi_j:\mathbb R_+\to\mathbb R_+$ such that
+\[
+\varphi_{j,h_j}(a,b)
+=
+h_j^{-d_j}\psi_j\!\left(\frac{1-a^\top b}{h_j^2}\right)(1+o(1)),
+\qquad h_j\to0,
+\]
+uniformly on $S^{d_j}\times S^{d_j}$. In particular, $\varphi_{j,h_j}$ is itself a directional kernel
+with normalizing order $h_j^{-d_j}$.
+
+Therefore, applying again the same argument used for the dominant term $A_1$ in the proof of
+$E(\widetilde H_n^2(X_1,X_2))$, but now with $\varphi_{j,h_j}$ in place of $L_{h_j}$, yields
+\[
+C_{1,j}=O(h_j^{-d_j}).
+\]
+Hence,
+\[
+C_1
+=
+\prod_{j=1}^r O(h_j^{-d_j})
+=
+O\!\left(\prod_{j=1}^r h_j^{-d_j}\right)
+=
+O(\rho(h)^{-1}).
+\]
+
+Consider now any of the remaining $15$ summands in the expansion of
+$E(\widetilde G_n^2(X_1,X_2))$. Each of them contains at least one factor of the form
+$E\{L_h(\cdot,X)\}$ instead of a genuine overlap term. By Remark 2.1 and Lemma B.3,
+\[
+E\{L_h(x,X)\}=f(x)+O\!\left(\sum_{j=1}^r h_j^2\right)=O(1)
+\]
+uniformly in $x$, and therefore each such term loses at least one overlap-kernel contribution.
+Repeating the same iterative argument as above shows that none of these remaining terms exceeds
+the order of $C_1$; in fact, they are all $O(1)$ or $o(\rho(h)^{-1})$.
+
+Thus,
+\[
+E\!\left[\widetilde G_n^2(X_1,X_2)\right]=O(\rho(h)^{-1}).
+\]
+
+\subsection{New proof}
+
+\paragraph{Asymptotic behavior of $E(\widetilde G_n^2(X_1,X_2))$.}
+Recall that
+\[
+\widetilde G_n(x,y):=E\!\left[\widetilde H_n(x,X_1)\widetilde H_n(y,X_1)\right],
+\]
+with
+\[
+\widetilde H_n(x,u):=\int_{S^d}\overline L_h(z,x)\overline L_h(z,u)\,dz,
+\qquad
+\overline L_h(z,x):=L_h(z,x)-E[L_h(z,X_1)].
+\]
+Therefore,
+\[
+E\!\left[\widetilde G_n^2(X_1,X_2)\right]
+=
+\int_{S^d}\int_{S^d}\widetilde G_n(x,y)^2 f(x)f(y)\,dx\,dy.
+\]
+
+Define
+\[
+m_h(x):=E[L_h(x,X_1)],
+\qquad
+H_n^*(x,u):=\int_{S^d}L_h(z,x)L_h(z,u)\,dz,
+\]
+and also
+\[
+B_h(x):=\int_{S^d}L_h(z,x)m_h(z)\,dz,
+\qquad
+C_h:=\int_{S^d}m_h(z)^2\,dz.
+\]
+Then
+\[
+\widetilde H_n(x,u)=H_n^*(x,u)-B_h(x)-B_h(u)+C_h.
+\]
+Hence,
+\[
+\widetilde G_n(x,y)
+=
+A_h(x,y)+R_h(x,y),
+\]
+where
+\[
+A_h(x,y):=E\!\left[H_n^*(x,X_1)H_n^*(y,X_1)\right]
+=
+\int_{S^d}H_n^*(x,u)H_n^*(y,u)f(u)\,du,
+\]
+and $R_h(x,y)$ collects all the remaining terms.
+
+By Remark 2.1,
+\[
+m_h(x)=f(x)+O\!\left(\sum_{j=1}^r h_j^2\right)
+\]
+uniformly in $x\in S^d$. Since $L_h(\cdot,\cdot)$ is a probability kernel, it follows that
+$B_h(x)=O(1)$ uniformly in $x$, and also $C_h=O(1)$. Moreover,
+\[
+E\!\left[H_n^*(x,X_1)\right]
+=
+\int_{S^d}L_h(z,x)m_h(z)\,dz
+=
+B_h(x)
+=
+O(1)
+\]
+uniformly in $x$. Therefore,
+\[
+R_h(x,y)=O(1)
+\]
+uniformly in $(x,y)\in S^d\times S^d$, and consequently
+\[
+\int_{S^d}\int_{S^d}R_h(x,y)^2 f(x)f(y)\,dx\,dy=O(1).
+\]
+Thus,
+\[
+E\!\left[\widetilde G_n^2(X_1,X_2)\right]
+=
+\int\!\!\int \big(A_h(x,y)+R_h(x,y)\big)^2 f(x)f(y)\,dx\,dy
+\]
+\[
+\le
+2\int\!\!\int A_h(x,y)^2 f(x)f(y)\,dx\,dy
++
+2\int\!\!\int R_h(x,y)^2 f(x)f(y)\,dx\,dy
+=
+2A_1+O(1),
+\]
+where
+\[
+A_1:=
+\int_{S^d}\int_{S^d}
+\left(
+\int_{S^d}H_n^*(x,u)H_n^*(y,u)f(u)\,du
+\right)^2
+f(x)f(y)\,dx\,dy.
+\]
+
+It remains to study $A_1$. Since $L_h$ is a product kernel, then
+\[
+H_n^*(x,u)
+=
+\prod_{j=1}^r
+\varphi_{j,h_j}\!\left(x^{(j)},u^{(j)}\right),
+\]
+where
+\[
+\varphi_{j,h_j}(a,b):=
+\int_{S^{d_j}}L_{h_j}(z,a)L_{h_j}(z,b)\,dz.
+\]
+Under the null hypothesis,
+\[
+f(u)=\prod_{j=1}^r f_j(u^{(j)}),
+\]
+and therefore
+\[
+A_1
+=
+\prod_{j=1}^r A_{1,j},
+\]
+with
+\[
+A_{1,j}:=
+\int_{S^{d_j}}\int_{S^{d_j}}
+\left(
+\int_{S^{d_j}}
+\varphi_{j,h_j}(x,u)\varphi_{j,h_j}(y,u)f_j(u)\,du
+\right)^2
+f_j(x)f_j(y)\,dx\,dy.
+\]
+
+Now, for each $j$, the function $\varphi_{j,h_j}$ is a kernel-overlap term of the same type as the
+quantity studied in the previous subsection for $H_n^*(X_1,X_2)$. Repeating the same tangent-normal
+change-of-variables argument componentwise, and using that
+\[
+c_{d_j,L}(h_j)\asymp h_j^{-d_j},
+\]
+one obtains
+\[
+A_{1,j}=O(h_j^{-d_j}).
+\]
+Hence,
+\[
+A_1
+=
+\prod_{j=1}^r O(h_j^{-d_j})
+=
+O\!\left(\prod_{j=1}^r h_j^{-d_j}\right)
+=
+O(\rho(h)^{-1}).
+\]
+
+Therefore,
+\[
+E\!\left[\widetilde G_n^2(X_1,X_2)\right]
+\le
+2A_1+O(1)
+=
+O(\rho(h)^{-1}),
+\]
+which proves the claim.
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 
