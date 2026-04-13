@@ -118,7 +118,10 @@ where $c_{\bd,L}(\bh)=\prod_{j=1}^{r} c_{d_j,L}(h_j)$ is the normalizing constan
     %
     =&\; \rho(\bh) \lambda_{\bh,\bd}(L)\asymp \rho(\bh)\lambda_{\bd}(L),\label{eq:equiv}
 \end{align}
-where $\bh \defin (h_1, \dots, h_r)\in\R_+^r$, $L$ denotes a directional kernel, and $c_{h,d_j}$ denotes a normalizing constant (see \cite{Garcia-Portugues2024} and \cite{Garcia-Portugues2015}). These definitions are straightforward adaptations of the notion of linear kernel, extensively used in nonparametric statistics to estimate probability density functions. Note that, under these definitions, the kernel used in $ \hat{f}(\bx;\bh)$ is the product kernel; besides this being an easy way to define the estimator of $f$, this assumption enables us to derive the main result of this paper. Additionally, $\hat{f}_{\bh,0}$ is the estimator of the joint density $f$ under the assumption that the elements $\bX^{(1)}, \dots, \bX^{(r)}$ are mutually independent.
+
+\textcolor{red}{me to add as either table, plot or any kinf od fmetoaddaseithertable,plotoranykinfof}
+
+ where $\bh \defin (h_1, \dots, h_r)\in\R_+^r$, $L$ denotes a directional kernel, and $c_{h,d_j}$ denotes a normalizing constant (see \cite{Garcia-Portugues2024} and \cite{Garcia-Portugues2015}). These definitions are straightforward adaptations of the notion of linear kernel, extensively used in nonparametric statistics to estimate probability density functions. Note that, under these definitions, the kernel used in $ \hat{f}(\bx;\bh)$ is the product kernel; besides this being an easy way to define the estimator of $f$, this assumption enables us to derive the main result of this paper. Additionally, $\hat{f}_{\bh,0}$ is the estimator of the joint density $f$ under the assumption that the elements $\bX^{(1)}, \dots, \bX^{(r)}$ are mutually independent.
 
 To simplify the notation, we can define:
 \begin{align*}
@@ -347,9 +350,11 @@ To assess the power of the test in different kinds of distributions, the followi
 %{\color{red} Relation with \cite{Johnson1978,Wehrly1980}'s copula model for $d_1=d_2=1$ and $r=2$?}
 It is worth noting that, for the case with $r=2, d_1 = d_2 = 1, \kappa_1 = 0$ (two random vectors supported in the circle), the joint distribution of the angles belongs to the  Johnson--Wehrly family of distribution --- see \cite{Johnson1978,Wehrly1980}. This result is available in Proposition \ref{prop-js-family}.
 
-    For convenience, we will reparameterize the model as $a \defin \frac{\kappa}{\kappa + 1}$, because, in this way, for fixed parameters $\bmu_1$ and $\kappa_1$, the parameter $a \in [0,1)$ will quantify the amount of deviation from independence, where $a=0$ represents independence and $a \to 1$ represents ``perfect dependence''. This happens because the von Mises--Fisher distribution becomes uniform when the concentration parameter $\kappa$ is null, which would completely remove the dependence of the variables on the latent variables $\bmu$ (and, therefore, $\bX^{(1)}, \dots, \bX^{(r)}$ would be unconditionally iid); on the other hand, when $\kappa \to \infty$ ($a \to 1$), the conditional distributions become degenerate and, therefore, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ would be equal almost surely.
+    %For convenience, we will reparameterize the model as $a \defin \frac{\kappa}{\kappa + 1}$, because, in this way, for fixed parameters $\bmu_1$ and $\kappa_1$, the parameter $a \in [0,1)$ will quantify the amount of deviation from independence, where $a=0$ represents independence and $a \to 1$ represents ``perfect dependence''. This happens because the von Mises--Fisher distribution becomes uniform when the concentration parameter $\kappa$ is null, which would completely remove the dependence of the variables on the latent variables $\bmu$ (and, therefore, $\bX^{(1)}, \dots, \bX^{(r)}$ would be unconditionally iid); on the other hand, when $\kappa \to \infty$ ($a \to 1$), the conditional distributions become degenerate and, therefore, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ would be equal almost surely.
 
-    All simulations were performed for $\kappa_1 = 0$ ($\bmu$ uniform in the hypersphere), because, in this way, we have a single parameter $a$ measuring deviation from independence.
+    For fixed parameters $\bmu_1$ and $\kappa_1$, the parameter $\kappa \in [0,\infty)$ will quantify the amount of deviation from independence, where $\kappa=0$ represents independence and $\kappa \to \infty$ represents ``perfect dependence''. This happens because the von Mises--Fisher distribution becomes uniform when the concentration parameter $\kappa$ is null, which would completely remove the dependence of the variables on the latent variables $\bmu$ (and, therefore, $\bX^{(1)}, \dots, \bX^{(r)}$ would be unconditionally iid); on the other hand, when $\kappa \to \infty$, the conditional distributions become degenerate and, therefore, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ would be almost surely equal.
+
+    All simulations were performed for a single value of $\kappa_1 = 1$, because, in this way, we have a single parameter $\kappa$ measuring deviation from independence.
     
     \item \textbf{Markovian process:} we simulate $\bX^{(1)} \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(j)} | (\bX^{(1)} = \bx^{(1)} , \dots, \bX^{(j-1)} = \bx^{(j-1)}) \sim \mathrm{vMF}_d (\bx^{(j-1)}, \kappa)$ for $j = 2, \dots, r$. This produces the density
     \begin{align*}
@@ -357,41 +362,85 @@ It is worth noting that, for the case with $r=2, d_1 = d_2 = 1, \kappa_1 = 0$ (t
         &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^{r-1} e^{\kappa_1\bx^{(1) \top}\bmu_1 + \sum_{j=2}^{r} \kappa\bx^{(j) \top}\bx^{(j-1)}}.
 \end{align*}
 
-    In the same way as in the previous model, we can define a parameter $a \defin \frac{\kappa}{\kappa + 1} \in [0,1)$ measuring deviation from independence, where $a=0$ represents independence.
+    In the same way as in the previous model, we have a single parameter $\kappa \in [0,\infty)$ measuring deviation from independence, where $\kappa=0$ represents independence.
 \end{enumerate}
 
-Scenario i is constructed based on the fact that conditional independence is a simple way to induce dependence between random vectors. Note that, as a particular case, when we have $a=0$, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ become independent.
+Scenario i is constructed based on the fact that conditional independence is a simple way to induce dependence between random vectors. Note that, as a particular case, when we have $\kappa=0$, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ become independent.
 
-Scenario ii produces a sequence of random vectors, which of them supported in a hypersphere, where the location parameter of one component $\bX^{(j)}$ given the previous ones is given by the last component $\bX^{(j-1)}$. As in the first scenario, the parameter $a$ represents the amount of deviation from independence.
+Scenario ii produces a sequence of random vectors, which of them supported in a hypersphere, where the location parameter of one component $\bX^{(j)}$ given the previous ones is given by the last component $\bX^{(j-1)}$. As in the first scenario, the parameter $\kappa$ represents the amount of deviation from independence.
 
-Each scenario is simulated $1000$ times using $B=100$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha = 0.05$. The bandwidths used in the simulation are proportional to the bandwidths chosen by likelihood cross-validation (see \cite{Hall1987}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $2^c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. A pilot simulation study showed that negative values of $c$ produced tests with poor control of type 1 error, and, for this reason, we used values $c \ge 0$.
+Each scenario is simulated $200$ times using sample size $n=100$ and $B=200$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha$, $\alpha = 0.01, 0.02, \dots, 0.99$. The bandwidths used in the simulation are proportional to the bandwidths chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $2^c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. 
 
-%The results of the simulation are summarized in Table \ref{tab1}. As expected, the power increased as a function of $n$ - except for $\delta = 0$, which is the independence case. In such a case, the empirical power is close to 0.05. Furthermore, the rejection rate has increased as a function of $\delta$, which is reasonable, since greater values of $\delta$ represent a stronger deviation from independence.
+The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{tab1}. As expected, the power is close to 1.00 - except for $\kappa = 0$, which is the independence case. In such a case, the empirical power is close to 0.05. Furthermore, the rejection rate has increased as a function of $\kappa$, which is reasonable, since greater values of $\kappa$ represent a stronger deviation from independence.
 
-\begin{table}[ht]
+\begin{table}[!h]
 \centering
-\begin{tabular}{cc S S S S}
+\caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios.}
+\label{tab1}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{cclcccc}
 \toprule
-$n$ & $c$ & {$a=0$} & {$a=0.25$} & {$a=0.5$} & {$a=0.75$} \\
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
+\cmidrule(l{3pt}r{3pt}){4-7}
+\textbf{d} & \textbf{r} & \textbf{c} & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
 \midrule
-10  & 0 & 0.03 & 0.05 & 0.09 & 0.66 \\
-50  & 0 & 0.05 & 0.06 & 0.34 & 1.00 \\
-100 & 0 & 0.05 & 0.06 & 0.62 & 1.00 \\
-\addlinespace
-10  & 1 & 0.04 & 0.05 & 0.09 & 0.67 \\
-50  & 1 & 0.05 & 0.06 & 0.29 & 1.00 \\
-100 & 1 & 0.04 & 0.06 & 0.60 & 1.00 \\
-\addlinespace
-10  & 2 & 0.04 & 0.04 & 0.07 & 0.69 \\
-50  & 2 & 0.05 & 0.05 & 0.28 & 1.00 \\
-100 & 2 & 0.04 & 0.06 & 0.59 & 1.00 \\
-\addlinespace
-10  & 3 & 0.06 & 0.05 & 0.09 & 0.70 \\
-50  & 3 & 0.05 & 0.06 & 0.30 & 1.00 \\
-100 & 3 & 0.04 & 0.05 & 0.59 & 1.00 \\
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 0.375 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.665 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.030 & 0.715 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.695 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.045 & 0.315 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.080 & 1.000 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.065 & 0.100 & 0.840 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.135 & 0.935 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.115 & 0.930 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.025 & 0.195 & 0.990 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.040 & 0.225 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.230 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.055 & 0.060 & 0.075 & 0.080\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.710 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.070 & 0.800 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.030 & 0.055 & 0.045 & 0.050\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.020 & 0.055 & 0.060 & 0.135\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.035 & 0.045 & 0.070 & 0.180\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.050 & 0.055 & 0.040 & 0.065\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.065 & 0.040 & 0.025 & 0.155\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.050 & 0.050 & 0.065 & 0.310\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.075 & 0.090 & 0.055\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.045 & 0.065 & 0.050\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.025 & 0.075 & 0.085 & 0.390\\
 \bottomrule
-\end{tabular}
-\caption{Empirical power ($\alpha=0.05$) for $r=2, d=1$ across sample sizes, tuning parameter $c$, and dependence parameter $a$.}
+\end{tabular}}
 \end{table}
 
 Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} summarize some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $a$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has a negative effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: both affected negatively the test behavior, but the impact is much more moderate for the parameter $r$; increasing $d$ affected considerably the power.
@@ -399,7 +448,7 @@ Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} s
 \begin{figure}[H]
     \centering
     \includegraphics[width=0.85\linewidth]{Rplot20.pdf}
-    \caption{Empirical power as a function of the significance level in the model ``Mixture of iid von Mises--Fisher distributions'', for $n=100$, $d=1$ and $r=2$; the parameter $a \in [0,1)$ represents deviation from independence, and $c = 0,1,2,3$ is a tuning parameter related to the degree of smoothness (see the text in this section). Axes in log-scale.} 
+    \caption{Empirical power as a function of the significance level in the model ``Mixture of iid von Mises--Fisher distributions'', for $n=100$, $d=1$ and $r=2$; the parameter $\kappa \in [0,\infty)$ represents deviation from independence, and $c = -1, 0, 1$ is a tuning parameter related to the degree of smoothness (see the text in this section). Axes in log-scale.} 
     \label{fig:powercurve1}
 \end{figure}
 
@@ -417,7 +466,7 @@ Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} s
     \label{fig:powercurve3}
 \end{figure}
 
-Tables with additional results from the simulation study, showing the empirical power for different combination of parameters $d,r,n,a,c$ under a $\alpha = 0.05$ significance level, are available in Section \ref{sec:simultation_tables} in Appendix. As a general pattern, the power increased as a function of both the sample size $n$ and the dependence parameter $a$, which is coherent with the theory previously developed in this paper. The test performance was severally affected by the dimension $d$ of the hyperspheres.
+%Tables with additional results from the simulation study, showing the empirical power for different combination of parameters $d,r,n,a,c$ under a $\alpha = 0.05$ significance level, are available in Section \ref{sec:simultation_tables} in Appendix. As a general pattern, the power increased as a function of both the sample size $n$ and the dependence parameter $a$, which is coherent with the theory previously developed in this paper. The test performance was severally affected by the dimension $d$ of the hyperspheres.
 
 %-------------------------------%
 \section{Real data applications}
