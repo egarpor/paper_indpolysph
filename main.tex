@@ -375,7 +375,7 @@ The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{t
 
 \begin{table}[!h]
 \centering
-\caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios.}
+\caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios (mixture model).}
 \label{tab1}
 \centering
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
@@ -443,7 +443,81 @@ The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{t
 \end{tabular}}
 \end{table}
 
-Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} summarize some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = -1$ - large $r$ surprisingly increased the power under alternative scenarios without discalibrating type I error control.
+The power results for the Markov model are available in Table \ref{tab-markov}. Except for large $d$, the test demonstrated good performance over all scenarios.
+
+%%% tabela markov:
+
+\begin{table}[!h]
+\centering
+\caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios (Markov model).}
+\label{tab-markov}
+\centering
+\resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
+\fontsize{10}{12}\selectfont
+\begin{tabular}[t]{cclcccc}
+\toprule
+\multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
+\cmidrule(l{3pt}r{3pt}){4-7}
+\textbf{d} & \textbf{r} & \textbf{c} & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
+\midrule
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.040 & 1.000 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.085 & 1.000 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.065 & 1.000 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.065 & 1.000 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 0.985 & 1.000 & 0.565\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.040 & 1.000 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.025 & 0.890 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.975 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.955 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.040 & 0.905 & 1.000 & 1.000\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.070 & 0.985 & 1.000 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.060 & 0.990 & 1.000 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.060 & 0.070 & 0.050\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.035 & 0.960 & 1.000 & 1.000\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.980 & 1.000 & 1.000\\
+\cmidrule{1-7}
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.040 & 0.055 & 0.040 & 0.055\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.115 & 0.360 & 1.000\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.130 & 0.540 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.070 & 0.035 & 0.085\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.065 & 0.160 & 0.515\\
+
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.100 & 0.470 & 1.000\\
+
+ &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.030 & 0.050 & 0.080 & 0.050\\
+
+ &  & $h_{\mathrm{ideal}}$ & 0.040 & 0.030 & 0.025 & 0.090\\
+
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.050 & 0.060 & 0.215 & 0.905\\
+\bottomrule
+\end{tabular}}
+\end{table}
+
+Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} summarize some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = -1$ - large $r$ surprisingly increased the power under alternative scenarios without affecting type I error control.
 
 \begin{figure}[H]
     \centering
@@ -464,6 +538,29 @@ Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} s
     \includegraphics[width=0.85\linewidth]{plots/power_curve_3.pdf}
     \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=1$ and $r=10$.} 
     \label{fig:powercurve3}
+\end{figure}
+
+Finally, Figures \ref{fig:powercurvemarkov1}, \ref{fig:powercurvemarkov2} and \ref{fig:powercurvemarkov3} exhibit power curves for the Markovian model. It is possible to visulise, again, a considerable negative influence of the dimension $d$ on the test power.
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{plots/power_markov1.pdf}
+    \caption{Empirical power as a function of the significance level in the model ``Markovian process'', for $n=100$, $d=1$ and $r=2$; the parameter $\kappa \in [0,\infty)$ represents deviation from independence, and $c = -1, 0, 1$ is a tuning parameter related to the degree of smoothness (see the text in this section). Axes in log-scale.} 
+    \label{fig:powercurvemarkov1}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{plots/power_markov2.pdf}
+    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=10$ and $r=2$.} 
+    \label{fig:powercurvemarkov2}
+\end{figure}
+
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=0.85\linewidth]{plots/power_markov3.pdf}
+    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=1$ and $r=10$.} 
+    \label{fig:powercurvemarkov3}
 \end{figure}
 
 %Tables with additional results from the simulation study, showing the empirical power for different combination of parameters $d,r,n,a,c$ under a $\alpha = 0.05$ significance level, are available in Section \ref{sec:simultation_tables} in Appendix. As a general pattern, the power increased as a function of both the sample size $n$ and the dependence parameter $a$, which is coherent with the theory previously developed in this paper. The test performance was severally affected by the dimension $d$ of the hyperspheres.
