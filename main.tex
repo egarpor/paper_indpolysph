@@ -683,7 +683,7 @@ The first and second authors acknowledge support from grant PCI2024-155058-2, fu
 
 %
 
-\begin{proof}[\textcolor{red}{[Almost completely proved, but we need to prove the asymptotics of $\mathsf{E}(G_n^2)$]} Proof of Lemma \ref{lemma-in1}]
+\begin{proof}[Proof of Lemma \ref{lemma-in1}]
     We have the following calculations:
     \begin{align*}
     T_{n,1} &= \int_{\Sr} \Bigg[ \frac{1}{n} \sum_{i=1}^{n} L_{\bh} (\bx,\bX_i) - \mathsf{E} \Big( \frac{1}{n} \sum_{i=1}^{n} L_{\bh} (\bx,\bX_i) \Big) \Bigg]^2 \,\rd \bx \\
@@ -1114,66 +1114,7 @@ and therefore
 O\lrp{\rho(\bh)^{-1}}.
 \]
 
-This proves the required bound for \(\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}\).
-
-{\color{red}\textit{Asymptotic behavior of $\mathsf{E} (\tilde{G}_n^2(\bX_1,\bX_2))$.} 
-
-Remember that
-\begin{align*}
-    \tilde{H}_n(\bx,\bX_1) &= \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bX_1) \,\rd \bt.
-\end{align*}
-Then
-\begin{align*}
-    \tilde{G}_n(\bx,\by) & \defin \mathsf{E} (\tilde{H}_n(\bx,\bX_1)\tilde{H}_n(\by,\bX_1))\\
-    &=\int_{\Sr} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bt,\bx) \bar{L}_{\bh} (\bt,\bu) \,\rd \bt} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bs,\by) \bar{L}_{\bh} (\bs,\bu) \,\rd \bs} f(\bu) \,\rd \bu.
-\end{align*}
-Therefore,
-\begin{align*}
-    \mathsf{E} (\tilde{G}^2_n(\bX_1,\bX_2)) =&\; \int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bt,\bu) \,\rd \bt} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bs,\bx_2) \bar{L}_{\bh} (\bs,\bu) \,\rd \bs} f(\bu) \,\rd \bu }^2\\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2\\
-    =&\; \int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr}\int_{\Sr} \int_{\Sr} \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bt,\bu) \bar{L}_{\bh} (\bs,\bx_2) \bar{L}_{\bh} (\bs,\bu) f(\bu) \,\rd \bt \,\rd \bs \,\rd \bu }^2\\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2\\
-\end{align*}
-
-\begin{comment}
-By Cauchy--Schwartz in the integrand on $\bu$,
-\begin{align*}
-    \mathsf{E} (\tilde{G}^2_n(\bX_1,\bX_2)) \leq&\; \int_{\Sr} \int_{\Sr} \Bigg\{\lrc{\int_{\Sr} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bt,\bu_1) \,\rd \bt}^2 f(\bu_1) \,\rd \bu_1}\\
-    &\times\lrc{\int_{\Sr}\lrb{\int_{\Sr} \bar{L}_{\bh} (\bs,\bx_2) \bar{L}_{\bh} (\bs,\bu_2) \,\rd \bs}^2 f(\bu_2) \,\rd \bu_2} \Bigg\}\\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2\\
-    &= \lrb{\int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr} \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bt,\bu_1) \,\rd \bt}^2 f(\bu_1) \,\rd \bu_1 f(\bx_1) \,\rd \bx_1}^2\\
-    %
-    % LEADS TO ORDER TOO BIG -- O(rho(h)^{-2})
-\end{align*}
-\end{comment}
-
-Note that $ \bar{L}_{\bh} (\bt,\bx_1) \bar{L}_{\bh} (\bt,\bu) \bar{L}_{\bh} (\bs,\bx_2) \bar{L}_{\bh} (\bs,\bu)$ is split into 16 summands. Consider the first term, which is[check] the dominant one:
-\begin{align}
-    C_1 =&\;  \int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr}\int_{\Sr} \int_{\Sr} L_{\bh} (\bt,\bx_1) L_{\bh} (\bt,\bu) L_{\bh} (\bs,\bx_2) L_{\bh} (\bs,\bu) f(\bu) \,\rd \bt \,\rd \bs \,\rd \bu }^2\\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2.
-\end{align}
-
-\begin{comment}
-\begin{align*}
-    C_1 =&\; \int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr} \lrb{ \int_{\Sr} L_{\bh} (\bt,\bx_1) L_{\bh} (\bt,\bu) \,\rd \bt} \lrb{ \int_{\Sr} L_{\bh} (\bs,\bx_2) L_{\bh} (\bs,\bu) \,\rd \bs} f(\bu) \,\rd \bu }^2 \\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2.
-\end{align*}
-\end{comment}
-
-Roadmap
-
-$\bx_2=z\bx_1 + (1-z^2)^{1/2}\bB_{\bx_2}\bxi$
-
-For the sphere for the moment
-
-\begin{align*}
-    C_1 =&\; c_{\bd,L}(\bh)^4\int_{\Sr} \int_{\Sr} \lrb{ \int_{\Sr}\int_{\Sr}\int_{\Sr} L\lrp{\frac{1-\bt^\top\bx_1}{h^2}} L_{\bh} (\bt,\bu) L\lrp{\frac{1-\bs^\top\bx_2}{h^2}} L_{\bh} (\bs,\bu) f(\bu) \,\rd \bt \,\rd \bs  \,\rd \bu }^2 \\
-    &\times f(\bx_1)f(\bx_2)\,\rd \bx_1 \,\rd \bx_2\\
-    =&\; c_{\bd,L}(\bh)^4 \int_{\Srm} \int_{[-1,1]^r} \int_{\Sr} \\
-    &\times\lrb{ \int_{\Sr}\int_{\Sr} \int_{\Sr} L\lrp{\frac{1-\bt^\top\bx_1}{h^2}} L_{\bh}(\bt,\bu) L \Bigg(\frac{1 - z\bs^\top\bx_1 + (1-z^2)^{1/2}\bs^\top(\bB_{\bx_2}\bxi)}{h^2}\Bigg) L_{\bh} (\bs,\bu) f(\bu) \,\rd \bt \,\rd \bs \,\rd \bu }^2\\
-    &\times J(\bz) f(\bx_1)f(z\bx_1 + (1-z^2)^{1/2}\bB_{\bx_2}\bxi)\,\rd \bx_1 \,\rd \bz \,\rd \bxi\\
-    =&\;
-\end{align*}
+This proves the required bound for \(\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}\). \\
 
 
 
@@ -1331,21 +1272,21 @@ Therefore, $A_1$ is the dominant term and we have the result:
 \begin{align*}
     \mathsf{E} ( \tilde{H}_n^2(\bX_1, \bX_2)) = O(\rho (\bh)^{-1}).
 \end{align*}
-}
 
 \textit{Asymptotic behavior of the ratio $\tilde{A}_n / \tilde{B}_n^2$.} Defining $\tilde{A}_n \defin n^{-1} \mathsf{E} (\tilde{H}_n^4(\bX_1, \bX_2)) + \mathsf{E} (\tilde{G}_n^2(\bX_1,\bX_2))$, then, from the previous results,
 \begin{align*}
-    \tilde{A}_n &= O(n^{-1}\rho(\bh)^{-3} + \rho(\bh)^{-2})
+    \tilde{A}_n &= O(n^{-1}\rho(\bh)^{-3} + \rho(\bh)^{-1})
 \end{align*}
 Also
 \begin{align*}
-    \tilde{B}_n &\defin \mathsf{E}[\tilde{H}_n^2(\bX_1,\bX_2)]= O(\rho (\bh)^{-1}).
+    \tilde{B}_n &\defin \mathsf{E}[\tilde{H}_n^2(\bX_1,\bX_2)] \asymp \rho (\bh)^{-1}.
 \end{align*}
 
 Therefore,
 \begin{align*}
-    \frac{\tilde{A}_n}{\tilde{B}_n^2}=\frac{O(n^{-1}\rho(\bh)^{-3} + \rho(\bh)^{-2})}{O(\rho(\bh)^{-2})}=\alert{O((n\rho(\bh))^{-1}+1)}
+    \frac{\tilde{A}_n}{\tilde{B}_n^2}=\frac{O(n^{-1}\rho(\bh)^{-3} + \rho(\bh)^{-1})}{O(\rho(\bh)^{-2})} = ((n\rho(\bh))^{-1}+\rho(\bh)) \to 0,
 \end{align*}
+which proves the theorem condition.
 
 
 \begin{comment}
