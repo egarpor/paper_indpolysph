@@ -1512,6 +1512,231 @@ O(\rho(h)^{-1}),
 \]
 which proves the claim.
 
+\subsection{Other new proof}
+
+\paragraph{Asymptotic behavior of $\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}$.}
+Recall that
+\[
+\bar H_n(\bx,\bu) \defin \int_{\Sr} \bar L_{\bh}(\bz,\bx)\bar L_{\bh}(\bz,\bu)\,\rd \bz,
+\qquad
+\bar L_{\bh}(\bz,\bx) \defin L_{\bh}(\bz,\bx)-\mathsf{E}\lrc{L_{\bh}(\bz,\bX_1)},
+\]
+and
+\[
+G_n(\bx,\by) \defin \mathsf{E}\lrc{\bar H_n(\bx,\bX_1)\bar H_n(\by,\bX_1)}.
+\]
+Therefore,
+\[
+\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}
+=
+\int_{\Sr}\int_{\Sr} G_n(\bx,\by)^2 f(\bx)f(\by)\,\rd \bx\,\rd \by.
+\]
+
+Define
+\[
+m_n(\bz) \defin \mathsf{E}\lrc{L_{\bh}(\bz,\bX_1)}
+=
+\int_{\Sr} L_{\bh}(\bz,\bv)f(\bv)\,\rd \bv,
+\]
+\[
+H_n^\ast(\bx,\bu) \defin \int_{\Sr} L_{\bh}(\bz,\bx)L_{\bh}(\bz,\bu)\,\rd \bz,
+\qquad
+B_n(\bx) \defin \int_{\Sr} L_{\bh}(\bz,\bx)m_n(\bz)\,\rd \bz,
+\qquad
+C_n \defin \int_{\Sr} m_n(\bz)^2\,\rd \bz.
+\]
+Then
+\[
+\bar H_n(\bx,\bu)=H_n^\ast(\bx,\bu)-B_n(\bx)-B_n(\bu)+C_n.
+\]
+Hence,
+\[
+G_n(\bx,\by)=A_n(\bx,\by)+R_n(\bx,\by),
+\]
+where
+\[
+A_n(\bx,\by)\defin \int_{\Sr} H_n^\ast(\bx,\bu)H_n^\ast(\by,\bu)f(\bu)\,\rd \bu,
+\]
+and \(R_n(\bx,\by)\) collects the remaining terms.
+
+Since \(f\) is continuous on the compact set \(\Sr\), it is bounded. Thus,
+\[
+0 \le m_n(\bz)=\int_{\Sr}L_{\bh}(\bz,\bv)f(\bv)\,\rd \bv
+\le \norm{f}_\infty \int_{\Sr}L_{\bh}(\bz,\bv)\,\rd \bv
+= \norm{f}_\infty,
+\]
+so \(m_n(\bz)=O(1)\) uniformly in \(\bz\in\Sr\). Consequently,
+\[
+B_n(\bx)=\int_{\Sr}L_{\bh}(\bz,\bx)m_n(\bz)\,\rd \bz=O(1)
+\]
+uniformly in \(\bx\), and also
+\[
+C_n=\int_{\Sr}m_n(\bz)^2\,\rd \bz=O(1).
+\]
+Moreover,
+\[
+\int_{\Sr} H_n^\ast(\bx,\bu)f(\bu)\,\rd \bu
+=
+\int_{\Sr}\int_{\Sr} L_{\bh}(\bz,\bx)L_{\bh}(\bz,\bu)f(\bu)\,\rd \bz\,\rd \bu
+=
+\int_{\Sr}L_{\bh}(\bz,\bx)m_n(\bz)\,\rd \bz
+=
+B_n(\bx),
+\]
+hence
+\[
+\int_{\Sr} H_n^\ast(\bx,\bu)f(\bu)\,\rd \bu=O(1)
+\]
+uniformly in \(\bx\). Therefore, every term entering \(R_n(\bx,\by)\) is uniformly \(O(1)\), which
+implies
+\[
+\int_{\Sr}\int_{\Sr}R_n(\bx,\by)^2f(\bx)f(\by)\,\rd \bx\,\rd \by=O(1).
+\]
+
+By \((a+b)^2\leq 2a^2+2b^2\),
+\[
+\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}
+\leq
+2\int_{\Sr}\int_{\Sr}A_n(\bx,\by)^2f(\bx)f(\by)\,\rd \bx\,\rd \by
++
+2\int_{\Sr}\int_{\Sr}R_n(\bx,\by)^2f(\bx)f(\by)\,\rd \bx\,\rd \by.
+\]
+Hence,
+\[
+\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)} \leq 2A_{n,1}+O(1),
+\]
+where
+\[
+A_{n,1}
+\defin
+\int_{\Sr}\int_{\Sr}
+\lrp{
+\int_{\Sr}H_n^\ast(\bx,\bu)H_n^\ast(\by,\bu)f(\bu)\,\rd \bu
+}^2
+f(\bx)f(\by)\,\rd \bx\,\rd \by.
+\]
+
+Using again that \(f\) is bounded,
+\[
+\lrp{
+\int_{\Sr}H_n^\ast(\bx,\bu)H_n^\ast(\by,\bu)f(\bu)\,\rd \bu
+}^2
+\leq
+\norm{f}_\infty^2
+\lrp{
+\int_{\Sr}H_n^\ast(\bx,\bu)H_n^\ast(\by,\bu)\,\rd \bu
+}^2.
+\]
+Therefore,
+\[
+A_{n,1}
+\leq
+\norm{f}_\infty^4
+\int_{\Sr}\int_{\Sr}Q_n(\bx,\by)^2\,\rd \bx\,\rd \by,
+\]
+where
+\[
+Q_n(\bx,\by)\defin \int_{\Sr}H_n^\ast(\bx,\bu)H_n^\ast(\by,\bu)\,\rd \bu.
+\]
+
+Now we exploit the product structure of the kernel. Since
+\[
+L_{\bh}(\bx,\bu)=\prod_{j=1}^r L_{h_j}\lrp{\bx^{(j)},\bu^{(j)}},
+\]
+it follows that
+\[
+H_n^\ast(\bx,\bu)=\prod_{j=1}^r \varphi_{j,h_j}\lrp{\bx^{(j)},\bu^{(j)}},
+\]
+where
+\[
+\varphi_{j,h_j}(\ba,\bb)
+\defin
+\int_{\Sj}L_{h_j}(\bz,\ba)L_{h_j}(\bz,\bb)\,\rd \bz.
+\]
+Hence,
+\[
+Q_n(\bx,\by)=\prod_{j=1}^r q_{j,h_j}\lrp{\bx^{(j)},\by^{(j)}},
+\]
+with
+\[
+q_{j,h_j}(\ba,\bb)
+\defin
+\int_{\Sj}\varphi_{j,h_j}(\ba,\bu)\varphi_{j,h_j}(\bb,\bu)\,\rd \bu.
+\]
+
+Fix \(j\in\lrb{1,\ldots,r}\). First,
+\[
+\int_{\Sj}\varphi_{j,h_j}(\ba,\bu)\,\rd \bu
+=
+\int_{\Sj}\int_{\Sj}L_{h_j}(\bz,\ba)L_{h_j}(\bz,\bu)\,\rd \bz\,\rd \bu
+=
+\int_{\Sj}L_{h_j}(\bz,\ba)\,\rd \bz
+=
+1.
+\]
+Also, since \(L\) is bounded and \(c_{d_j,L}(h_j)\asymp h_j^{-d_j}\),
+\[
+\sup_{\ba,\bu}\varphi_{j,h_j}(\ba,\bu)
+\leq
+\sup_{\bz,\ba}L_{h_j}(\bz,\ba)
+=
+O(h_j^{-d_j}).
+\]
+Therefore,
+\[
+0\leq q_{j,h_j}(\ba,\bb)
+\leq
+\sup_{\bu} \varphi_{j,h_j}(\ba,\bu)\int_{\Sj}\varphi_{j,h_j}(\bb,\bu)\,\rd \bu
+=
+O(h_j^{-d_j}),
+\]
+uniformly in \((\ba,\bb)\in \Sj\times\Sj\).
+
+Next, by Fubini's theorem and the previous normalization identity,
+\[
+\int_{\Sj}q_{j,h_j}(\ba,\bb)\,\rd \bb
+=
+\int_{\Sj}\int_{\Sj}\varphi_{j,h_j}(\ba,\bu)\varphi_{j,h_j}(\bb,\bu)\,\rd \bu\,\rd \bb
+=
+\int_{\Sj}\varphi_{j,h_j}(\ba,\bu)\,\rd \bu
+=
+1.
+\]
+Thus,
+\[
+\int_{\Sj}\int_{\Sj}q_{j,h_j}(\ba,\bb)^2\,\rd \ba\,\rd \bb
+\leq
+\lrp{\sup_{\ba,\bb}q_{j,h_j}(\ba,\bb)}
+\int_{\Sj}\int_{\Sj}q_{j,h_j}(\ba,\bb)\,\rd \ba\,\rd \bb
+=
+O(h_j^{-d_j}).
+\]
+
+Using the product structure of \(Q_n\),
+\[
+\int_{\Sr}\int_{\Sr}Q_n(\bx,\by)^2\,\rd \bx\,\rd \by
+=
+\prod_{j=1}^r
+\int_{\Sj}\int_{\Sj}q_{j,h_j}(\ba,\bb)^2\,\rd \ba\,\rd \bb
+=
+O\lrp{\prod_{j=1}^r h_j^{-d_j}}
+=
+O\lrp{\rho(\bh)^{-1}}.
+\]
+Consequently,
+\[
+A_{n,1}=O\lrp{\rho(\bh)^{-1}},
+\]
+and therefore
+\[
+\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}
+\leq 2A_{n,1}+O(1)
+=
+O\lrp{\rho(\bh)^{-1}}.
+\]
+
+This proves the required bound for \(\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}\).
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 
