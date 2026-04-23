@@ -1364,9 +1364,9 @@ As a consequence,
 \end{proof}
 
 \begin{proof}[\textcolor{blue}{[Completed]} Proof of Lemma \ref{lemma-in2-e}]
-    The proof comes from writing $\mathsf{E} (T_{n,2})$ as a function of $\mathsf{Var} (\hat{f}_{0}(\bx;\bh))$ and noticing that this variance can be written in terms of the two first moments of kernel density estimators of each density function $f_j$..
+    The proof comes from writing $\mathsf{E} (T_{n,2})$ as a function of $\mathsf{Var} (\hat{f}_{0}(\bx;\bh))$ and noticing that this variance can be written in terms of the two first moments of kernel density estimators of each density function $f_j$.
 \begin{align*}
-        \mathsf{E} (T_{n,3}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \,\rd \bx \Bigg) \\
+        \mathsf{E} (T_{n,2}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \,\rd \bx \Bigg) \\
         &= \int_{\Sr} \mathsf{E} \Bigg( \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \Bigg) \,\rd \bx \\
         &= \int_{\Sr} \mathsf{Var} (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
         &= \int_{\Sr} \mathsf{E} (\hat{f}_{0}^2(\bx;\bh)) - \mathsf{E}^2 (\hat{f}_{0}(\bx;\bh)) \,\rd \bx \\
@@ -1386,7 +1386,7 @@ Therefore,
 
 Therefore, using the fact that $\mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) = O((n h_j^{d_j})^{-1})$, and taking $a_j \defin \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k))$ and $b_j \defin \mathsf{Var} (\hat{f}_j(x^{(j)};h_j))$,
 \begin{align*}
-     \mathsf{E} (T_{n,3}) =&\; \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{\substack{k=1\\k\neq j}}^r \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] \\
+     \mathsf{E} (T_{n,2}) =&\; \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{\substack{k=1\\k\neq j}}^r \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] \\
      & + o \Bigg( \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg\{ \prod_{\substack{k=1\\k\neq j}}^r \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg\} \Bigg) \Bigg\} \,\rd \bx \\
      =&\; \int_{\Sr} \Bigg\{ \Bigg[ \sum_{j=1}^{r} \mathsf{Var} (\hat{f}_j(x^{(j)};h_j)) \Bigg( \prod_{\substack{k=1\\k\neq j}}^r \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg) \Bigg] \\
      &+ o \Bigg( \sum_{j=1}^{r} (n h_j^{d_j})^{-1} f_j(x^{(j)}) v_{d_j}(L_j) \Bigg\{ \prod_{\substack{k=1\\k\neq j}}^r \mathsf{E}^2 (\hat{f}_k(x^{(k)};h_k)) \Bigg\}  \Bigg) \Bigg\} \,\rd \bx \\
@@ -1407,7 +1407,7 @@ Furthermore,
 
 Therefore,
 \begin{align*}
-    \mathsf{E} (T_{n,3}) &= \sum_{j=1}^{r} \int_{\Sr} \Bigg\{ \Bigg[ \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)})(1 + o(1)) \Bigg] \Bigg[ f_{0,-j}(\bx)^2+ O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg) \Bigg] \Bigg\} \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
+    \mathsf{E} (T_{n,2}) &= \sum_{j=1}^{r} \int_{\Sr} \Bigg\{ \Bigg[ \frac{v_{d_j}(L)}{n h_j^{d_j}} f_j(x^{(j)})(1 + o(1)) \Bigg] \Bigg[ f_{0,-j}(\bx)^2+ O \Bigg( \sum_{j=1}^{r} h_j^2 \Bigg) \Bigg] \Bigg\} \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
     &=: \sum_{j=1}^{r} \int_{\Sr} \theta_j \,\rd \bx + o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
 \end{align*}
 Then,
@@ -1429,13 +1429,13 @@ Note that the last term of $\theta_j$ is negligible. Further,
 
 Therefore,
 \begin{align*}
-    \mathsf{E} (T_{n,3}) &= \sum_{j=1}^{r} \left\{\frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o((n h_j^{d_j})^{-1})\right\}+ o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
+    \mathsf{E} (T_{n,2}) &= \sum_{j=1}^{r} \left\{\frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o((n h_j^{d_j})^{-1})\right\}+ o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg)\\
     &=\sum_{j=1}^{r} \frac{v_{d_j}(L)}{n h_j^{d_j}}  R(f_{0,-j})+ o \Bigg( n^{-1} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
 \end{align*}
 \end{proof}
 Note that, by the assumption that $n \rho(\bh) \to \infty$, it follows that $\mathsf{E} (T_{n,2}) \to 0$ under the null hypothesis of independence between the components of the polysphere.
 
-\begin{proof}
+\begin{proof}[Proof of Lemma \ref{lemma-in3-e}]
     Note that
     \begin{align*}
         \mathsf{E} (T_{n,3}) &= -2 \mathsf{E} \Bigg( \int_{\Sr} [ \hat{f}(\bx;\bh) - \mathsf{E} (\hat{f}(\bx;\bh)) ] [ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) ] \,\rd \bx \Bigg) \\
