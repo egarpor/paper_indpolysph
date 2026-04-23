@@ -1737,6 +1737,159 @@ O\lrp{\rho(\bh)^{-1}}.
 
 This proves the required bound for \(\mathsf{E}\lrc{G_n^2(\bX_1,\bX_2)}\).
 
+\section{Variance of $I_{n,2}$}
+
+\begin{proof}
+Recall that
+\[
+I_{n,2}
+=
+\frac{1}{n^2}\sum_{i=1}^n Z_{n,i},
+\qquad
+Z_{n,i}
+:=
+\int_{S^d} \overline L_h(\bx,\bX_i)^2 \, d\bx,
+\]
+where
+\[
+\overline L_h(\bx,\bX_i)
+=
+L_h(\bx,\bX_i)-E\{L_h(\bx,\bX_i)\}.
+\]
+Since \(Z_{n,1},\ldots,Z_{n,n}\) are iid,
+\[
+\Var(I_{n,2})
+=
+\Var\!\left(\frac{1}{n^2}\sum_{i=1}^n Z_{n,i}\right)
+=
+\frac{1}{n^4}\sum_{i=1}^n \Var(Z_{n,i})
+=
+\frac{1}{n^3}\Var(Z_{n,1})
+\leq
+\frac{1}{n^3}E(Z_{n,1}^2).
+\]
+Therefore, it is enough to prove that
+\[
+E(Z_{n,1}^2)=O\!\left(\rho(h)^{-2}\right).
+\]
+
+Write
+\[
+m_h(\bx):=E\{L_h(\bx,\bX_1)\}.
+\]
+Then
+\[
+Z_{n,1}
+=
+\int_{S^d}\bigl(L_h(\bx,\bX_1)-m_h(\bx)\bigr)^2\,d\bx
+\leq
+2\int_{S^d}L_h(\bx,\bX_1)^2\,d\bx
++
+2\int_{S^d}m_h(\bx)^2\,d\bx.
+\]
+Hence, by \((a+b)^2\leq 2a^2+2b^2\),
+\[
+Z_{n,1}^2
+\leq
+8\left(\int_{S^d}L_h(\bx,\bX_1)^2\,d\bx\right)^2
++
+8\left(\int_{S^d}m_h(\bx)^2\,d\bx\right)^2.
+\]
+Thus,
+\[
+E(Z_{n,1}^2)
+\leq
+8E\left[\left(\int_{S^d}L_h(\bx,\bX_1)^2\,d\bx\right)^2\right]
++
+8\left(\int_{S^d}m_h(\bx)^2\,d\bx\right)^2.
+\]
+
+For the first term, note that, for any fixed \(\by\in S^d\),
+\[
+\int_{S^d}L_h(\bx,\by)^2\,d\bx
+=
+c_{d,L}(h)^2
+\int_{S^d}
+L\!\left(
+\frac{1-\bx_1^\top\by_1}{h_1^2},
+\ldots,
+\frac{1-\bx_r^\top\by_r}{h_r^2}
+\right)^2
+\,d\bx.
+\]
+By the same change of variables used in the definition of \(c_{d,L}(h)\),
+\[
+\int_{S^d}
+L\!\left(
+\frac{1-\bx_1^\top\by_1}{h_1^2},
+\ldots,
+\frac{1-\bx_r^\top\by_r}{h_r^2}
+\right)^2
+\,d\bx
+=
+\rho(h)\lambda_{h,d}(L^2),
+\]
+and, since \(c_{d,L}(h)^{-1}=\rho(h)\lambda_{h,d}(L)\),
+\[
+\int_{S^d}L_h(\bx,\by)^2\,d\bx
+=
+\frac{\lambda_{h,d}(L^2)}{\rho(h)\lambda_{h,d}(L)^2}
+=
+O\!\left(\rho(h)^{-1}\right).
+\]
+Therefore,
+\[
+E\left[\left(\int_{S^d}L_h(\bx,\bX_1)^2\,d\bx\right)^2\right]
+=
+O\!\left(\rho(h)^{-2}\right).
+\]
+
+For the second term, since \(f\) is bounded on the compact set \(S^d\),
+\[
+m_h(\bx)
+=
+\int_{S^d}L_h(\bx,\by)f(\by)\,d\by
+\leq
+\|f\|_\infty \int_{S^d}L_h(\bx,\by)\,d\by
+=
+\|f\|_\infty.
+\]
+Hence,
+\[
+\int_{S^d}m_h(\bx)^2\,d\bx
+\leq
+\|f\|_\infty^2 \int_{S^d}d\bx
+=
+\omega_d\|f\|_\infty^2
+=
+O(1),
+\]
+so that
+\[
+\left(\int_{S^d}m_h(\bx)^2\,d\bx\right)^2
+=
+O(1).
+\]
+
+Combining the two bounds,
+\[
+E(Z_{n,1}^2)
+=
+O\!\left(\rho(h)^{-2}\right)+O(1)
+=
+O\!\left(\rho(h)^{-2}\right),
+\]
+because \(\rho(h)\to 0\). Consequently,
+\[
+\Var(I_{n,2})
+\leq
+\frac{1}{n^3}E(Z_{n,1}^2)
+=
+O\!\left(n^{-3}\rho(h)^{-2}\right).
+\]
+This concludes the proof.
+\end{proof}
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 

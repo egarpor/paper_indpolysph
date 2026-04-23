@@ -119,7 +119,7 @@ where $c_{\bd,L}(\bh)=\prod_{j=1}^{r} c_{d_j,L}(h_j)$ is the normalizing constan
     =&\; \rho(\bh) \lambda_{\bh,\bd}(L)\asymp \rho(\bh)\lambda_{\bd}(L),\label{eq:equiv}
 \end{align}
 
-\textcolor{red}{me to add as either table, plot or any kinf od fmetoaddaseithertable,plotoranykinfof}
+%\textcolor{red}{me to add as either table, plot or any kinf od fmetoaddaseithertable,plotoranykinfof}
 
  where $\bh \defin (h_1, \dots, h_r)\in\R_+^r$, $L$ denotes a directional kernel, and $c_{h,d_j}$ denotes a normalizing constant (see \cite{Garcia-Portugues2024} and \cite{Garcia-Portugues2015}). These definitions are straightforward adaptations of the notion of linear kernel, extensively used in nonparametric statistics to estimate probability density functions. Note that, under these definitions, the kernel used in $ \hat{f}(\bx;\bh)$ is the product kernel; besides this being an easy way to define the estimator of $f$, this assumption enables us to derive the main result of this paper. Additionally, $\hat{f}_{\bh,0}$ is the estimator of the joint density $f$ under the assumption that the elements $\bX^{(1)}, \dots, \bX^{(r)}$ are mutually independent.
 
@@ -207,8 +207,6 @@ The identity $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ comes from Lemmas \ref{lemma-
 \textcolor{red}{We need to:}
 \begin{itemize}
 \color{red}
-\item Prove the asymptotics of $\mathsf{E}(G_n^2)$;
-\item Prove the asymptotics of $B_n$ (in fact, we already proved a big-O expression for it, but we need the exact asymptotic order);
 \item Prove Lemma \ref{lemma-equivLh}.
 \end{itemize}
 
@@ -218,7 +216,7 @@ The identity $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ comes from Lemmas \ref{lemma-
 %In this text, we will study how to represent the statistic $T_n$ under certain assumptions about kernel functions, and it is aimed to use these representations to further study the asymptotic behavior of $T_n$. First, consider the following lemmas, which establish a convenient way of representing $T_n$.
 
 \begin{lemma}\label{lemma-in1}
-    \textcolor{red}{[Almost completely proved, but we need to prove the asymptotics of $\mathsf{E}(G_n^2)$]} Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
+ Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
         T_{n,1} &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n,
     \end{align*}
@@ -337,10 +335,11 @@ which means that, in a bootstrap-like approach, the distribution of $T_n$ under 
 
 %Code to replicate plots in \cite{Garcia-Portugues2024}: \url{https://github.com/egarpor/polykde/tree/main/replication}
 
+\subsection{Simulation setup}
+
 To assess the power of the test in different kinds of distributions, the following scenarios were considered.
 
-\begin{enumerate}
-    \item \textbf{Mixture of iid von Mises--Fisher distributions:} we simulate a latent random vector $\bmu \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(1)}, \dots, \bX^{(r)} \mid \bmu \stackrel {iid}\sim  \mathrm{vMF}_d (\bmu, \kappa)$. This produces the density
+\textbf{Mixture of iid von Mises--Fisher distributions:} we simulate a latent random vector $\bmu \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(1)}, \dots, \bX^{(r)} \mid \bmu \stackrel {iid}\sim  \mathrm{vMF}_d (\bmu, \kappa)$. This produces the density
     \begin{align*}
         f(\bx) &= \int_{\Sr} c^\mathrm{vMF}_{d}(\kappa_1) e^{\kappa_1\bmu^{\top}\bmu_1} \prod_{j=1}^{r} c^\mathrm{vMF}_{d}(\kappa) e^{\kappa\bx^{(j) \top}\bmu} \,\rd \bmu \\
         &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^r \int_{\Sr} e^{\kappa_1\bmu^{\top}\bmu_1 + \sum_{j=1}^{r} \kappa\bx^{(j) \top}\bmu} \,\rd \bmu\\
@@ -356,20 +355,21 @@ It is worth noting that, for the case with $r=2, d_1 = d_2 = 1, \kappa_1 = 0$ (t
 
     All simulations were performed for a single value of $\kappa_1 = 1$, because, in this way, we have a single parameter $\kappa$ measuring deviation from independence.
     
-    \item \textbf{Markovian process:} we simulate $\bX^{(1)} \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(j)} | (\bX^{(1)} = \bx^{(1)} , \dots, \bX^{(j-1)} = \bx^{(j-1)}) \sim \mathrm{vMF}_d (\bx^{(j-1)}, \kappa)$ for $j = 2, \dots, r$. This produces the density
+\textbf{Markovian process:} we simulate $\bX^{(1)} \sim \mathrm{vMF}_d (\bmu_1, \kappa_1)$, and, then, we simulate $\bX^{(j)} | (\bX^{(1)} = \bx^{(1)} , \dots, \bX^{(j-1)} = \bx^{(j-1)}) \sim \mathrm{vMF}_d (\bx^{(j-1)}, \kappa)$ for $j = 2, \dots, r$. This produces the density
     \begin{align*}
         f(\bx) &= c^\mathrm{vMF}_{d}(\kappa_1) e^{\kappa_1\bx^{(1) \top}\bmu_1} \prod_{j=2}^{r} c^\mathrm{vMF}_{d}(\kappa) e^{\kappa\bx^{(j) \top}\bx^{(j-1)}} \\
         &= c^\mathrm{vMF}_{d}(\kappa_1) c^\mathrm{vMF}_{d}(\kappa)^{r-1} e^{\kappa_1\bx^{(1) \top}\bmu_1 + \sum_{j=2}^{r} \kappa\bx^{(j) \top}\bx^{(j-1)}}.
 \end{align*}
 
     In the same way as in the previous model, we have a single parameter $\kappa \in [0,\infty)$ measuring deviation from independence, where $\kappa=0$ represents independence.
-\end{enumerate}
 
 Scenario i is constructed based on the fact that conditional independence is a simple way to induce dependence between random vectors. Note that, as a particular case, when we have $\kappa=0$, the variables $\bX^{(1)}, \dots, \bX^{(r)}$ become independent.
 
 Scenario ii produces a sequence of random vectors, which of them supported in a hypersphere, where the location parameter of one component $\bX^{(j)}$ given the previous ones is given by the last component $\bX^{(j-1)}$. As in the first scenario, the parameter $\kappa$ represents the amount of deviation from independence.
 
-Each scenario is simulated $200$ times using sample size $n=100$ and $B=200$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha$, $\alpha = 0.01, 0.02, \dots, 0.99$. The bandwidths used in the simulation are proportional to the bandwidths chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $2^c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. 
+Each scenario is simulated $200$ times using sample size $n=100$ and $B=200$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha$, $\alpha = 0.01, 0.02, \dots, 0.99$. The bandwidths used in the simulation are proportional to the bandwidths chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. 
+
+\subsection{Results}
 
 The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{tab1}. As expected, the power is close to 1.00 - except for $\kappa = 0$, which is the independence case. In such a case, the empirical power is close to 0.05. Furthermore, the rejection rate has increased as a function of $\kappa$, which is reasonable, since greater values of $\kappa$ represent a stronger deviation from independence.
 
@@ -384,13 +384,13 @@ The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{t
 \toprule
 \multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
 \cmidrule(l{3pt}r{3pt}){4-7}
-\textbf{d} & \textbf{r} & \textbf{c} & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
+$d$ & $r$ & $c$ & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
 \midrule
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 0.375 & 1.000 & 1.000\\
+ &  & $0.5$ & 6.0 & 0.375 & 1.000 & 1.000\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+ &  & $1.0$ & 0.060 & 0.430 & 1.000 & 1.000\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.060 & 0.430 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2.0$ & 0.060 & 0.430 & 1.000 & 1.000\\
 
  &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.665 & 1.000 & 1.000\\
 
@@ -584,7 +584,7 @@ $\bZ_i^{(1)} \defin \bX_i$ and $\bZ_i^{(2)} \defin \bX_{i+1}$. Under this notati
 \end{align*}
 and a rejection of this hypothesis would indicate that the comets directions records are dependent, due to either observational bias or another scientific reason.
 
-A straightforward approach to obtain a final p-value consists of applying the permutation calibration described in Section \ref{sec-permutation} directly to the pairs $\{\bZ_i\}_{i=1, \dots, 622}$, ignoring the serial structure of the original data. In a similar way to the approach employed in the simulation study, we employed here bandwidths on the form $2^c \times h^*$, where $h^*$ is the bandwidth chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}) - this allows to see the p-values as a function of the tuning parameter $c$. Under this naive strategy, the resulting p-values for the test statistic are shown in Figure \ref{fig:pvalue_comet}.
+A straightforward approach to obtain a final p-value consists of applying the permutation calibration described in Section \ref{sec-permutation} directly to the pairs $\{\bZ_i\}_{i=1, \dots, 622}$, ignoring the serial structure of the original data. In a similar way to the approach employed in the simulation study, we employed here bandwidths on the form $2^c \times h^*$, where $h^*$ is the bandwidth chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}) --- this allows to see the $p$-values as a function of the tuning parameter $c$. Under this naive strategy, the resulting p-values for the test statistic are shown in Figure \ref{fig:pvalue_comet}.
 
 \begin{figure}[h]
 \centering
@@ -710,42 +710,37 @@ Therefore,
     \mathsf{E} (I_{n,2}) &=  \frac{v_{\bd}(L)}{n \rho(\bh)} (1+ o(1)).
 \end{align*}
 
-Applying the $C_p$ inequality, we obtain:
+Using Lemma \ref{lemma-sum-variances}, it follows that
+
 \begin{align*}
-    \mathsf{E} (Z_{n1}^2) =&\; \mathsf{E} \Bigg( \Bigg(\int_{\Sr}  \bar{L}_{\bh}^2 (\bx,\bX_1)  \,\rd \bx \Bigg)^2 \Bigg) \\
-    \leq &\; \mathsf{E} \Bigg( \Bigg\{ 2 \Bigg(\int_{\Sr}  L_{\bh}^2 (\bx,\bX_1)  \,\rd \bx + \int_{\Sr}  \mathsf{E} (L_{\bh}^2 (\bx,\bX_1))  \,\rd \bx  \Bigg) \Bigg\}^2 \Bigg) \\
-    \leq &\; 8 \Bigg\{  \mathsf{E} \Bigg( \Bigg(\int_{\Sr}  L_{\bh}^2 (\bx,\bX_1)  \,\rd \bx \Bigg)^2 \Bigg) + \mathsf{E} \Bigg( \Bigg( \int_{\Sr}  \mathsf{E} (L_{\bh}^2 (\bx,\bX_1))  \,\rd \bx  \Bigg)^2 \Bigg) \Bigg\}.
+    \mathsf{Var}(Z_{ni}) &= O \lrb{\mathsf{Var} \lrb{\int_{\Sr} L_{\bh}^2 (\bx,\bX_i)  \,\rd \bx}} + O \lrb{\mathsf{Var} \lrb{\int_{\Sr} L_{\bh}  (\bx,\bX_i) \mathsf{E} (L_{\bh}  (\bx,\bX_i))  \,\rd \bx}}.
 \end{align*}
 
-Using Lemma \ref{lemma-equivLh}, we obtain:
+Note that $\mathsf{E} (L_{\bh}  (\bx,\bX_i))$ is a bounded function, which entails that
 \begin{align*}
-    \mathsf{E} (Z_{n1}^2) \asymp &\; 8 \Bigg\{ \mathsf{E} \Bigg( \Bigg( \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} \Bigg)^2 \Bigg) + \Bigg( \int_{\Sr}  \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \rho(\bh)^{-1} f(\bx) \rd \bx \Bigg)^2  \Bigg\} \\
-     =&\; 8 \Bigg\{ \Bigg( \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \Bigg)^2 \rho(\bh)^{-2} + \Bigg( \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \Bigg)^2 \rho(\bh)^{-2}  \Bigg\} \\
-     =&\; 16 \Bigg( \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \Bigg)^2 \rho(\bh)^{-2}.
+    \int_{\Sr} L_{\bh}  (\bx,\bX_i) \mathsf{E} (L_{\bh}  (\bx,\bX_i))  \,\rd \bx &\le \lrb{\int_{\Sr} L_{\bh}  (\bx,\bX_i)  \,\rd \bx} \mathsf{sup}_{\bx \in \Sr} (\mathsf{E} (L_{\bh}  (\bx,\bX_i))) \\
+    &= c_{\bd,L}(\bh)^{-1} \mathsf{sup}_{\bx \in \Sr} (\mathsf{E} (L_{\bh}  (\bx,\bX_i))) \\
+    &= O(1).
+\end{align*}
+Therefore, it also follows that $\mathsf{Var} \lrb{\int_{\Sr} L_{\bh}  (\bx,\bX_i) \mathsf{E} (L_{\bh}  (\bx,\bX_i))  \,\rd \bx} = O(1)$. Now, by a step similar to Equation \ref{eq:equiv}, see that, for every $\by \in \Sr$,
+\begin{align*}
+    \int_{\Sr} L_{\bh}^2 (\bx,\by)  \,\rd \bx &= c_{\bd,L}(\bh)^{2} \int_{\Sr}L^2 \lrp{\frac{1-\bx_1' \by_1}{h_1^2},\ldots, \frac{1-\bx_r' \by_r}{h_r^2}}\, \,\rd \bx \nonumber \\
+    =& c_{\bd,L}(\bh)^{2} \int_{[-1,1]^r}L^2 \lrp{\frac{1-t_1}{h_1^2},\ldots, \frac{1-t_r}{h_r^2}}\times \prod_{j=1}^r \left(1-t_j^2\right)^{d_j/2-1}\om{d_j-1}\,\rd \bt   \nonumber \\
+    %
+    =&\; \rho(\bh)^{-1} \frac{\lambda_{\bh,\bd}(L^2)}{\lambda_{\bh,\bd}(L)^2} \asymp \rho(\bh)^{-1} \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2}.
 \end{align*}
 
-Note that:
+Therefore,
 \begin{align*}
-    \mathsf{Var} (I_{n,2}) =&\; \mathsf{Var} \Bigg( \frac{1}{n^2} \sum_{i=1}^{n} Z_{ni} \Bigg) \\
-    =&\; n^{-3} \mathsf{Var} (Z_{ni}) \\
-    \leq &\; n^{-3} \mathsf{E} (Z_{ni}^2) \\
-    \asymp &\; n^{-3} 16 \Bigg( \frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2} \Bigg)^2 \rho(\bh)^{-2}.
+    \mathsf{Var} \lrb{\int_{\Sr} L_{\bh}^2 (\bx,\bX_i)  \,\rd \bx} &\le \mathsf{E} \lrb{\lrb{\int_{\Sr} L_{\bh}^2 (\bx,\bX_i)  \,\rd \bx}^2} \\
+    &= O(\rho(\bh)^{-2}).
 \end{align*}
 
-As a consequence,
+Now, taking into account that $I_{n,2} = \frac{1}{n^2} \sum_{i=1}^{n} Z_{ni}$, where $Z_{ni}$ are iid terms, it follows that
 \begin{align*}
-    \mathsf{Var} (I_{n,2}) =&\; O(n^{-3} \rho(\bh)^{-2}).
+    \mathsf{Var} (I_{n,2}) &= \frac{1}{n^3} \mathsf{Var} (Z_{ni}) \\
+    &= O(n^{-3} \rho(\bh)^{-2}).
 \end{align*}
-
-
-
-%The asymptotic distribution of $T_{n,1} = I_{n,2} + I_{n,3}$ can be described through Lemma 1 in \cite{Garcia-Portugues2015}. In this case,
-%\begin{align*}
- %   B_n^{-1/2} T_{n,1} \xrightarrow{d} \mathcal{N}(0, 1),
-%\end{align*}
-%where $B_n = n \mathsf{E} (\varphi_n^2(X_1)) + \frac{1}{2} n^2 \mathsf{E}(H_n^2(X_1,X_2))$ and $\varphi_n(X_1) = \frac{1}{n^2} \int_{\Sr} \Bigg[ \Bigg\{ \prod_{j=1}^{r} L_{\bh} (x,X_j^{(1)}) - \prod_{j=1}^{r} \mathsf{E} \Big( L_{\bh} (x,X_j^{(1)}) \Big) \Bigg\}^2 \Bigg] \,\rd \bx$.
-
-%Using Lemma 1 in \cite{Garcia-Portugues2015} {\color{red} Need to check conditions}, it follows that:
 
 \textit{Asymptotic behavior of $I_{n3}$.} 
 
