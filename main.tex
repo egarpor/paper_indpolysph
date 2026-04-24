@@ -1509,7 +1509,7 @@ Therefore,
      &+ \sum_{j_1=1}^{r} \sum_{j_2 \ne j_1}  \Delta_{j_1}(\bx^{(j_1)}) \Delta_{j_2}(\bx^{(j_2)}) \prod_{k \ne j_1,j_2}  \mu_k(\bx^{(k)}) \\
     &+ \sum_{j_1=1}^{r} \sum_{j_2 \ne j_1} \sum_{j_3 \ne j_1,j_2}  \Delta_{j_1}(\bx^{(j_1)}) \Delta_{j_2}(\bx^{(j_2)}) \Delta_{j_3}(\bx^{(j_3)}) \prod_{k \ne j_1,j_2,j_3} \mu_k(\bx^{(k)}) + \cdots \Bigg\}^2 \,\rd \bx.
 \end{align*}
-Now notice that \eqref{eq:sumrs} has $2^r -1$ terms once the two terms $\prod_{j=1}^{r} \mu_j(\bx^{(j)})$ cancel out. Without loss of generality, consider an arbitrary term $\theta_l$; note that this term can be written as
+Now notice that Equation \eqref{eq:sumrs} has $2^r -1$ terms once the two terms $\prod_{j=1}^{r} \mu_j(\bx^{(j)})$ cancel out. Without loss of generality, consider an arbitrary term $\theta_l$; note that this term can be written as
 \begin{align*}
     \theta_l &= \prod_{j=1}^{r} a_l^{(j)},
 \end{align*}
@@ -1518,16 +1518,16 @@ where either $a_l^{(j)} = \Delta_j(\bx^{(j)})$ or $a_l^{(j)} = \mu_j(\bx^{(j)})$
 In this context,
 \begin{align*}
     T_{n,2} =&\; \int_{\Sr} \lrb{\sum_{l=1}^{2^r-1} \theta_l}^2 \,\rd \bx \\
-    =&\; \int_{\Sr} \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} \theta_{l_1} \theta_{l_2} \,\rd \bx \\
-    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} \int_{\Sr} \theta_{l_1} \theta_{l_2} \,\rd \bx \\
-    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} \int_{\Sr} \lrb{\prod_{j=1}^{r} a_{l_1}^{(j)}} \lrb{\prod_{j=1}^{r} a_{l_2}^{(j)}} \,\rd \bx \\
-    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} \int_{\Sr} \prod_{j=1}^{r} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx \\
-    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} \prod_{j=1}^{r} \int_{\Sj} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx^{(j)}.
+    =&\; \int_{\Sr} \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} \theta_{l_1} \theta_{l_2} \,\rd \bx \\
+    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} \int_{\Sr} \theta_{l_1} \theta_{l_2} \,\rd \bx \\
+    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} \int_{\Sr} \lrb{\prod_{j=1}^{r} a_{l_1}^{(j)}} \lrb{\prod_{j=1}^{r} a_{l_2}^{(j)}} \,\rd \bx \\
+    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} \int_{\Sr} \prod_{j=1}^{r} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx \\
+    =&\; \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} \prod_{j=1}^{r} \int_{\Sj} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx^{(j)}.
 \end{align*}
 
 Using Lemma \ref{lemma-sum-variances}, we have
 \begin{align*}
-    \mathsf{Var} (T_{n,2}) &= \sum_{l_1=1}^{2^r-1} \sum_{l_1=1}^{2^r-1} O \lrb{\mathsf{Var} \lrb{\prod_{j=1}^{r} \int_{\Sj} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx^{(j)}} }.
+    \mathsf{Var} (T_{n,2}) &= \sum_{l_1=1}^{2^r-1} \sum_{l_2=1}^{2^r-1} O \lrb{\mathsf{Var} \lrb{\prod_{j=1}^{r} \int_{\Sj} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx^{(j)}} }.
 \end{align*}
 Now, the identification of the dominant terms comes from a combinatorial argument: for a fixed $l_1$ and $j = 1, \dots, r$, we have $a_{l_1}^{(j)} = \mu_j(\bx^{(j)})$ at most $r-1$ times; the same consideration holds for $a_{l_2}^{(j)}$.
 
@@ -1547,18 +1547,18 @@ Consider first the terms where both $a_{l_1}^{(j)} = \mu_j(\bx^{(j)})$ holds $r-
         \le&\; \mathsf{E} \lrb{\lrb{\int_{\Sj} \Delta_{k_1}(\bx^{(k_1)}) \mu_{k_1}(\bx^{(k_1)}) \,\rd \bx^{(k_1)}}^2} \\
         &\times \mathsf{E} \lrb{\lrb{\int_{\Sj} \Delta_{k_2}(\bx^{(k_2)}) \mu_{k_2}(\bx^{(k_2)}) \,\rd \bx^{(k_2)}}^2} \\
         &\times \prod_{j \ne k_1,k_2} \mathsf{E} \lrb{\lrb{\int_{\Sj} \mu_j(\bx^{(j)})^2 \,\rd \bx^{(j)}}^2} \\
-        =&\; O((nh_{k_1}^{d_{k_1}})^{-2}) O((nh_{k_2}^{d_{k_2}})^{-2}) O(1) \\
-        =&\; O(n^{-4} h_{k_1}^{-2d_{ k_1}} h_{k_2}^{-2 d_{k_2}}).
+        =&\; O(n^{-1}) O(n^{-1}) O(1) \\
+        =&\; O(n^{-2}).
     \end{align*}
 \end{enumerate}
 
-The remaining terms have $a_{l_1}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times or $a_{l_2}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times; their variance will be upper bounded by $O(1)$ times at least two terms with order $O((nh_{k_1}^{d_{k_1}})^{-2}) \to 0$, which will go faster to zero and, therefore, cannot be the dominant terms.
+The remaining terms have $a_{l_1}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times or $a_{l_2}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times; therefore, given that $\int_{\Sj} \Delta_{j}(\bx^{(j)}) \mu_{j}(\bx^{(j)}) \,\rd \bx^{(j)} \to 0$ and $\int_{\Sj} a_{l_1}^{(j)} a_{l_2}^{(j)} \,\rd \bx^{(j)} \to 0$, it follows that all the remaining therms will go faster to zero and, therefore, cannot be the dominant terms.
+
+%The remaining terms have $a_{l_1}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times or $a_{l_2}^{(j)} = \mu_j(\bx^{(j)})$ holding less than $r-1$ times; their variance will be upper bounded by $O(1)$ times at least two terms with order $O((nh_{k_1}^{d_{k_1}})^{-2}) \to 0$, which will go faster to zero and, therefore, cannot be the dominant terms.
 
 Additionally, note that 
 \begin{align*}
-    \frac{n^{-2}(h_{k_1}^{-d_{ k_1}} + h_{k_2}^{- d_{k_2}})}{n^{-4} h_{k_1}^{-2d_{ k_1}} h_{k_2}^{-2 d_{k_2}}} &= n^2 (h_j^{d_j} h_k^{2 d_k} + h_j^{2 d_j} h_k^{ d_k}) \\
-    &= (n h_j^{d_j} h_k^{ d_k}) (n h_k^{ d_k}) + (n h_j^{d_j} h_k^{ d_k}) (n h_j^{ d_j}) \\
-    &\to \infty,
+    \frac{n^{-2}h_{j}^{-d_{j}}}{n^{-2}} &= h_{j}^{-d_{j}} \to \infty,
 \end{align*}
 which proves that the terms on the form $O((n^2 h_k^{d_k})^{-1})$ are the dominant ones.
 
