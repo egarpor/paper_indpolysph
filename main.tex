@@ -290,9 +290,9 @@ Theorem \ref{teo-main}, which establishes the asymptotic distribution of the sta
 \begin{theorem}\label{teo-main}
     Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then, under A1-A3,
     \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N}(0, 1),
+        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
     \end{align*}
-    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$.
+    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
     %Further, $B_n = O(n^{-2} \rho (\bh)^{-1})$.
     %\textcolor{red}{The theorem looks to differ from Theorem 2 in \cite{Garcia-Portugues2015} because our statistic is defined with a scaling factor $\sqrt{n \rho (\bh)}$ that does not appear in the statistic defined in Section 4 from \cite{Garcia-Portugues2015}.}
 \end{theorem}
@@ -1597,9 +1597,14 @@ Therefore,
     \end{align*}
     Now remember that $I_{n,3} = B_n^{1/2}N_n$, where $N_n$ is asymptotically standard normal. Therefore, By Slutsky's theorem,
     \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N}(0, 1),
+        B_n^{-1/2}(T_n - A(n)) \xrightarrow{d} \mathcal{N}(0, 1).
     \end{align*}
-    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$.
+
+    Now we use the fact that $ B_n \asymp 2 n^{-2} \rho(\bh)^{-1} \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2$ (Lemma \ref{lemma-sigma2}):
+    \begin{align*}
+        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
+    \end{align*}
+    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
     %Given that $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ (see Lemma \ref{lemma-decomp}), it follows that $T_{n,1} + T_{n,2} + T_{n,3} = (n \rho(\bh))^{-1/2}T_n$ and, therefore,
 \end{proof}
 
