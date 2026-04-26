@@ -204,12 +204,6 @@ To simplify the notation, $\bh$ will be used instead of $\bh_n$, although it is 
 \end{align*}
 The identity $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ comes from Lemmas \ref{lemma-prod-expec-values} and \ref{lemma-decomp} (see appendix). This result reduces the problem of finding the asymptotic distribution of $T_n$ to the problem of finding the asymptotic distribution of each term in the decomposition. The next lemmas establish the asymptotic behavior of such terms.
 
-\textcolor{red}{We need to:}
-\begin{itemize}
-\color{red}
-\item Prove Lemma \ref{lemma-equivLh}.
-\end{itemize}
-
 
 %where $\hat{f}_{\bh}$ and $\hat{f}_{h_j}$, $j \in \{ 1, \dots, r \}$, represent, respectively, the kernel density estimator for the distributions of $\bX$ and for $\bX_j$, with bandwidths $h_1, \dots, h_r$.
 
@@ -1804,13 +1798,16 @@ The next lemma establishes a convenient way of representing $T_n$.
     The final result comes directly from noticing that $T_n = \sqrt{n \prod_{i = 1}^{r} h_i^{d_i}} \int_{\Sr}I_n(\bx) \,\rd \bx$.
 \end{proof}
 
-\begin{lemma}\label{lemma-equivLh}
+\begin{comment}
+    \begin{lemma}\label{lemma-equivLh}
     Given a directional kernel $L_{\bh}$, it holds that
     \begin{align}
     \int_{\Sr} L_{\bh}^k(\bx,\by) g(\by)\,\rd\by\asymp \frac{c_{\bd,L}(\bh)^k}{c_{\bd,L^k}(\bh)} g(\bx) \asymp \frac{\lambda_{\bd}(L^k)\rho(\bh)}{[\lambda_{\bd}(L)\rho(\bh)]^k} g(\bx)=\frac{\lambda_{\bd}(L^k)}{\lambda_{\bd}(L)^k} \rho(\bh)^{-(k-1)}g(\bx). \label{eq:equivLh}
 \end{align}
 as $\bh\to\zero$, for $k\geq 1$ and an arbitrary function $g:\Sr\to\mathbb{R}$.
 \end{lemma}
+\end{comment}
+
 
 \begin{lemma}\label{lemma-tnd-poly}
     Let $\bx \in \Sr$ a random vector supported in the polysphere. Let $\bxi_k^{(j)} \in \Sjm$, $\bB_{\by^{(j)}}$  is a $(d_j+1) \times d_j$ matrix such that $\bB_{\by^{(j)}}^{\top} \bB_{\by^{(j)}} = \bI_{d_j}$ and $\bB_{\by^{(j)}} \bB_{\by^{(j)}}^{\top} = \bI_{d_j+1} - \by^{(j)} \by^{(j) \top}$, and $s_k^{(j)} \in [-1,1]$. Given an arbitrary function $g$, it is true that
