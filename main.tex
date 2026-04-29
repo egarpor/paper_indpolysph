@@ -250,7 +250,7 @@ where
 %\end{lemma}
 
 \begin{lemma}\label{lemma-in2-e}
-    \textcolor{blue}{[Completed]} Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
+    Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
     \mathsf{E}[T_{n,2}]=A_n^{(1)}(1+o(1))%+o\lrp{n^{-1}\sum_{j=1}^r h^{-d_j}}
     ,\quad A_n^{(1)}=\sum_{j=1}^r \frac{v_{d_j}(L)R(f_{0,-j})}{nh^{d_j}},
@@ -259,21 +259,21 @@ where $f_{0,-j}(\bx)=\prod_{\substack{k=1\\k\neq j}}^r f_k(\bx^{(k)})$ and $R(f_
 \end{lemma}
 
 \begin{lemma}\label{lemma-in3-e}
-    \textcolor{blue}{[Completed]} Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
+    Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
         \mathsf{E} [T_{n,3}] &=  -2 \mathsf{E} [T_{n,2}].
     \end{align*}
 \end{lemma}
 
 \begin{lemma}\label{lemma-var-tn2}
-    \textcolor{blue}{[Completed]} Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
+    Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
         \mathsf{Var} [T_{n,2}] &=  O \Bigg(n^{-2} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
     \end{align*}
 \end{lemma}
 
 \begin{lemma}\label{lemma-var-tn3}
-    \textcolor{blue}{[Proved]} Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
+    $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
         \mathsf{Var} [T_{n,3}] &=  O \Bigg(n^{-2} \sum_{j=1}^{r} h_j^{-d_j} \Bigg).
     \end{align*}
@@ -284,7 +284,7 @@ Theorem \ref{teo-main}, which establishes the asymptotic distribution of the sta
 \begin{theorem}\label{teo-main}
     Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then, under A1-A3,
     \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
+        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, 2 \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
     \end{align*}
     where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
     %Further, $B_n = O(n^{-2} \rho (\bh)^{-1})$.
@@ -1596,7 +1596,7 @@ Therefore,
 
     Now we use the fact that $ B_n \asymp 2 n^{-2} \rho(\bh)^{-1} \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2$ (Lemma \ref{lemma-sigma2}):
     \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
+        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, 2 \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
     \end{align*}
     where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
     %Given that $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ (see Lemma \ref{lemma-decomp}), it follows that $T_{n,1} + T_{n,2} + T_{n,3} = (n \rho(\bh))^{-1/2}T_n$ and, therefore,
