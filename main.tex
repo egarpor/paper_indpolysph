@@ -141,11 +141,28 @@ where $\bmu\in\Sd$ is the spherical mean, $\kappa\geq0$ is the concentration par
 
 It must be noted that the directional kernels $L$ are not density functions (differently from what is usually assumed in linear kernels); in this sense, the normalizing constants $c_{d_j,L}(h_j)$ enables $L_{\bh}$ to be a legitimate density function. To simplify the notation, the following definitions are also introduced:
 \begin{align*}
-    \rho(\bh) &\defin \prod_{j = 1}^{r} h_j^{d_j}; \\
-    v_{\bd}(L) &\defin \lambda_{\bd}(L^2) / \lambda_{\bd}(L)^2; \\
-    \lambda_{\bd}(L) &\defin \omega_{\bd - 1} \int_{\R_+^r} L(s) s_j \prod_{i=1}^{r} s_j^{d_j/2 -1} \mathsf{d}s,
+    \rho(\bh) &\defin \prod_{j = 1}^{r} h_j^{d_j};
 \end{align*}
-where $\omega_{\bd - 1}$ stands for the area of the ($d-1$)-dimensional hypersphere.
+\[
+\lambda_{d_j}(L)
+:=
+2^{d_j/2-1}\omega_{d_j-1}
+\int_0^\infty L(s)s^{d_j/2-1}\,ds,
+\qquad
+\lambda_{\bd}(L)
+:=
+\prod_{j=1}^r \lambda_{d_j}(L).
+\]
+
+\[
+v_{\bd}(L)
+:=
+\frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2}
+=
+\prod_{j=1}^r
+\frac{\lambda_{d_j}(L^2)}{\lambda_{d_j}(L)^2},
+\]
+where $\omega_{d_j-1}$ stands for the area of the ($d_j-1$)-dimensional hypersphere.
 
 Next remark exhibits two key properties of kernel density estimators for polyspherical data \citep{Garcia-Portugues2024}.
 \begin{remark}

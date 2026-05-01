@@ -1899,6 +1899,28 @@ This concludes the proof.
     \label{fig:placeholder}
 \end{figure}
 
+\section{New definitions}
+
+\[
+\lambda_{d_j}(L)
+:=
+2^{d_j/2-1}\omega_{d_j-1}
+\int_0^\infty L(s)s^{d_j/2-1}\,ds,
+\qquad
+\lambda_{\bd}(L)
+:=
+\prod_{j=1}^r \lambda_{d_j}(L).
+\]
+
+\[
+v_{\bd}(L)
+:=
+\frac{\lambda_{\bd}(L^2)}{\lambda_{\bd}(L)^2}
+=
+\prod_{j=1}^r
+\frac{\lambda_{d_j}(L^2)}{\lambda_{d_j}(L)^2}.
+\]
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 
