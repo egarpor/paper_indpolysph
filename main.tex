@@ -326,13 +326,30 @@ where $f_{0,-j}(\bx)=\prod_{\substack{k=1\\k\neq j}}^r f_k(\bx^{(k)})$ and $R(f_
 Theorem \ref{teo-main}, which establishes the asymptotic distribution of the statistic $T_n$, is an almost immediate consequence of the former lemmas. These results entail that, on the decomposition $T_{n,1} + T_{n,2} + T_{n,3}$, the first term is the dominant one, which entails, from Slutsky's theorem, the following result (for the full proof, see Section \ref{sec:proofs}).
 
 \begin{theorem}\label{teo-main}
-    Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then, under A1-A3,
-    \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, 2 \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
-    \end{align*}
-    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
-    %Further, $B_n = O(n^{-2} \rho (\bh)^{-1})$.
-    %\textcolor{red}{The theorem looks to differ from Theorem 2 in \cite{Garcia-Portugues2015} because our statistic is defined with a scaling factor $\sqrt{n \rho (\bh)}$ that does not appear in the statistic defined in Section 4 from \cite{Garcia-Portugues2015}.}
+Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then, under A1--A3,
+\[
+    n\rho(\bh)^{1/2}
+    \left(T_n-\mathsf{E}[T_n]\right)
+    \xrightarrow{d}
+    \mathcal{N}\left(
+        0,
+        2\lambda_{\bd}(L)^{-4}\prod_{j=1}^{r}\sigma_j^2
+    \right),
+\]
+where $\sigma_j^2$ is defined in Lemma~\ref{lemma-sigma2}. Moreover,
+\[
+    \mathsf{E}[T_n]
+    =
+    \frac{v_{\bd}(L)}{n\rho(\bh)}(1+o(1))
+    -
+    A_n^{(1)}(1+o(1)).
+\]
+In particular, since $A_n^{(1)}=o\{(n\rho(\bh))^{-1}\}$,
+\[
+    \mathsf{E}[T_n]
+    =
+    \frac{v_{\bd}(L)}{n\rho(\bh)}(1+o(1)).
+\]
 \end{theorem}
 
 From this result, we have the asymptotic distribution of $T_n$ under the null hypothesis.
