@@ -1360,9 +1360,9 @@ Recall that
 \]
 with
 \[
-\widetilde H_n(x,u):=\int_{S^d}\overline L_h(z,x)\overline L_h(z,u)\,dz,
+\widetilde H_n(x,u):=\int_{S^d}\bar{L}_h(z,x)\bar{L}_h(z,u)\,dz,
 \qquad
-\overline L_h(z,x):=L_h(z,x)-E[L_h(z,X_1)].
+\bar{L}_h(z,x):=L_h(z,x)-E[L_h(z,X_1)].
 \]
 Therefore,
 \[
@@ -1748,11 +1748,11 @@ I_{n,2}
 \qquad
 Z_{n,i}
 :=
-\int_{S^d} \overline L_h(\bx,\bX_i)^2 \, d\bx,
+\int_{S^d} \bar{L}_h(\bx,\bX_i)^2 \, d\bx,
 \]
 where
 \[
-\overline L_h(\bx,\bX_i)
+\bar{L}_h(\bx,\bX_i)
 =
 L_h(\bx,\bX_i)-E\{L_h(\bx,\bX_i)\}.
 \]
@@ -1920,6 +1920,197 @@ v_{\bd}(L)
 \prod_{j=1}^r
 \frac{\lambda_{d_j}(L^2)}{\lambda_{d_j}(L)^2}.
 \]
+
+\section{New proof of Bn}
+
+NEW RESULT:
+
+\[
+\sigma_j^2
+=
+R(f_j)\gamma_{d_j}
+\int_0^\infty
+r^{d_j/2-1}
+\left\{
+\int_0^\infty
+\rho^{d_j/2-1}L(\rho)\varphi_{d_j}(r,\rho)
+\,d\rho
+\right\}^2
+dr,
+\]
+where
+\[
+\varphi_q(r,\rho)
+=
+\begin{cases}
+L\left(r+\rho-2(r\rho)^{1/2}\right)
++
+L\left(r+\rho+2(r\rho)^{1/2}\right),
+& q=1,\\[0.4em]
+\displaystyle
+\int_{-1}^{1}
+(1-\theta^2)^{(q-3)/2}
+L\left(r+\rho-2\theta(r\rho)^{1/2}\right)
+\,d\theta,
+& q\ge 2,
+\end{cases}
+\]
+and
+\[
+\gamma_q
+=
+\begin{cases}
+2^{-1/2}, & q=1,\\[0.3em]
+\omega_{q-1}\omega_{q-2}^2 2^{3q/2-3}, & q\ge 2.
+\end{cases}
+\]
+
+NEW PROOF:
+
+\begin{proof}
+Recall that
+\[
+B_n
+=
+2n^{-2}\int_{\Sd}\int_{\Sd}
+\mathsf{E}^2\left[
+\bar{L}_{\bh}(\bx,\bX_1)
+\bar{L}_{\bh}(\by,\bX_1)
+\right]
+\,d\bx\,d\by .
+\]
+Since
+\[
+\bar{L}_{\bh}(\bx,\bX_1)
+=
+L_{\bh}(\bx,\bX_1)
+-
+E[L_{\bh}(\bx,\bX_1)],
+\]
+we write
+\[
+(2n^{-2})^{-1}B_n=A_1-2A_2+A_3,
+\]
+where
+\[
+A_1
+=
+\int_{\Sd}\int_{\Sd}
+\mathsf{E}^2\left[
+L_{\bh}(\bx,\bX_1)L_{\bh}(\by,\bX_1)
+\right]
+\,d\bx\,d\by,
+\]
+\[
+A_2
+=
+\int_{\Sd}\int_{\Sd}
+E\left[
+L_{\bh}(\bx,\bX_1)L_{\bh}(\by,\bX_1)
+\right]
+E[L_{\bh}(\bx,\bX_1)]
+E[L_{\bh}(\by,\bX_1)]
+\,d\bx\,d\by,
+\]
+and
+\[
+A_3
+=
+\int_{\Sd}\int_{\Sd}
+\mathsf{E}^2[L_{\bh}(\bx,\bX_1)]
+\mathsf{E}^2[L_{\bh}(\by,\bX_1)]
+\,d\bx\,d\by.
+\]
+
+Under the null hypothesis, \(f(\bx)=\prod_{j=1}^r f_j(x^{(j)})\), and, since the kernel is a product kernel,
+\[
+L_{\bh}(\bx,\by)
+=
+\prod_{j=1}^r L_{h_j}(x^{(j)},y^{(j)}).
+\]
+Therefore,
+\[
+A_1=\prod_{j=1}^r A_{1,j},
+\]
+where
+\[
+A_{1,j}
+=
+\int_{\Sj}\int_{\Sj}
+\left\{
+\int_{\Sj}
+L_{h_j}(x,z)L_{h_j}(y,z)f_j(z)\,dz
+\right\}^2
+dx\,dy.
+\]
+By the directional part of the CLT constant in García-Portugués et al. (2015), applied to the
+\(d_j\)-dimensional sphere,
+\[
+A_{1,j}
+\asymp
+h_j^{-d_j}\lambda_{d_j}(L)^{-4}\sigma_j^2,
+\]
+with
+\[
+\sigma_j^2
+=
+R(f_j)\gamma_{d_j}
+\int_0^\infty
+r^{d_j/2-1}
+\left\{
+\int_0^\infty
+\rho^{d_j/2-1}L(\rho)\varphi_{d_j}(r,\rho)
+\,d\rho
+\right\}^2
+dr.
+\]
+Thus,
+\[
+A_1
+\asymp
+\prod_{j=1}^r
+h_j^{-d_j}\lambda_{d_j}(L)^{-4}\sigma_j^2
+=
+\rho(\bh)^{-1}\lambda_{\bd}(L)^{-4}
+\prod_{j=1}^r\sigma_j^2.
+\]
+
+It remains to check that \(A_2\) and \(A_3\) are negligible with respect to \(A_1\). By the pointwise
+consistency of the kernel density estimator,
+\[
+E[L_{\bh}(\bx,\bX_1)]=f(\bx)+o(1),
+\]
+and hence \(A_3=O(1)\). Similarly,
+\[
+A_2
+=
+O\left(
+\int_{\Sd}\int_{\Sd}
+E[
+L_{\bh}(\bx,\bX_1)L_{\bh}(\by,\bX_1)
+]
+\,d\bx\,d\by
+\right)
+=
+O(1),
+\]
+because \(L_{\bh}(\cdot,\bu)\) integrates to one. Since
+\[
+A_1\asymp \rho(\bh)^{-1}\lambda_{\bd}(L)^{-4}
+\prod_{j=1}^r\sigma_j^2
+\to \infty,
+\]
+we have \(A_2=o(A_1)\) and \(A_3=o(A_1)\). Consequently,
+\[
+B_n
+\asymp
+2n^{-2}A_1
+\asymp
+2n^{-2}\rho(\bh)^{-1}\lambda_{\bd}(L)^{-4}
+\prod_{j=1}^r\sigma_j^2,
+\]
+which proves the result.
+\end{proof}
 
 \bibliographystyle{alpha}
 \bibliography{sample}
