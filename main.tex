@@ -1749,32 +1749,41 @@ Therefore,
     \end{align*}
     Therefore,
      \begin{align*}
-        T_{n,1} &= \mathsf{E} (I_{n,2}) + I_{n,3} \\
-        &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + I_{n,3}.
+        T_{n,1} 
+        &= \mathsf{E} (I_{n,2}) + I_{n,3} + o_{\mathsf{P}}(B_n^{1/2}) \\
+        &= \mathsf{E}(T_{n,1}) + I_{n,3} + o_{\mathsf{P}}(B_n^{1/2}),
     \end{align*}
+    where the last equality follows because $\mathsf{E}(I_{n,3})=0$.
+
     Now, notice that $\mathsf{Var}(I_{n,3}) = O(n^{-2} \rho (\bh)^{-1})$ also dominates $\mathsf{Var} (T_{n,2}) = \mathsf{Var} (T_{n,3}) =  O \big(n^{-2} \sum_{j=1}^{r} h_j^{-d_j} \big)$, because 
     \begin{align*}
-        \frac{n^{-2} \sum_{j=1}^{r} h_j^{-d_j}}{n^{-2} \rho (\bh)^{-1}} %= \rho (\bh) \sum_{j=1}^{r} h_j^{-d_j} 
+        \frac{n^{-2} \sum_{j=1}^{r} h_j^{-d_j}}{n^{-2} \rho (\bh)^{-1}}
         = \lrb{\prod_{k=1}^{r} h_k^{d_k}} \sum_{j=1}^{r} h_j^{-d_j} 
-        %&= \sum_{j=1}^{r} \lrb{\prod_{k=1}^{r} h_k^{d_k}} h_j^{-d_j} 
         = \sum_{j=1}^{r} \prod_{k=1,k \ne j}^{r} h_k^{d_k} 
         \to 0,
     \end{align*}
     which shows that $\mathsf{Var}(I_{n,3}) = O(n^{-2} \rho (\bh)^{-1})$ is the dominant variance. Therefore,
     \begin{align*}
-        T_n &= \frac{v_d(L)}{n \rho (\bh)}(1+o(1)) - A_n^{(1)}(1+o(1)) + I_{n,3}. \\
+        T_n 
+        &= \mathsf{E}(T_{n,1})+\mathsf{E}(T_{n,2})+\mathsf{E}(T_{n,3}) + I_{n,3} + o_{\mathsf{P}}(B_n^{1/2}) \\
+        &= \mathsf{E}(T_n) + I_{n,3} + o_{\mathsf{P}}(B_n^{1/2}).
     \end{align*}
-    Now remember that $I_{n,3} = B_n^{1/2}N_n$, where $N_n$ is asymptotically standard normal. Therefore, By Slutsky's theorem,
+    Now remember that $I_{n,3} = B_n^{1/2}N_n$, where $N_n$ is asymptotically standard normal. Therefore, by Slutsky's theorem,
     \begin{align*}
-        B_n^{-1/2}(T_n - A(n)) \xrightarrow{d} \mathcal{N}(0, 1).
+        B_n^{-1/2}(T_n - \mathsf{E}(T_n)) \xrightarrow{d} \mathcal{N}(0, 1).
     \end{align*}
 
     Now we use the fact that $ B_n \asymp 2 n^{-2} \rho(\bh)^{-1} \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2$ (Lemma \ref{lemma-sigma2}):
     \begin{align*}
-        (n \rho (\bh)^{1/2})(T_n - A(n)) \xrightarrow{d} \mathcal{N} \lrp{0, 2 \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
+        (n \rho (\bh)^{1/2})(T_n - \mathsf{E}(T_n)) \xrightarrow{d} \mathcal{N} \lrp{0, 2 \lambda_{\bd}(L)^{-4}  \prod_{j=1}^{r} \sigma_j^2},
     \end{align*}
-    where $A(n) \defin \frac{v_d(L)}{n \rho (\bh)} - A_n^{(1)}$, and $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
-    %Given that $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ (see Lemma \ref{lemma-decomp}), it follows that $T_{n,1} + T_{n,2} + T_{n,3} = (n \rho(\bh))^{-1/2}T_n$ and, therefore,
+    where $\sigma_j^2$ is defined in Lemma \ref{lemma-sigma2}.
+
+    Finally,
+    \begin{align*}
+        \mathsf{E}(T_n)
+        &= \frac{v_{\bd}(L)}{n \rho (\bh)}(1+o(1)) - A_n^{(1)}(1+o(1)).
+    \end{align*}
 \end{proof}
 
 \begin{proof}[Proof of Proposition \ref{prp:exactstat}]
