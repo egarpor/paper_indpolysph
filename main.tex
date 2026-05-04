@@ -572,50 +572,22 @@ The power results for the Markov model are available in Table \ref{tab-markov}. 
 \end{tabular}}
 \end{table}
 
-Figures \ref{fig:powercurve1}, \ref{fig:powercurve2} and \ref{fig:powercurve3} summarize some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = -1$ - large $r$ surprisingly increased the power under alternative scenarios without affecting type I error control.
+Figure \ref{fig:power_curves_mixture} summarizes some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = -1$ - large $r$ surprisingly increased the power under alternative scenarios without affecting type I error control.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_curve_1.pdf}
-    \caption{Empirical power as a function of the significance level in the model ``Mixture of iid von Mises--Fisher distributions'', for $n=100$, $d=1$ and $r=2$; the parameter $\kappa \in [0,\infty)$ represents deviation from independence, and $c = -1, 0, 1$ is a tuning parameter related to the degree of smoothness (see the text in this section). Axes in log-scale.} 
-    \label{fig:powercurve1}
+    \includegraphics[width=1.0\linewidth]{plots/power_curves_mixture.pdf}
+    \caption{Empirical power as a function of the significance level in the model ``Mixture of iid von Mises--Fisher distributions'', for $n=100$. From first to last line: $(r=2,d=1)$, $(r=2,d=10)$, $(r=10,d=1)$. From left to right: $c = 0.5$, $c=1$, $c=2$. the parameter $\kappa \in [0,\infty)$ represents deviation from independence, and $c$ is a tuning parameter related to the degree of smoothness (see the text in this section). The dashed lines represent a 95\% confidence interval for the power under the null hypothesis ($\kappa = 0$). Axes in log-scale.}
+    \label{fig:power_curves_mixture}
 \end{figure}
 
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_curve_2.pdf}
-    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=10$ and $r=2$.} 
-    \label{fig:powercurve2}
-\end{figure}
+Finally, Figure \ref{fig:power_curves_markov} exhibits power curves for the Markovian model. It is possible to visulise, again, a considerable negative influence of the dimension $d$ on the test power.
 
-\begin{figure}[H]
+\begin{figure}
     \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_curve_3.pdf}
-    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=1$ and $r=10$.} 
-    \label{fig:powercurve3}
-\end{figure}
-
-Finally, Figures \ref{fig:powercurvemarkov1}, \ref{fig:powercurvemarkov2} and \ref{fig:powercurvemarkov3} exhibit power curves for the Markovian model. It is possible to visulise, again, a considerable negative influence of the dimension $d$ on the test power.
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_markov1.pdf}
-    \caption{Empirical power as a function of the significance level in the model ``Markovian process'', for $n=100$, $d=1$ and $r=2$; the parameter $\kappa \in [0,\infty)$ represents deviation from independence, and $c = -1, 0, 1$ is a tuning parameter related to the degree of smoothness (see the text in this section). Axes in log-scale.} 
-    \label{fig:powercurvemarkov1}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_markov2.pdf}
-    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=10$ and $r=2$.} 
-    \label{fig:powercurvemarkov2}
-\end{figure}
-
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=0.85\linewidth]{plots/power_markov3.pdf}
-    \caption{Same description as in Figure \ref{fig:powercurve1}, but with $d=1$ and $r=10$.} 
-    \label{fig:powercurvemarkov3}
+    \includegraphics[width=1.0\linewidth]{plots/power_curves_markov.pdf}
+    \caption{Same description as Figure \ref{fig:power_curves_mixture}, but for the model ``Markovian process''.}
+    \label{fig:power_curves_markov}
 \end{figure}
 
 %Tables with additional results from the simulation study, showing the empirical power for different combination of parameters $d,r,n,a,c$ under a $\alpha = 0.05$ significance level, are available in Section \ref{sec:simultation_tables} in Appendix. As a general pattern, the power increased as a function of both the sample size $n$ and the dependence parameter $a$, which is coherent with the theory previously developed in this paper. The test performance was severally affected by the dimension $d$ of the hyperspheres.
