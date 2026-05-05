@@ -422,7 +422,7 @@ Scenario i is constructed based on the fact that conditional independence is a s
 
 Scenario ii produces a sequence of random vectors, which of them supported in a hypersphere, where the location parameter of one component $\bX^{(j)}$ given the previous ones is given by the last component $\bX^{(j-1)}$. As in the first scenario, the parameter $\kappa$ represents the amount of deviation from independence.
 
-Each scenario is simulated $200$ times using sample size $n=100$ and $B=200$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha$, $\alpha = 0.01, 0.02, \dots, 0.99$. The bandwidths used in the simulation are proportional to the bandwidths chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. 
+Each scenario is simulated $200$ times using sample size $n=100$ and $B=200$ random permutations in each p-value computation. The adopted decision rule is to reject the null hypothesis when the p-value is less or equal to $\alpha$, $\alpha = 0.01, 0.02, \dots, 0.99$. The bandwidths used in the simulation are proportional to the bandwidths chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}). So, if $h^*$ denotes the bandwidth selected by the aforementioned criterion, we see the empirical power of the test for bandwidths $c \times h^*$, where $c$ is a tuning parameter also studied in this simulation. We considered $c = 2^\ell$, $\ell = -1, 0, 1$.
 
 \subsection{Results}
 
@@ -431,69 +431,69 @@ The results of the simulation for $\alpha = 0.05$ are summarized in Table \ref{t
 \begin{table}[!h]
 \centering
 \caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios (mixture model).}
-\label{tab1}
 \centering
+\label{tab1}
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{10}{12}\selectfont
 \begin{tabular}[t]{cclcccc}
 \toprule
 \multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
 \cmidrule(l{3pt}r{3pt}){4-7}
-$d$ & $r$ & $c$ & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
+d & r & c & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
 \midrule
- &  & $0.5$ & 6.0 & 0.375 & 1.000 & 1.000\\
+ &  & $0.5$ & 6.0\% & 37.5\% & 100.0\% & 100.0\%\\
 
- &  & $1.0$ & 0.060 & 0.430 & 1.000 & 1.000\\
+ &  & $1$ & 6.0\% & 43.0\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2.0$ & 0.060 & 0.430 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 6.0\% & 43.0\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.665 & 1.000 & 1.000\\
+ &  & $0.5$ & 3.5\% & 66.5\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.030 & 0.715 & 1.000 & 1.000\\
+ &  & $1$ & 3.0\% & 71.5\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.695 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 3.0\% & 69.5\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.045 & 0.315 & 1.000 & 1.000\\
+ &  & $0.5$ & 4.5\% & 31.5\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+ &  & $1$ & 6.0\% & 100.0\% & 100.0\% & 100.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.080 & 1.000 & 1.000 & 1.000\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 8.0\% & 100.0\% & 100.0\% & 100.0\%\\
 \cmidrule{1-7}
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.065 & 0.100 & 0.840 & 1.000\\
+ &  & $0.5$ & 6.5\% & 10.0\% & 84.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.135 & 0.935 & 1.000\\
+ &  & $1$ & 5.0\% & 13.5\% & 93.5\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.115 & 0.930 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 4.5\% & 11.5\% & 93.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.025 & 0.195 & 0.990 & 1.000\\
+ &  & $0.5$ & 2.5\% & 19.5\% & 99.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.040 & 0.225 & 1.000 & 1.000\\
+ &  & $1$ & 4.0\% & 22.5\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.230 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 3.0\% & 23.0\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.055 & 0.060 & 0.075 & 0.080\\
+ &  & $0.5$ & 5.5\% & 6.0\% & 7.5\% & 8.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.710 & 1.000 & 1.000\\
+ &  & $1$ & 6.0\% & 71.0\% & 100.0\% & 100.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.070 & 0.800 & 1.000 & 1.000\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 7.0\% & 80.0\% & 100.0\% & 100.0\%\\
 \cmidrule{1-7}
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.030 & 0.055 & 0.045 & 0.050\\
+ &  & $0.5$ & 3.0\% & 5.5\% & 4.5\% & 5.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.020 & 0.055 & 0.060 & 0.135\\
+ &  & $1$ & 2.0\% & 5.5\% & 6.0\% & 13.5\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.035 & 0.045 & 0.070 & 0.180\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 3.5\% & 4.5\% & 7.0\% & 18.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.050 & 0.055 & 0.040 & 0.065\\
+ &  & $0.5$ & 5.0\% & 5.5\% & 4.0\% & 6.5\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.065 & 0.040 & 0.025 & 0.155\\
+ &  & $1$ & 6.5\% & 4.0\% & 2.5\% & 15.5\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.050 & 0.050 & 0.065 & 0.310\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 5.0\% & 5.0\% & 6.5\% & 31.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.075 & 0.090 & 0.055\\
+ &  & $0.5$ & 3.5\% & 7.5\% & 9.0\% & 5.5\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.045 & 0.065 & 0.050\\
+ &  & $1$ & 6.0\% & 4.5\% & 6.5\% & 5.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.025 & 0.075 & 0.085 & 0.390\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 2.5\% & 7.5\% & 8.5\% & 39.0\%\\
 \bottomrule
 \end{tabular}}
 \end{table}
@@ -505,74 +505,74 @@ The power results for the Markov model are available in Table \ref{tab-markov}. 
 \begin{table}[!h]
 \centering
 \caption{Empirical power at $\alpha = 0.05$ for all simulated scenarios (Markov model).}
-\label{tab-markov}
 \centering
+\label{tab-markov}
 \resizebox{\ifdim\width>\linewidth\linewidth\else\width\fi}{!}{
 \fontsize{10}{12}\selectfont
 \begin{tabular}[t]{cclcccc}
 \toprule
 \multicolumn{3}{c}{ } & \multicolumn{4}{c}{Dependence strength} \\
 \cmidrule(l{3pt}r{3pt}){4-7}
-\textbf{d} & \textbf{r} & \textbf{c} & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
+d & r & c & \textbf{$\kappa = 0$} & \textbf{$\kappa = 1$} & \textbf{$\kappa = 2$} & \textbf{$\kappa = 4$}\\
 \midrule
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+ &  & $0.5$ & 6.0\% & 100.0\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.040 & 1.000 & 1.000 & 1.000\\
+ &  & $1$ & 4.0\% & 100.0\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 6.0\% & 100.0\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.085 & 1.000 & 1.000 & 1.000\\
+ &  & $0.5$ & 8.5\% & 100.0\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.065 & 1.000 & 1.000 & 1.000\\
+ &  & $1$ & 6.5\% & 100.0\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.065 & 1.000 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 6.5\% & 100.0\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.060 & 0.985 & 1.000 & 0.565\\
+ &  & $0.5$ & 6.0\% & 98.5\% & 100.0\% & 56.5\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.040 & 1.000 & 1.000 & 1.000\\
+ &  & $1$ & 4.0\% & 100.0\% & 100.0\% & 100.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.060 & 1.000 & 1.000 & 1.000\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 1} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 6.0\% & 100.0\% & 100.0\% & 100.0\%\\
 \cmidrule{1-7}
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.025 & 0.890 & 1.000 & 1.000\\
+ &  & $0.5$ & 2.5\% & 89.0\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.975 & 1.000 & 1.000\\
+ &  & $1$ & 5.0\% & 97.5\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.955 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 4.5\% & 95.5\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.040 & 0.905 & 1.000 & 1.000\\
+ &  & $0.5$ & 4.0\% & 90.5\% & 100.0\% & 100.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.070 & 0.985 & 1.000 & 1.000\\
+ &  & $1$ & 7.0\% & 98.5\% & 100.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.060 & 0.990 & 1.000 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 6.0\% & 99.0\% & 100.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.060 & 0.070 & 0.050\\
+ &  & $0.5$ & 3.5\% & 6.0\% & 7.0\% & 5.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.035 & 0.960 & 1.000 & 1.000\\
+ &  & $1$ & 3.5\% & 96.0\% & 100.0\% & 100.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.030 & 0.980 & 1.000 & 1.000\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 2} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 3.0\% & 98.0\% & 100.0\% & 100.0\%\\
 \cmidrule{1-7}
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.040 & 0.055 & 0.040 & 0.055\\
+ &  & $0.5$ & 4.0\% & 5.5\% & 4.0\% & 5.5\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.050 & 0.115 & 0.360 & 1.000\\
+ &  & $1$ & 5.0\% & 11.5\% & 36.0\% & 100.0\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 2} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.130 & 0.540 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 2} & $2$ & 4.5\% & 13.0\% & 54.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.035 & 0.070 & 0.035 & 0.085\\
+ &  & $0.5$ & 3.5\% & 7.0\% & 3.5\% & 8.5\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.060 & 0.065 & 0.160 & 0.515\\
+ &  & $1$ & 6.0\% & 6.5\% & 16.0\% & 51.5\%\\
 
- & \multirow{-3}{*}{\centering\arraybackslash 3} & $2h_{\mathrm{ideal}}$ & 0.045 & 0.100 & 0.470 & 1.000\\
+ & \multirow{-3}{*}{\centering\arraybackslash 3} & $2$ & 4.5\% & 10.0\% & 47.0\% & 100.0\%\\
 
- &  & $2^{-1}h_{\mathrm{ideal}}$ & 0.030 & 0.050 & 0.080 & 0.050\\
+ &  & $0.5$ & 3.0\% & 5.0\% & 8.0\% & 5.0\%\\
 
- &  & $h_{\mathrm{ideal}}$ & 0.040 & 0.030 & 0.025 & 0.090\\
+ &  & $1$ & 4.0\% & 3.0\% & 2.5\% & 9.0\%\\
 
-\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2h_{\mathrm{ideal}}$ & 0.050 & 0.060 & 0.215 & 0.905\\
+\multirow{-9}{*}[1\dimexpr\aboverulesep+\belowrulesep+\cmidrulewidth]{\centering\arraybackslash 10} & \multirow{-3}{*}{\centering\arraybackslash 10} & $2$ & 5.0\% & 6.0\% & 21.5\% & 90.5\%\\
 \bottomrule
 \end{tabular}}
 \end{table}
 
-Figure \ref{fig:power_curves_mixture} summarizes some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = -1$ - large $r$ surprisingly increased the power under alternative scenarios without affecting type I error control.
+Figure \ref{fig:power_curves_mixture} summarizes some key interesting findings from the simulation study. First, it is possible to see the power increasing as function of the dependence parameter $\kappa$, which is reasonable. Furthermore, it is possible to see that increasing the bandwidth has no relevant effect on the power, under both null and alternative hypotheses. Finally, it is interesting to notice the effect of the dimension parameters $d$ and $r$: the first ore had a considerable negative effect on the power, while - except for $c = 0.5$ - large $r$ surprisingly increased the power under alternative scenarios without affecting type I error control.
 
 \begin{figure}
     \centering
@@ -611,7 +611,7 @@ $\bZ_i^{(1)} \defin \bX_i$ and $\bZ_i^{(2)} \defin \bX_{i+1}$. Under this notati
 \end{align*}
 and a rejection of this hypothesis would indicate that the comets directions records are dependent, due to either observational bias or another scientific reason.
 
-A straightforward approach to obtain a final p-value consists of applying the permutation calibration described in Section \ref{sec-permutation} directly to the pairs $\{\bZ_i\}_{i=1, \dots, 622}$, ignoring the serial structure of the original data. In a similar way to the approach employed in the simulation study, we employed here bandwidths on the form $2^c \times h^*$, where $h^*$ is the bandwidth chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}) --- this allows to see the $p$-values as a function of the tuning parameter $c$. Under this naive strategy, the resulting p-values for the test statistic are shown in Figure \ref{fig:pvalue_comet}.
+A straightforward approach to obtain a final p-value consists of applying the permutation calibration described in Section \ref{sec-permutation} directly to the pairs $\{\bZ_i\}_{i=1, \dots, 622}$, ignoring the serial structure of the original data. In a similar way to the approach employed in the simulation study, we employed here bandwidths on the form $c \times h^*$, where $h^*$ is the bandwidth chosen by Least Squares Cross-Validation (see \cite{chacon2026blessingdimensionalitycrossvalidatedbandwidth}) --- this allows to see the $p$-values as a function of the tuning parameter $c$. Under this naive strategy, the resulting p-values for the test statistic are shown in Figure \ref{fig:pvalue_comet}.
 
 \begin{figure}[h]
 \centering
