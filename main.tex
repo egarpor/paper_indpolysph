@@ -279,7 +279,7 @@ and
 2^{-1/2}, & q=1,\\[0.3em]
 \omega_{q-1}\omega_{q-2}^2 2^{3q/2-3}, & q\ge 2.
 \end{cases}
-\]∫
+\]
 \end{lemma}
 
 
@@ -615,8 +615,8 @@ A straightforward approach to obtain a final p-value consists of applying the pe
 
 \begin{figure}[h]
 \centering
-        \includegraphics[totalheight=8cm]{Rplot28.pdf}
-    \caption{Independence test p-value for comet records data using different combinations of bandwidths, under the standard permutation approach. The dashed red line represents the 0.05 significance level.}
+        \includegraphics[totalheight=8cm]{plots/plot_comets.pdf}
+    \caption{Independence test p-value for comet records data using different combinations of bandwidths, under the standard permutation approach (black line) and the modified permutation with step size 1 (grey dashed line). The dashed horizontal line represents the 0.05, 0.1 and 0.2 significance levels.}
     \label{fig:pvalue_comet}
 \end{figure}
 
@@ -624,20 +624,14 @@ It must be noted, however, that the constructed pairs $\bZ_i$ are not independen
 
 In order to take into account the serial structure in the definition of the $\bZ_i$'s, a different sample $\bZ'_1, \dots, \bZ'_{311}$ were defined, where
 \begin{align*}
-    \bZ'_i \defin (\bZ'_i^{(1)}, \bZ'_i^{(2)}) \in \mathbb{S}^{2} \times \mathbb{S}^{2},
+    \bZ'_i \defin ({\bZ'_i}^{(1)}, {\bZ'_i}^{(2)}) \in \mathbb{S}^{2} \times \mathbb{S}^{2},
 \end{align*}
-$\bZ'_i^{(1)} \defin \bX_{2i-1}$ and $\bZ'_i^{(2)} \defin \bX_{2i}$. Despite the smaller sample size, this sample would avoid the theoretical problems present in the previous approach - see Section \ref{sec-permutation}. The null hypothesis becomes again
+
+${\bZ'_i}^{(1)} \defin \bX_{2i-1}$ and ${\bZ'_i}^{(2)} \defin \bX_{2i}$. Despite the smaller sample size, this sample would avoid the theoretical problems present in the previous approach - see Section \ref{sec-permutation}. The null hypothesis becomes again
 \begin{align*}
     H_0: \bZ^{(1)} \independent \bZ^{(2)},
 \end{align*}
-and the obtained p-values are shown in Figure \ref{fig:pvalue_comet_step}.
-
-\begin{figure}[h]
-\centering
-        \includegraphics[totalheight=8cm]{Rplot27.pdf}
-    \caption{Same description as in Figure \ref{fig:pvalue_comet}, but with step size 2.}
-    \label{fig:pvalue_comet_step}
-\end{figure}
+and the obtained p-values are shown in Figure \ref{fig:pvalue_comet}.
 
 Using the standard permutation approach, under a 0.05 significance level, no combination of bandwidths - among the considered ones - leads us to the rejection of the null hypothesis of independence. When the second permutation approach (with step size 2) is employed, the resulting p-values also do not allow the rejection of the null hypothesis under that significance level. Those results allow to conclude in a reasonable way that there is no evidence of serial dependence in the comet records - at least a serial dependence expressed as a lag-1 dependence.
 
