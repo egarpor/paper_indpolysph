@@ -229,7 +229,7 @@ The identity $T_n = (T_{n,1} + T_{n,2} + T_{n,3})$ comes from Lemmas \ref{lemma-
 \begin{lemma}\label{lemma-in1}
  Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
-        T_{n,1} &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n,
+        T_{n,1} &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{-3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n,
     \end{align*}
     where $N_n$ is a random variable such that $N_n \xrightarrow{d} \mathcal{N}(0, 1)$, $B_n \defin \frac{2}{n^2} \int_{\Sr} \int_{\Sr} \mathsf{E}^2 ( \bar{L}_{\bh} (\bx,\bX_1) \bar{L}_{\bh} (\by,\bX_1) ) \,\rd \bx \,\rd \by$ and $\bar{L}_{\bh} (\bx,\bX_i) \defin L_{\bh} (\bx,\bX_i) - \mathsf{E} (L_{\bh} (\bx,\bX_i))$.
 \end{lemma}
@@ -250,9 +250,9 @@ r^{d_j/2-1}
 \left\{
 \int_0^\infty
 \rho^{d_j/2-1}L(\rho)\varphi_{d_j}(r,\rho)
-\,d\rho
+\,\rd\rho
 \right\}^2
-dr,
+\rd r,
 \]
 where
 \[
@@ -267,7 +267,7 @@ L\left(r+\rho+2(r\rho)^{1/2}\right),
 \int_{-1}^{1}
 (1-\theta^2)^{(q-3)/2}
 L\left(r+\rho-2\theta(r\rho)^{1/2}\right)
-\,d\theta,
+\,\rd\theta,
 & q\ge 2,
 \end{cases}
 \]
@@ -296,8 +296,8 @@ and
 \begin{lemma}\label{lemma-in2-e}
     Let $\bX^{(1)}, \dots, \bX^{(r)}$ be mutually independent. Then,
     \begin{align*}
-    \mathsf{E}[T_{n,2}]=A_n^{(1)}(1+o(1))%+o\lrp{n^{-1}\sum_{j=1}^r h^{-d_j}}
-    ,\quad A_n^{(1)}=\sum_{j=1}^r \frac{v_{d_j}(L)R(f_{0,-j})}{nh^{d_j}},
+    \mathsf{E}[T_{n,2}]=A_n^{(1)}(1+o(1))%+o\lrp{n^{-1}\sum_{j=1}^r h_j^{-d_j}}
+    ,\quad A_n^{(1)}=\sum_{j=1}^r \frac{v_{d_j}(L)R(f_{0,-j})}{nh_j^{d_j}},
 \end{align*}
 where $f_{0,-j}(\bx)=\prod_{\substack{k=1\\k\neq j}}^r f_k(\bx^{(k)})$ and $R(f_{0,-j})=\int_{\Smj} f_{0,-j}^2(\bx)\,\rd \bx_{-j}$.
 \end{lemma}
@@ -370,7 +370,7 @@ Next proposition presents a closed form expression for $T_n$ under the assumptio
 
 Note that, for the von Mises kernel, statistic $T_n$ can be written in a simple matrix form that does not require the evaluation of integrals. This fact greatly facilitates the computation of the statistic in real datasets.
 
-\subsection{Permutation-based P-value}\label{sec-permutation}
+\subsection{Permutation-based $p$-value}\label{sec-permutation}
 
 Once the observed value of the statistic $T_n$ is computed, a possible approach to approximate the observed p-value is through a permutation approach. The idea behind this method is that, if the random vectors $\bX^{(1)}, \dots, \bX^{(r)}$ are mutually independent, then it is reasonable to assume that their joint distribution is unaffected by the application of random permutations $\sigma_j$ in each component. That is, under the null hypothesis, $\bX^{(1)}, \dots, \bX^{(r)}$ and $\bX^{(\sigma_1)}, \dots, \bX^{(\sigma_r)}$ are identically distributed, where $\bX^{(\sigma_j)}$ indicates a random permutation in the observations of $\bX^{(j)}$, that is, $\bX^{(\sigma_j)} \defin \bX_{\sigma_j(1)}^{(j)}, \dots, \bX_{\sigma_j(n)}^{(j)}$.
 
@@ -380,7 +380,7 @@ In fact, for practical purposes, applying the random permutation in the first co
 \end{align*}
 which means that, in a bootstrap-like approach, the distribution of $T_n$ under the null hypothesis may be estimated doing $B$ sequences of random permutations $ \{ \sigma_{2,i}, \dots, \sigma_{r,i} \}_{i=1}^{B} $ and computing the statistic $T_n$ in each new sample. This sequence $T_n^{\sigma_{,1}}, \dots, T_n^{\sigma_{,B}}$ constitutes the estimated distribution of $T_n$ under the null hypothesis, and, therefore, the P-value for an observed $T_n$ can be computed as
 \begin{align*}
-    \frac{1}{B} \sum_{i=1}^{B} I_{\{T_n \le T_n^{\sigma_{,i}}\}}.
+    \frac{1}{B} \sum_{i=1}^{B} 1_{\{T_n \le T_n^{\sigma_{,i}}\}}.
 \end{align*}
 
 %-------------------------------%
@@ -1445,9 +1445,9 @@ r^{d_j/2-1}
 \left\{
 \int_0^\infty
 \rho^{d_j/2-1}L(\rho)\varphi_{d_j}(r,\rho)
-\,d\rho
+\,\rd\rho
 \right\}^2
-dr.
+\rd r.
 \]
 Thus,
 \[
@@ -1474,7 +1474,7 @@ O\left(
 E[
 L_{\bh}(\bx,\bX_1)L_{\bh}(\by,\bX_1)
 ]
-\,d\bx\,d\by
+\,\rd\bx\,\rd\by
 \right)
 =
 O(1),
@@ -1498,7 +1498,7 @@ which proves the result.
 
 \end{proof}
 
-\begin{proof}[\textcolor{blue}{[Completed]} Proof of Lemma \ref{lemma-in2-e}]
+\begin{proof}[Proof of Lemma \ref{lemma-in2-e}]
     The proof comes from writing $\mathsf{E} (T_{n,2})$ as a function of $\mathsf{Var} (\hat{f}_{0}(\bx;\bh))$ and noticing that this variance can be written in terms of the two first moments of kernel density estimators of each density function $f_j$.
 \begin{align*}
         \mathsf{E} (T_{n,2}) &= \mathsf{E} \Bigg( \int_{\Sr} \Big[ \hat{f}_{0}(\bx;\bh) - \mathsf{E} (\hat{f}_{0}(\bx;\bh)) \Big]^2 \,\rd \bx \Bigg) \\
@@ -1811,7 +1811,7 @@ The statistic $T_n$ can be written in matrix notation as
 %where the third term comes from $\prod_{j=1}^{r} \big(\bpsi^{(j)} \buno_n\big)_i=\sum_{i=1}^{n}  \big(\bigcirc_{j=1}^{r}\big(\bpsi^{(j)} \buno_n\big)\big)_i=\buno^\top[\bigcirc_{j=1}^{r}\big(\bpsi^{(j)} \buno_n\big)\big]$.
 \end{proof}
 
-\begin{proof}[ \textcolor{blue}{[Complete]} Proof of Lemma \ref{lemma-var-tn3}]
+\begin{proof}[Proof of Lemma \ref{lemma-var-tn3}]
 Defining
 \[
     U_n(\bx) \defin \hat f(\bx;\bh)-\mathsf{E}(\hat f(\bx;\bh)),
