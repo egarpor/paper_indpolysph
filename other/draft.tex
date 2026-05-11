@@ -2256,6 +2256,15 @@ B_n
 which proves the result.
 \end{proof}
 
+\section{Proof of main lemma redone}
+
+From the decomposition $T_n = T_{n,1} + T_{n,2} + T_{n,3}$, we have that
+\begin{align*}
+    T_n &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n \\
+    &+ A_n^{(1)}(1+o(1)) + O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }} \\
+    &- 2A_n^{(1)}(1+o(1)) + O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }}.
+\end{align*}
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 
