@@ -2260,9 +2260,21 @@ which proves the result.
 
 From the decomposition $T_n = T_{n,1} + T_{n,2} + T_{n,3}$, we have that
 \begin{align*}
-    T_n &= \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n \\
+    T_n =&\; \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n \\
     &+ A_n^{(1)}(1+o(1)) + O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }} \\
     &- 2A_n^{(1)}(1+o(1)) + O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }}.
+\end{align*}
+
+Therefore,
+\begin{align*}
+    T_n =&\; \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n \\
+    &- A_n^{(1)}(1+o(1)) + O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }}.
+\end{align*}
+
+Then,
+\begin{align*}
+    N_n =&\; B_n^{-1/2} \Bigg\{ T_n - \frac{v_d(L)}{n \rho (\bh)} - o((n \rho (\bh))^{-1}) - O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} \\
+    &- A_n^{(1)} - o(A_n^{(1)}) - O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }} \Bigg\}.
 \end{align*}
 
 \bibliographystyle{alpha}
