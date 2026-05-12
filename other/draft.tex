@@ -2258,6 +2258,39 @@ which proves the result.
 
 \section{Proof of main lemma redone}
 
+\begin{remark}
+    Let $a_1,a_2,\dots$ and $b_1,b_2,\dots$ be numerical sequences and $T_1,T_2,\dots$ a sequence of random variables. Then, if
+    \begin{align*}
+        b_n(T_n - a_n) \xrightarrow{d} \mathcal{N}(0, 1),
+    \end{align*}
+    and $a_n = k_n(1+o(1))$ for some numerical sequence $k_1,k_2,\dots$, this does \textbf{NOT} entail that 
+    \begin{align*}
+        b_n(T_n - k_n) \xrightarrow{d} \mathcal{N}(1, 1).
+    \end{align*}
+    However, this is true if we impose $a_n - k_n = o(1/b_n)$. Note that $b_n(T_n - a_n)$ and $b_n(T_n - k_n)$ are converging to different distributions.
+\end{remark}
+
+\begin{example}
+    Consider $a_n \defin \sqrt{n}$ and $b_n \defin n$, and suppose
+    \begin{align*}
+        b_n(T_n - a_n) \xrightarrow{d} \mathcal{N}(0, 1).
+    \end{align*}
+    If we define $k_n \defin n - \frac{1}{\sqrt{n}}$, then, clearly,
+    \begin{align*}
+        a_n &= k_n + \frac{1}{\sqrt{n}} \\
+        &= k_n + o(k_n) \\
+        &= k_n(1+o(1)).
+    \end{align*}
+    Now see that
+    \begin{align*}
+        b_n(T_n - k_n) &= b_n(T_n - a_n) + b_n(a_n - k_n)\\
+        &= b_n(T_n - a_n) + \sqrt{n} \lrp{\frac{1}{\sqrt{n}}} \\
+        &= b_n(T_n - a_n) + 1 \\
+        &\xrightarrow{d} \mathcal{N}(0, 1),
+    \end{align*}
+    where the final convergence comes from Slutsky's theorem.
+\end{example}
+
 From the decomposition $T_n = T_{n,1} + T_{n,2} + T_{n,3}$, we have that
 \begin{align*}
     T_n =&\; \frac{v_d(L)}{n \rho (\bh)} (1+o(1)) + O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} + B_n^{1/2} N_n \\
@@ -2275,8 +2308,9 @@ Then,
 \begin{align*}
     N_n =&\; B_n^{-1/2} \Bigg\{ T_n - \frac{v_d(L)}{n \rho (\bh)} - o((n \rho (\bh))^{-1}) - O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} \\
     &- A_n^{(1)} - o(A_n^{(1)}) - O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }} \Bigg\} \\
-    \asymp&\; ( 2 n^{-2} \rho(\bh)^{-1} \lambda_{\bd}(L)^{-4} \sigma^2)^{-1/2} \Bigg\{ T_n - \frac{v_d(L)}{n \rho (\bh)} - o((n \rho (\bh))^{-1}) - O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} \\
+    \asymp&\; ( 2 \lambda_{\bd}(L)^{-4} \sigma^2)^{-1/2} (n \rho(\bh)^{1/2}) \Bigg\{ T_n - \frac{v_d(L)}{n \rho (\bh)} - o((n \rho (\bh))^{-1}) - O_{\mathsf{P}}\lrp{(n^{3/2} \rho (\bh))^{-1}} \\
     &- A_n^{(1)} - o(A_n^{(1)}) - O_{\mathsf{P}} \lrp{\sqrt{n^{-2} \sum_{j=1}^{r} h_j^{-d_j} }} \Bigg\} \\
+    \xrightarrow{d}&\; \mathcal{N}(0, 1).
 \end{align*}
 
 \bibliographystyle{alpha}
