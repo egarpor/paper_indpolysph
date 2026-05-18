@@ -2313,6 +2313,374 @@ Then,
     \xrightarrow{d}&\; \mathcal{N}(0, 1).
 \end{align*}
 
+\section{Expectation of first sub-term}
+
+% If these commands are already defined in your paper, delete or adapt them.
+\newcommand{\Sd}{\mathbb{S}^{\mathbf d}}
+\newcommand{\bh}{\mathbf h}
+\newcommand{\rh}{\rho(\bh)}
+\newcommand{\sigmad}{\sigma_{\mathbf d}}
+
+For the next result, define
+\[
+    m_{\bh}(x) := \mathbb{E}\{L_{\bh}(x,X_1)\},
+    \qquad
+    \bar L_{\bh}(x,X_i) := L_{\bh}(x,X_i) - m_{\bh}(x),
+\]
+and
+\[
+    Z_{ni} := \int_{\Sd} \bar L_{\bh}^2(x,X_i)\,\sigmad(dx).
+\]
+Thus,
+\[
+    I_{n,2}
+    :=
+    \frac{1}{n^2}\sum_{i=1}^n Z_{ni}
+    =
+    \frac{1}{n^2}\sum_{i=1}^n
+    \int_{\Sd} \bar L_{\bh}^2(x,X_i)\,\sigmad(dx).
+\]
+Moreover, define the finite-bandwidth version of \(v_{\mathbf d}(L)\) by
+\[
+    v_{\mathbf d,\bh}(L)
+    :=
+    \frac{\lambda_{\mathbf d,\bh}(L^2)}
+    {\lambda_{\mathbf d,\bh}(L)^2},
+\]
+where \(\lambda_{\mathbf d,\bh}(L)\) is determined by
+\[
+    c_{\mathbf d,L}(\bh)^{-1}
+    =
+    \rho(\bh)\lambda_{\mathbf d,\bh}(L).
+\]
+Equivalently,
+\[
+    \lambda_{\mathbf d,\bh}(L)
+    =
+    \rho(\bh)^{-1}
+    \int_{\Sd}
+    L\left(
+        \frac{1-x^{(1)\top}y^{(1)}}{h_1^2},
+        \ldots,
+        \frac{1-x^{(r)\top}y^{(r)}}{h_r^2}
+    \right)
+    \sigmad(dx),
+\]
+which does not depend on \(y\in\Sd\), by rotational invariance.
+
+\begin{lemma}
+With the notation above,
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{v_{\mathbf d,\bh}(L)}{n\rho(\bh)}
+    -
+    \frac{1}{n}
+    \int_{\Sd} m_{\bh}^2(x)\,\sigmad(dx).
+\]
+Consequently, if \(v_{\mathbf d,\bh}(L)\to v_{\mathbf d}(L)\) and
+\(m_{\bh}(x)=f(x)+O(\sum_{j=1}^r h_j^2)\) uniformly in \(x\in\Sd\), then
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{v_{\mathbf d,\bh}(L)}{n\rho(\bh)}
+    -
+    \frac{R(f)}{n}
+    +
+    O\left(\frac{\sum_{j=1}^r h_j^2}{n}\right),
+\]
+where
+\[
+    R(f):=\int_{\Sd}f^2(x)\,\sigmad(dx).
+\]
+In particular,
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{v_{\mathbf d}(L)}{n\rho(\bh)}\{1+o(1)\}.
+\]
+\end{lemma}
+
+\begin{proof}
+Since the random variables \(Z_{n1},\ldots,Z_{nn}\) are identically distributed,
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{1}{n}\mathbb{E}[Z_{n1}].
+\]
+Now,
+\[
+\begin{aligned}
+    \mathbb{E}[Z_{n1}]
+    &=
+    \mathbb{E}\left[
+        \int_{\Sd}
+        \left\{L_{\bh}(x,X_1)-m_{\bh}(x)\right\}^2
+        \,\sigmad(dx)
+    \right] \\
+    &=
+    \int_{\Sd}
+    \mathbb{E}\left[
+        \left\{L_{\bh}(x,X_1)-m_{\bh}(x)\right\}^2
+    \right]
+    \,\sigmad(dx) \\
+    &=
+    \int_{\Sd}
+    \operatorname{Var}\{L_{\bh}(x,X_1)\}
+    \,\sigmad(dx) \\
+    &=
+    \int_{\Sd}
+    \mathbb{E}\{L_{\bh}^2(x,X_1)\}
+    \,\sigmad(dx)
+    -
+    \int_{\Sd}
+    m_{\bh}^2(x)
+    \,\sigmad(dx).
+\end{aligned}
+\]
+By Fubini's theorem,
+\[
+\begin{aligned}
+    \int_{\Sd}
+    \mathbb{E}\{L_{\bh}^2(x,X_1)\}
+    \,\sigmad(dx)
+    &=
+    \int_{\Sd}
+    \int_{\Sd}
+    L_{\bh}^2(x,y)f(y)
+    \,\sigmad(dy)\,\sigmad(dx) \\
+    &=
+    \int_{\Sd}
+    f(y)
+    \left\{
+        \int_{\Sd}L_{\bh}^2(x,y)\,\sigmad(dx)
+    \right\}
+    \sigmad(dy).
+\end{aligned}
+\]
+It remains to compute the inner integral. By the definition of \(L_{\bh}\),
+\[
+    L_{\bh}(x,y)
+    =
+    c_{\mathbf d,L}(\bh)
+    L\left(
+        \frac{1-x^{(1)\top}y^{(1)}}{h_1^2},
+        \ldots,
+        \frac{1-x^{(r)\top}y^{(r)}}{h_r^2}
+    \right).
+\]
+Therefore,
+\[
+\begin{aligned}
+    \int_{\Sd}L_{\bh}^2(x,y)\,\sigmad(dx)
+    &=
+    c_{\mathbf d,L}(\bh)^2
+    \int_{\Sd}
+    L^2\left(
+        \frac{1-x^{(1)\top}y^{(1)}}{h_1^2},
+        \ldots,
+        \frac{1-x^{(r)\top}y^{(r)}}{h_r^2}
+    \right)
+    \sigmad(dx) \\
+    &=
+    c_{\mathbf d,L}(\bh)^2
+    \rho(\bh)\lambda_{\mathbf d,\bh}(L^2).
+\end{aligned}
+\]
+Since
+\[
+    c_{\mathbf d,L}(\bh)^{-1}
+    =
+    \rho(\bh)\lambda_{\mathbf d,\bh}(L),
+\]
+we have
+\[
+    c_{\mathbf d,L}(\bh)^2
+    =
+    \frac{1}
+    {\rho(\bh)^2\lambda_{\mathbf d,\bh}(L)^2}.
+\]
+Hence,
+\[
+\begin{aligned}
+    \int_{\Sd}L_{\bh}^2(x,y)\,\sigmad(dx)
+    &=
+    \frac{\rho(\bh)\lambda_{\mathbf d,\bh}(L^2)}
+    {\rho(\bh)^2\lambda_{\mathbf d,\bh}(L)^2} \\
+    &=
+    \frac{1}{\rho(\bh)}
+    \frac{\lambda_{\mathbf d,\bh}(L^2)}
+    {\lambda_{\mathbf d,\bh}(L)^2} \\
+    &=
+    \frac{v_{\mathbf d,\bh}(L)}{\rho(\bh)}.
+\end{aligned}
+\]
+This quantity does not depend on \(y\). Since \(f\) is a probability density,
+\[
+\begin{aligned}
+    \int_{\Sd}
+    \mathbb{E}\{L_{\bh}^2(x,X_1)\}
+    \,\sigmad(dx)
+    &=
+    \int_{\Sd}
+    f(y)
+    \frac{v_{\mathbf d,\bh}(L)}{\rho(\bh)}
+    \,\sigmad(dy) \\
+    &=
+    \frac{v_{\mathbf d,\bh}(L)}{\rho(\bh)}.
+\end{aligned}
+\]
+Therefore,
+\[
+    \mathbb{E}[Z_{n1}]
+    =
+    \frac{v_{\mathbf d,\bh}(L)}{\rho(\bh)}
+    -
+    \int_{\Sd}m_{\bh}^2(x)\,\sigmad(dx),
+\]
+and so
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{v_{\mathbf d,\bh}(L)}{n\rho(\bh)}
+    -
+    \frac{1}{n}
+    \int_{\Sd}m_{\bh}^2(x)\,\sigmad(dx).
+\]
+
+Finally, suppose that
+\[
+    m_{\bh}(x)
+    =
+    f(x)+O\left(\sum_{j=1}^r h_j^2\right)
+\]
+uniformly in \(x\in\Sd\). Then
+\[
+\begin{aligned}
+    \int_{\Sd}m_{\bh}^2(x)\,\sigmad(dx)
+    &=
+    \int_{\Sd}
+    \left[
+        f(x)+O\left(\sum_{j=1}^r h_j^2\right)
+    \right]^2
+    \sigmad(dx) \\
+    &=
+    \int_{\Sd}f^2(x)\,\sigmad(dx)
+    +
+    O\left(\sum_{j=1}^r h_j^2\right) \\
+    &=
+    R(f)+O\left(\sum_{j=1}^r h_j^2\right).
+\end{aligned}
+\]
+Thus,
+\[
+    \mathbb{E}[I_{n,2}]
+    =
+    \frac{v_{\mathbf d,\bh}(L)}{n\rho(\bh)}
+    -
+    \frac{R(f)}{n}
+    +
+    O\left(\frac{\sum_{j=1}^r h_j^2}{n}\right).
+\]
+This is good to replace Lemma 3.1, but at the expenses of hiding $\bh$ inside $v_{\mathbf d,\bh}(L)$.
+
+We could do better if we show something like
+\[
+v_{\mathbf d,\bh}(L)=v_{\mathbf d}(L)+o(\rho(\bh))
+\]
+or similar, instead of $v_{\mathbf d,\bh}(L)=v_{\mathbf d}(L)+o(1)$.
+
+\end{proof}
+
+\section{Leftovers CV paper}
+
+
+\begin{lemma}[Moments of von Mises--Fisher kernel]\label{lem:mdp}
+For $d\geq1$ and $p\geq0$, let
+\begin{align*}
+    m_{d,\ell,j}(L,h)=&\;\om{d-1}\int_0^{2h^{-2}}L(s)s^{\ell/2+d/2-1}(2-sh^2)^{j-\ell/2+d/2-1}\,\rd s,\\
+    m_{d,\ell,j}(L)\defin&\; 2^{j-\ell/2+d/2-1}\om{d-1}\int_0^{\infty}L(s)s^{\ell/2+d/2-1}\,\rd s.
+\end{align*}
+Let $L(s)=e^{-s}$. Then, as $h\to0$,
+\begin{align*}
+    m_{d,\ell,j}(L,h)=m_{d,\ell,j}(L)\lrp{1-\frac{(d+\ell)(d+2j-\ell-2)}{8}h^2+O(h^{4})}
+\end{align*}
+with $m_{d,\ell,j}(L)=2^{j+d/2-1} \Gamma((d+\ell)/2)\om{d-1}$.
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lem:mdp}]
+Using Wolfram Mathematica, we have that
+\begin{align*}
+    \om{d-1}^{-1}m_{d,\ell,j}(L,h)&=h^{-(d+\ell)} 2^{d+j-1} \frac{\Gamma((d+\ell)/2)\Gamma((d-\ell)/2+j)}{\Gamma(d+j)}{}_1F_1\left(\frac{d+\ell}{2};d+j;-\frac{2}{h^2}\right),\\
+    \om{d-1}^{-1}m_{d,\ell,j}(L)&=2^{j+d/2-1} \Gamma \left(\frac{d+\ell}{2}\right).
+\end{align*}
+We use now the expansion ${}_1 F_1(a,b,-x)$ as $x\to\infty$ from Theorems 1 and 2 in \cite{Paris2013}:
+\begin{align*}
+    {}_1 F_1(a,b,-x)=x^{-a}\frac{\Gamma(b)}{\Gamma(b-a)}\lrp{1+\frac{a(1+a-b)}{x}+O(x^{-2})}.
+\end{align*}
+\begin{comment}
+When $a-b=-n$ and $n=1,2,3,\ldots$, Theorem 1 in ibid gives
+\begin{align*}
+    {}_1 F_1(a,b,-x)=x^{-a}\frac{\Gamma(b)}{\Gamma(b-a)}\lrp{1+\frac{(a)_1(1+a-b)_1}{x}+O(x^{-2})}.
+\end{align*}
+When $\vartheta=a-b$ is a non-integer, Theorem 2 in ibid gives
+\begin{align*}
+    {}_1 F_1(a,b,-x)%=&\;x^{-a}\frac{\Gamma(b)}{\Gamma(b-a)}\lrp{1+\frac{(a)_1(1+a-b)_1}{x}+O(x^{-2})}\\
+    %=&\;x^{-a}\frac{\Gamma(b)}{\Gamma(b-a)}\lrp{1+\frac{a (1+a-b)}{x}+O(x^{-2})}.
+\end{align*}
+\end{comment}
+Hence,
+\begin{align*}
+    {}_1 F_1\left(\frac{d+\ell}{2};d+j;-\frac{2}{h^2}\right)=&\; h^{d+\ell}2^{-(d+\ell)/2} \frac{\Gamma(d+j)}{\Gamma((d-\ell)/2+j)}\\
+    &\times\lrp{1+\frac{[(d+\ell)/2][(-d+\ell)/2-j+1]}{2}h^2+O(h^{4})}\\
+    =&\; h^{d+\ell}2^{-(d+\ell)/2} \frac{\Gamma(d+j)}{\Gamma((d-\ell)/2+j)}\lrp{1-\frac{(d+\ell)(d+2j-\ell-2)}{8}h^2+O(h^{4})}.
+\end{align*}
+Now,
+\begin{align*}
+    \om{d-1}^{-1}m_{d,\ell,j}(L,h)=&\;h^{-(d+\ell)} 2^{d+j-1} \frac{\Gamma((d+\ell)/2)\Gamma((d-\ell)/2+j)}{\Gamma(d+j)}\\
+    &\times h^{d+\ell}2^{-(d+\ell)/2} \frac{\Gamma(d+j)}{\Gamma((d-\ell)/2+j)}\lrp{1-\frac{(d+\ell)(d+2j-\ell-2)}{8}h^2+O(h^{4})},\\
+    =&\;2^{j-\ell/2+d/2-1} \Gamma((d+\ell)/2)\times\lrp{1-\frac{(d+\ell)(d+2j-\ell-2)}{8}h^2+O(h^{4})}\\
+    =&\;\om{d-1}^{-1}m_{d,\ell,j}(L)\times\lrp{1-\frac{(d+\ell)(d+2j-\ell-2)}{8}h^2+O(h^{4})}.
+\end{align*}
+\end{proof}
+
+\begin{lemma}\label{lem:lambdavmf}
+For $L(s)=e^{-s}$, we have that
+\begin{align*}
+    \frac{\lambda_{h,d}(G)}{\lambda_{h,d}(L)}=-\frac{d}{2}+\frac{d(d-2)}{8}h^2+O(h^4)
+\end{align*}
+and hence
+\begin{align*}
+    c_{d,G}(h)=-\frac{2}{d}c_{d,L}(h)\lrb{1+\frac{d-2}{4}h^2+O(h^4)}
+\end{align*}
+\end{lemma}
+
+\begin{proof}[Proof of Lemma \ref{lem:lambdavmf}]
+From Lemma \ref{lem:mdp}, we have that
+\begin{align*}
+    \lambda_{h,d}(L)=&\;\om{d-1}\int_0^{2h^{-2}} e^{-s} s^{d/2-1}(2-sh^2)^{d/2-1}\,\rd s=\om{d-1}m_{d,0,0}(L,h),\\
+    \lambda_{h,d}(G)=&-\om{d-1}\int_0^{2h^{-2}} e^{-s} s^{d/2}(2-sh^2)^{d/2-1}\,\rd s=-\om{d-1}m_{d,2,0}(L,h).
+\end{align*}
+Therefore,
+\begin{align*}
+\frac{\lambda_{h,d}(G)}{\lambda_{h,d}(L)}&=-\frac{m_{d,2,0}(L,h)}{m_{d,0,0}(L,h)}\\
+%&=-\frac{m_{d,2,0}(L)\lrp{1-\frac{(d+2)(d-2)}{8}h^2+O(h^{4})}}{m_{d,0,0}(L)\lrp{1-\frac{d(d-2)}{8}h^2+O(h^{4})}}\\
+&=-\frac{m_{d,2,0}(L)}{m_{d,0,0}(L)}\frac{1-\frac{(d+2)(d-2)}{8}h^2+O(h^{4})}{1-\frac{d(d-2)}{8}h^2+O(h^{4})}\\
+%&=-\frac{2^{d/2-1}\Gamma(d/2+1)}{2^{d/2-1}\Gamma(d/2)}\frac{1-\frac{(d+2)(d-2)}{8}h^2+O(h^{4})}{1-\frac{d(d-2)}{8}h^2+O(h^{4})}\\
+&=-\frac{d}{2}\frac{1-\frac{(d+2)(d-2)}{8}h^2+O(h^{4})}{1-\frac{d(d-2)}{8}h^2+O(h^{4})}\\
+&=-\frac{d}{2}\lrb{1+\lrc{\frac{d(d-2)}{8}-\frac{(d+2)(d-2)}{8}}h^2+O(h^4)}\\
+%&=-\frac{d}{2}+\frac{d}{2}\frac{2(d-2)}{8}h^2+O(h^4)\\
+&=-\frac{d}{2}+\frac{d(d-2)}{8}h^2+O(h^4).
+\end{align*}
+As a consequence,
+\begin{align*}
+\frac{c_{d,G}(h)}{c_{d,L}(h)}=\frac{\lambda_{h,d}(L)}{\lambda_{h,d}(G)}%\\
+%=&\;\lrc{-\frac{d}{2}+\frac{d(d-2)}{8}h^2+O(h^4)}^{-1}\\
+=-\frac{2}{d}\lrb{1-\frac{d-2}{4}h^2+O(h^4)}^{-1}%\\
+=-\frac{2}{d}\lrb{1+\frac{d-2}{4}h^2+O(h^4)}.
+\end{align*}
+\end{proof}
+
 \bibliographystyle{alpha}
 \bibliography{sample}
 
